@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="favicon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Des Mots Justes | Correcteur professionnel - Tom Saulzet</title>
     <meta name="description" content="Service professionnel de correction et relecture. Préparation de copie, relecture sur épreuves et expertise poésie.">
@@ -565,6 +566,36 @@
 
         /* --- RESPONSIVE --- */
 
+        /* Burger menu styles (hidden on desktop) */
+        .burger-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            position: absolute;
+            right: 5%;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 3000;
+            padding: 10px;
+        }
+        .burger-menu span {
+            width: 25px;
+            height: 3px;
+            background: var(--vert-fonce);
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+        .burger-menu.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+        .burger-menu.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .burger-menu.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
         /* Effet hover cartes Pour qui */
         .carte-public:hover {
             transform: translateY(-5px);
@@ -572,20 +603,206 @@
         }
 
         @media (max-width: 768px) {
-            .main-title { font-size: 2.5rem; }
-            h2.sec-title { font-size: 2.5rem; }
-            .hero-title { font-size: 3rem; }
-            .hero-subtitle { font-size: 1.4rem; }
-            section { padding: 100px 5% 60px 5%; }
-            .sim-container, .form-container { padding: 40px 30px; }
-            nav { gap: 20px; }
-            .profil-grid { grid-template-columns: 1fr; }
-            .why-grid { grid-template-columns: 1fr; }
-            .grid-temoignages { grid-template-columns: 1fr; }
-            .logo-in-menu { left: 5%; }
-            .tabs-container { flex-direction: column; }
-            .tab-btn { width: 100%; border-radius: 10px; }
-            .footer-content { flex-direction: column; gap: 30px; }
+            html, body {
+                overflow-x: hidden;
+                max-width: 100vw;
+            }
+            
+            body {
+                font-size: 1.1rem;
+            }
+            
+            /* Header mobile */
+            header {
+                padding: 15px 5% !important;
+            }
+            .main-title { 
+                font-size: 1.6rem !important;
+                letter-spacing: 2px;
+            }
+            .sub-title { 
+                display: none !important; 
+            }
+            .logo-in-menu { 
+                display: none !important; 
+            }
+            
+            /* Burger menu visible on mobile */
+            .burger-menu {
+                display: flex !important;
+            }
+            
+            /* Mobile nav sidebar */
+            nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 75%;
+                max-width: 280px;
+                background: var(--beige-parchemin);
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+                padding: 70px 25px 30px 25px;
+                gap: 20px;
+                box-shadow: -5px 0 20px rgba(0,0,0,0.2);
+                transition: right 0.3s ease;
+                z-index: 2500;
+                overflow-y: auto;
+            }
+            nav.active {
+                right: 0;
+            }
+            .nav-link {
+                width: 100%;
+                font-size: 1rem;
+                padding: 12px 0;
+                border-bottom: 1px solid rgba(60, 77, 45, 0.1);
+            }
+            .nav-link::after {
+                display: none;
+            }
+            nav > div {
+                width: 100%;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .drop {
+                position: static !important;
+                display: block !important;
+                box-shadow: none !important;
+                padding: 10px 0 0 15px !important;
+                background: transparent !important;
+                min-width: auto !important;
+                border: none !important;
+            }
+            .drop a {
+                font-size: 0.9rem !important;
+                padding: 10px 0 !important;
+            }
+            
+            /* Sections */
+            section { 
+                padding: 80px 5% 50px 5%; 
+            }
+            h2.sec-title { 
+                font-size: 2.3rem; 
+            }
+            
+            /* Hero */
+            .hero-title { 
+                font-size: 2rem !important;
+                white-space: normal !important;
+                line-height: 1.3;
+            }
+            .hero-subtitle { 
+                font-size: 1.15rem !important;
+            }
+            .cta-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .btn-cta {
+                width: 100%;
+                max-width: 320px;
+            }
+            
+            /* Pourquoi */
+            .why-grid { 
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            /* Offre lancement */
+            .offre-lancement-card {
+                padding: 25px 20px;
+            }
+            .offre-header h3 {
+                font-size: 1.5rem;
+            }
+            
+            /* Pour qui */
+            div[style*="max-width: 1150px"] {
+                max-width: 100% !important;
+            }
+            div[style*="grid-template-columns: repeat(3, 1fr)"] {
+                grid-template-columns: 1fr !important;
+            }
+            
+            /* Prestations */
+            .tabs-container { 
+                flex-direction: column;
+                gap: 8px;
+            }
+            .tab-btn { 
+                width: 100%;
+                border-radius: 10px;
+            }
+            .tab-content {
+                padding: 35px 25px;
+            }
+            
+            /* Simulateur */
+            .sim-container { 
+                padding: 30px 20px; 
+            }
+            .sim-grid { 
+                grid-template-columns: 1fr !important;
+                gap: 15px;
+            }
+            .sim-grid p {
+                font-size: 0.95rem;
+                line-height: 1.5;
+                white-space: normal !important;
+            }
+            #resultat { 
+                font-size: 2.5rem; 
+            }
+            
+            /* Profil */
+            .profil-grid { 
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .profil-grid h2 {
+                font-size: 2.2rem !important;
+                white-space: normal !important;
+            }
+            .profil-grid p {
+                text-align: left !important;
+            }
+            .profil-grid img {
+                max-width: 150px !important;
+                height: auto !important;
+            }
+            .profil-photo {
+                order: -1;
+                width: 200px !important;
+                height: 200px !important;
+                margin: 0 auto;
+            }
+            
+            /* Témoignages */
+            .grid-temoignages { 
+                grid-template-columns: 1fr;
+            }
+            
+            /* Formulaire */
+            .form-container { 
+                padding: 30px 20px; 
+            }
+            .btn-submit {
+                width: 100%;
+                margin-bottom: 15px;
+            }
+            
+            /* Footer */
+            .footer-content { 
+                flex-direction: column;
+                gap: 30px;
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -597,12 +814,19 @@
     </div>
     <h1 class="main-title">Des Mots Justes</h1>
     <p class="sub-title">Relecture & Correction</p>
-    <nav>
-        <a href="#pourquoi" class="nav-link">Description</a>
-        <a href="#prestations" class="nav-link">Prestations</a>
+    
+    <div class="burger-menu" id="burger-menu" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    
+    <nav id="main-nav">
+        <a href="#pourquoi" class="nav-link" onclick="closeMenuMobile()">Description</a>
+        <a href="#prestations" class="nav-link" onclick="closeMenuMobile()">Prestations</a>
         <a href="poesie.html" class="nav-link nav-poesie">L'Œil du Poète</a>
-        <a href="#simulateur" class="nav-link">Simulateur</a>
-        <a href="#contact" class="nav-link">Contact</a>
+        <a href="#simulateur" class="nav-link" onclick="closeMenuMobile()">Simulateur</a>
+        <a href="#contact" class="nav-link" onclick="closeMenuMobile()">Contact</a>
         <div style="position:relative; display:flex; align-items:center;" onmouseover="this.querySelector('.drop').style.display='block'" onmouseout="this.querySelector('.drop').style.display='none'">
             <a href="#" class="nav-link">Plus ▾</a>
             <div class="drop">
@@ -664,32 +888,35 @@
     </div>
     
     <!-- POUR QUI - 3 cartes en ligne -->
-    <div style="max-width: 1000px; margin: 60px auto 0 auto; padding: 0 5%;">
+    <div style="max-width: 1150px; margin: 60px auto 0 auto; padding: 0 5%;">
         <h3 style="font-family: 'Josefin Slab'; font-size: 2rem; text-align: center; color: var(--vert-fonce); margin-bottom: 35px;">
             Pour qui ?
         </h3>
-        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin-bottom: 35px;">
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin-bottom: 20px; align-items: start;">
             
-            <div class="carte-public" style="padding: 30px 20px; background: rgba(94, 140, 97, 0.1); border-radius: 12px; border-left: 4px solid var(--vert-stylo); text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; min-height: 160px; display: flex; flex-direction: column; justify-content: center;">
-                <h4 style="font-size: 1.3rem; margin-bottom: 12px; color: var(--vert-fonce); line-height: 1.3;">🖋️ Auteurs, Éditeurs</h4>
+            <div class="carte-public" style="padding: 30px 20px; background: rgba(94, 140, 97, 0.1); border-radius: 12px; border-left: 4px solid var(--vert-stylo); text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                <h4 style="font-size: 1.3rem; margin-bottom: 12px; color: var(--vert-fonce); line-height: 1.3; white-space: nowrap; min-height: 1.3em;">🖋️ Auteurs, Éditeurs</h4>
                 <p style="opacity: 0.9; font-size: 0.95rem; margin: 0;">Romans, recueils, nouvelles, essais...</p>
             </div>
             
-            <div class="carte-public" style="padding: 30px 20px; background: rgba(94, 140, 97, 0.1); border-radius: 12px; border-left: 4px solid var(--vert-stylo); text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; min-height: 160px; display: flex; flex-direction: column; justify-content: center;">
-                <h4 style="font-size: 1.3rem; margin-bottom: 12px; color: var(--vert-fonce); line-height: 1.3;">🏢 Entreprises</h4>
-                <p style="opacity: 0.9; font-size: 0.95rem; margin: 0 0 10px 0;">Plaquettes, sites web, rapports, newsletters...</p>
-                <p style="font-size: 0.85rem; opacity: 0.7; margin: 0;">💡 Partenariats durables possibles</p>
+            <div class="carte-public" style="padding: 30px 20px; background: rgba(94, 140, 97, 0.1); border-radius: 12px; border-left: 4px solid var(--vert-stylo); text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                <h4 style="font-size: 1.3rem; margin-bottom: 12px; color: var(--vert-fonce); line-height: 1.3; white-space: nowrap; min-height: 1.3em;">🏢 Entreprises</h4>
+                <p style="opacity: 0.9; font-size: 0.95rem; margin: 0;">Plaquettes, sites web, rapports, newsletters...</p>
             </div>
             
-            <div class="carte-public" style="padding: 30px 20px; background: rgba(94, 140, 97, 0.1); border-radius: 12px; border-left: 4px solid var(--vert-stylo); text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; min-height: 160px; display: flex; flex-direction: column; justify-content: center;">
-                <h4 style="font-size: 1.3rem; margin-bottom: 12px; color: var(--vert-fonce); line-height: 1.3;">🎓 Étudiants, Chercheurs</h4>
+            <div class="carte-public" style="padding: 30px 20px; background: rgba(94, 140, 97, 0.1); border-radius: 12px; border-left: 4px solid var(--vert-stylo); text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                <h4 style="font-size: 1.3rem; margin-bottom: 12px; color: var(--vert-fonce); line-height: 1.3; white-space: nowrap; min-height: 1.3em;">🎓 Étudiants, Chercheurs</h4>
                 <p style="opacity: 0.9; font-size: 0.95rem; margin: 0;">Mémoires, thèses, articles, dossiers...</p>
             </div>
             
         </div>
         
+        <p style="text-align: center; font-size: 0.9rem; opacity: 0.8; color: var(--vert-fonce); margin-bottom: 25px;">
+            💡 Partenariats durables possibles
+        </p>
+        
         <p style="text-align: center; font-size: 1.05rem; padding: 18px; background: rgba(94, 140, 97, 0.08); border-radius: 10px; color: var(--vert-fonce); border-left: 4px solid var(--vert-stylo);">
-            💡 <strong>Même exigence pour tous :</strong> la précision littéraire appliquée à chacun de vos projets
+            💡 <strong>Même exigence pour tous :</strong> la précision littéraire appliquée à chacun de vos projets.
         </p>
     </div>
 </section>
@@ -860,7 +1087,7 @@
     <div class="temoignages-container">
         <h2 class="sec-title">Mes débuts sur ComeUp</h2>
         <div class="temoignages-intro">
-            <p><strong>Avant ma certification</strong>, j'ai proposé des services de correction polyvalents et d'écriture de poèmes et de paroles de chansons sur mesure.<br>Voici quelques retours de mes premiers clients (2023-2024). N'utilisant plus la plateforme, mon compte vendeur est masqué, tout n'est pas visible (il ne reste qu'une archive d'un service).</p>
+            <p><strong>Avant ma certification</strong>, j'ai proposé des services de correction polyvalents et d'écriture de poèmes et de paroles de chansons sur mesure.<br>Voici quelques retours de mes premiers clients (2023-2024). N'utilisant plus la plateforme, mon compte vendeur est masqué (il ne reste qu'une archive d'un service).</p>
         </div>
         <div class="grid-temoignages">
             <div class="card-temoignage">
@@ -1004,16 +1231,13 @@
 
 <div style="margin-top: 40px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.2); text-align: center;">
             <p style="font-size: 1rem; opacity: 0.9; margin-bottom: 15px;">
-                Vous pouvez aussi me contacter pour toute information via <a href="mailto:contact@desmotsjustes.fr" style="color: var(--or-subtil); text-decoration: underline; font-weight: 700;">contact@desmotsjustes.fr</a>
+                Vous pouvez aussi me contacter pour toute information via <a href="/cdn-cgi/l/email-protection#fa9995948e9b998eba9e9f8997958e89908f898e9f89d49c88" style="color: var(--or-subtil); text-decoration: underline; font-weight: 700;"><span class="__cf_email__" data-cfemail="7714181903161403371312041a1803041d0204031204591105">[email&#160;protected]</span></a> et sur les réseaux sociaux.
             </p>
         </div>
 
         <div style="margin-top: 30px; text-align: center;">
             <p style="font-size: 1rem; opacity: 0.9; margin-bottom: 0;">
-                Je vous invite également à consulter 
-                <a href="cgv.html" style="color: var(--or-subtil); text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; font-weight: 600;">
-                    les Conditions Générales de Vente & RGPD
-                </a>
+                Je vous invite également à consulter les <a href="cgv.html" style="color: var(--or-subtil); text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; font-weight: 600;">Conditions Générales de Vente & RGPD</a>.
             </p>
         </div>
     </div>
@@ -1050,12 +1274,33 @@
         </div>
     </div>
     <div class="footer-bottom">
-        <p>© 2026 DES MOTS JUSTES - RELECTURE & CORRECTION - TOM SAULZET. Tous droits réservés.</p>
+        <p>© 2026 Des Mots Justes - Relecture et Correction. Tom SAULZET.<br>SIRET : 100 013 242 00019<br>Tous droits réservés.</p>
     </div>
 </footer>
 
 <script>
     lucide.createIcons();
+    
+    // Menu burger mobile
+    function toggleMenu() {
+        const nav = document.getElementById('main-nav');
+        const burger = document.getElementById('burger-menu');
+        nav.classList.toggle('active');
+        burger.classList.toggle('active');
+    }
+    
+    function closeMenuMobile() {
+        const nav = document.getElementById('main-nav');
+        const burger = document.getElementById('burger-menu');
+        if (nav && burger) {
+            nav.classList.remove('active');
+            burger.classList.remove('active');
+        }
+    }
+    
+    // Fermer le menu au chargement/retour sur la page
+    window.addEventListener('load', closeMenuMobile);
+    window.addEventListener('pageshow', closeMenuMobile);
     
     // Header shrink au scroll
     window.onscroll = function() {
@@ -1089,40 +1334,51 @@
     function copierFormulaire() {
         const nom = document.getElementById('nom').value || '[Votre nom]';
         const email = document.getElementById('email').value || '[Votre email]';
-        const typeDoc = document.getElementById('type-doc').value || '[À compléter]';
-        const dejaCorrige = document.getElementById('deja-corrige').value || '[À compléter]';
-        const prestation = document.getElementById('prestation').value || '[À compléter]';
-        const signes = document.getElementById('signes-form').value || '[À compléter]';
-        const delai = document.getElementById('delai').value || '[À compléter]';
-        const message = document.getElementById('message').value || '[À compléter]';
+        const typeDocRaw = document.getElementById('type-doc').value || '';
+        const dejaCorrigenRaw = document.getElementById('deja-corrige').value || '';
+        const prestationCode = document.getElementById('prestation').value || '';
+        const signes = document.getElementById('signes-form').value || '';
+        const delai = document.getElementById('delai').value || '';
+        const message = document.getElementById('message').value || '';
         
-        const texte = `DEMANDE DE DEVIS - Des Mots Justes
+        // Capitaliser première lettre du type de document
+        const typeDoc = typeDocRaw ? typeDocRaw.charAt(0).toUpperCase() + typeDocRaw.slice(1) : '[À compléter]';
+        
+        // Formater "Déjà corrigé" avec première lettre en majuscule
+        let dejaCorrige = '[À compléter]';
+        if (dejaCorrigenRaw === 'non') dejaCorrige = 'Non';
+        if (dejaCorrigenRaw === 'oui') dejaCorrige = 'Oui';
+        
+        // Mapper les codes de prestation vers les noms complets
+        const prestationMap = {
+            'preparation': 'Préparation de copie',
+            'relecture': 'Relecture sur épreuve',
+            'relecture-pdf': 'Relecture PDF finale',
+            'ciblee': 'Correction ciblée',
+            'poesie': "L'Œil du Poète",
+            'pdf-poesie': 'Relecture PDF Poésie',
+            'hesitation': 'À discuter'
+        };
+        const prestation = prestationMap[prestationCode] || '[À compléter]';
+        
+        const texte = `DEMANDE DE DEVIS
 
-À envoyer à : contact@desmotsjustes.fr
-Objet : Demande de devis - ${nom}
+Nom complet : ${nom}
+Email : ${email}
+Type de document : ${typeDoc}
+Déjà corrigé ? ${dejaCorrige}
+Prestation souhaitée : ${prestation}
+Nombre de signes : ${signes ? signes + ' SEC' : '[À compléter]'}
+Délai souhaité : ${delai || 'À préciser'}
 
-═══════════════════════════════════════
+Informations complémentaires :
+${message || 'Aucune'}
 
-NOM COMPLET : ${nom}
+--------------------------------------------
 
-EMAIL : ${email}
+N'oubliez pas de joindre votre MANUSCRIT à cet email !
 
-TYPE DE DOCUMENT : ${typeDoc}
-
-A-T-IL DÉJÀ ÉTÉ CORRIGÉ ? ${dejaCorrige}
-
-PRESTATION SOUHAITÉE : ${prestation}
-
-NOMBRE DE SIGNES (SEC) : ${signes}
-
-DÉLAI IDÉAL : ${delai}
-
-INFORMATIONS COMPLÉMENTAIRES :
-${message}
-
-═══════════════════════════════════════
-
-⚠️ N'OUBLIEZ PAS DE JOINDRE VOTRE MANUSCRIT À CET EMAIL !
+N'hésitez pas à m'apporter toute précision ou information complémentaire que vous jugez utile. Merci par avance.
 
 Les documents qui ne pourront pas faire l'objet d'une correction ne seront pas conservés.`;
         
