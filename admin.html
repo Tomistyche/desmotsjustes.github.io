@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administration - Des Mots Justes</title>
+    <style>
+        :root {
+            --vert-fonce: #3C4D2D;
+            --vert-stylo: #5E8C61;
+            --beige-parchemin: #C4C298;
+            --ivoire: #F9F8F0;
+            --or-subtil: #C5A059;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, var(--vert-fonce) 0%, #2a3622 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .login-container {
+            max-width: 400px;
+            margin: 100px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+        
+        .admin-container {
+            display: none;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .admin-header {
+            background: white;
+            padding: 20px 30px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .admin-header h1 {
+            color: var(--vert-fonce);
+            font-size: 1.8rem;
+        }
+        
+        .btn-logout {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .card h2 {
+            color: var(--vert-fonce);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            border-bottom: 2px solid var(--vert-stylo);
+            padding-bottom: 10px;
+        }
+        
+        .stat-box {
+            background: linear-gradient(135deg, var(--vert-stylo), var(--vert-fonce));
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 10px 0;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--vert-stylo);
+        }
+        
+        .btn {
+            background: var(--vert-stylo);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background: var(--vert-fonce);
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: var(--or-subtil);
+        }
+        
+        .btn-danger {
+            background: #e74c3c;
+        }
+        
+        .project-list {
+            list-style: none;
+        }
+        
+        .project-item {
+            background: #f8f9fa;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border-left: 4px solid var(--vert-stylo);
+        }
+        
+        .project-item h4 {
+            color: var(--vert-fonce);
+            margin-bottom: 8px;
+        }
+        
+        .project-meta {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #ddd;
+            border-radius: 4px;
+            margin: 10px 0;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: var(--vert-stylo);
+            transition: width 0.3s ease;
+        }
+        
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .tab {
+            padding: 12px 20px;
+            background: white;
+            border: none;
+            border-radius: 8px 8px 0 0;
+            cursor: pointer;
+            font-weight: 600;
+            color: #666;
+            transition: all 0.3s ease;
+        }
+        
+        .tab.active {
+            background: var(--vert-stylo);
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        label {
+            display: block;
+            font-weight: 600;
+            color: var(--vert-fonce);
+            margin-top: 15px;
+        }
+        
+        .success-msg {
+            background: #27ae60;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            display: none;
+        }
+        
+        .email-template {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            white-space: pre-wrap;
+            font-family: monospace;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        
+        .copy-btn {
+            background: var(--or-subtil);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+        
+        .copy-btn:hover {
+            background: #a67c52;
+        }
+        
+        .warning-box {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            color: #856404;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .info-box {
+            background: #d1ecf1;
+            border: 2px solid #0c5460;
+            color: #0c5460;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-size: 0.95rem;
+        }
+        
+        @media (max-width: 768px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+            .tabs {
+                flex-direction: column;
+            }
+            .tab {
+                border-radius: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Écran de connexion -->
+    <div class="login-container" id="loginScreen">
+        <h2 style="text-align: center; color: var(--vert-fonce); margin-bottom: 30px;">🔐 Administration</h2>
+        <p style="text-align: center; color: #666; margin-bottom: 20px; font-size: 0.9rem;">Des Mots Justes</p>
+        <input type="password" id="passwordInput" placeholder="Mot de passe" onkeypress="if(event.key==='Enter') login()">
+        <button class="btn" onclick="login()" style="width: 100%;">Se connecter</button>
+        <p id="loginError" style="color: #e74c3c; margin-top: 15px; text-align: center; display: none;">Mot de passe incorrect</p>
+        <p style="text-align: center; margin-top: 20px; font-size: 0.85rem; color: #999;">
+            ⚠️ Changez le mot de passe dans le code source !
+        </p>
+    </div>
+
+    <!-- Interface Admin -->
+    <div class="admin-container" id="adminPanel">
+        <div class="admin-header">
+            <h1>📊 Tableau de bord - Des Mots Justes</h1>
+            <button class="btn-logout" onclick="logout()">Déconnexion</button>
+        </div>
+
+        <!-- Onglets -->
+        <div class="tabs">
+            <button class="tab active" onclick="switchTab('dashboard')">📊 Dashboard</button>
+            <button class="tab" onclick="switchTab('calculator')">💰 Calculateur</button>
+            <button class="tab" onclick="switchTab('projects')">📁 Projets</button>
+            <button class="tab" onclick="switchTab('templates')">📧 Templates</button>
+            <button class="tab" onclick="switchTab('export')">💾 Export/Import</button>
+        </div>
+
+        <!-- Tableau de bord -->
+        <div id="dashboard" class="tab-content active">
+            <div class="dashboard-grid">
+                <div class="card">
+                    <div class="stat-box">
+                        <div class="stat-label">Projets totaux</div>
+                        <div class="stat-number" id="statsTotal">0</div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="stat-box" style="background: linear-gradient(135deg, var(--or-subtil), #a67c52);">
+                        <div class="stat-label">Chiffre d'affaires total</div>
+                        <div class="stat-number"><span id="statsRevenue">0</span> €</div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="stat-box" style="background: linear-gradient(135deg, #27ae60, #229954);">
+                        <div class="stat-label">Projets en cours</div>
+                        <div class="stat-number" id="statsActive">0</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>📈 Activité récente</h2>
+                <ul id="recentActivity" class="project-list">
+                    <li style="text-align: center; padding: 40px; color: #999;">Aucune activité enregistrée</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Calculateur -->
+        <div id="calculator" class="tab-content">
+            <div class="card">
+                <h2>💰 Calculateur de devis</h2>
+                
+                <label>Nombre de signes espaces comprises</label>
+                <input type="number" id="calcSignes" placeholder="Ex: 75000" min="1000">
+                
+                <label>Type de prestation</label>
+                <select id="calcPrestation">
+                    <option value="8000">Préparation de copie (8 000 SEC/h)</option>
+                    <option value="11000">Relecture sur épreuve (11 000 SEC/h)</option>
+                    <option value="custom">Personnalisé</option>
+                </select>
+                
+                <div id="customSec" style="display: none;">
+                    <label>Seuil personnalisé (SEC/h)</label>
+                    <input type="number" id="customSecValue" placeholder="Ex: 9000">
+                </div>
+                
+                <button class="btn" onclick="calculateQuote()">Calculer</button>
+                
+                <div id="quoteResult" style="display: none; margin-top: 20px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+                    <h3 style="color: var(--vert-fonce); margin-bottom: 15px;">📋 Résultat du devis</h3>
+                    <p><strong>Heures de travail :</strong> <span id="resultHeures"></span> h</p>
+                    <p><strong>Tarif TTC :</strong> <span id="resultTarif"></span> €</p>
+                    <p style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #ddd;"><strong>Votre revenu net (après 26,1% cotisations) :</strong> <span id="resultNet"></span> €</p>
+                    <p style="font-size: 0.9rem; color: #666; margin-top: 10px;">💡 Coût horaire réel : <span id="resultCoutHoraire"></span> €/h</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Projets -->
+        <div id="projects" class="tab-content">
+            <div class="card">
+                <h2>📁 Gestion des projets</h2>
+                <button class="btn" onclick="showAddProject()">+ Nouveau projet</button>
+                
+                <div id="addProjectForm" style="display: none; margin-top: 20px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+                    <h3 style="color: var(--vert-fonce); margin-bottom: 15px;">Nouveau projet</h3>
+                    <input type="text" id="projectName" placeholder="Nom du client">
+                    <input type="text" id="projectTitle" placeholder="Titre du projet">
+                    <input type="number" id="projectAmount" placeholder="Montant TTC (€)">
+                    <input type="date" id="projectDeadline">
+                    <label>Statut</label>
+                    <select id="projectStatus">
+                        <option value="devis">Devis envoyé</option>
+                        <option value="en-cours">En cours</option>
+                        <option value="livre">Livré</option>
+                        <option value="paye">Payé</option>
+                    </select>
+                    <label>Avancement (%)</label>
+                    <input type="range" id="projectProgress" min="0" max="100" value="0" oninput="document.getElementById('progressValue').textContent = this.value + '%'">
+                    <span id="progressValue" style="font-weight: 700; color: var(--vert-stylo);">0%</span>
+                    <br>
+                    <button class="btn" onclick="addProject()">Ajouter</button>
+                    <button class="btn btn-secondary" onclick="cancelAddProject()">Annuler</button>
+                </div>
+                
+                <div id="successMsg" class="success-msg">✓ Projet ajouté avec succès!</div>
+                
+                <ul id="projectsList" class="project-list" style="margin-top: 20px;">
+                </ul>
+            </div>
+        </div>
+
+        <!-- Templates emails -->
+        <div id="templates" class="tab-content">
+            <div class="card">
+                <h2>📧 Templates d'emails</h2>
+                
+                <h3 style="color: var(--vert-fonce); margin: 20px 0 10px 0;">1. Première réponse - Demande d'informations</h3>
+                <button class="copy-btn" onclick="copyTemplate('template1')">📋 Copier le template</button>
+                <div class="email-template" id="template1">Bonjour [Nom],
+
+Merci pour votre demande de devis ! Je suis ravi de l'intérêt que vous portez à mes services.
+
+Pour vous proposer un tarif personnalisé et précis, j'aurais besoin de quelques informations complémentaires :
+
+• Le nombre exact de signes espaces comprises de votre document
+• La nature du document (roman, mémoire, article, etc.)
+• Le type de prestation souhaitée (préparation de copie, relecture sur épreuve, etc.)
+• Votre délai idéal de livraison
+
+N'oubliez pas de joindre votre manuscrit à votre réponse (ou un extrait significatif de 5 à 10 pages si le document est très volumineux).
+
+Je m'engage à vous répondre sous 48h maximum avec un devis détaillé et mes disponibilités.
+
+Restez joignable dans les prochains jours au cas où j'aurais besoin d'une précision.
+
+Au plaisir d'échanger avec vous sur votre projet !
+
+Cordialement,
+Tom Saulzet
+Des Mots Justes - Correcteur professionnel certifié Le Robert
+contact@desmotsjustes.fr</div>
+
+                <h3 style="color: var(--vert-fonce); margin: 30px 0 10px 0;">2. Envoi du devis</h3>
+                <button class="copy-btn" onclick="copyTemplate('template2')">📋 Copier le template</button>
+                <div class="email-template" id="template2">Bonjour [Nom],
+
+Suite à l'analyse de votre document, voici mon devis détaillé :
+
+📊 DÉTAILS DE LA PRESTATION
+• Document : [Type de document]
+• Nombre de signes : [Nombre] SEC
+• Prestation : [Type de prestation]
+• Seuil de productivité : [Nombre] SEC/h
+• Temps estimé : [Nombre] heures
+
+💰 TARIF
+Tarif total TTC : [Montant] €
+[Si > 200€] Acompte (30%) : [Montant] €
+
+📅 DÉLAIS
+Livraison prévue : [Date]
+
+Si ce devis vous convient, confirmez-moi votre accord par retour de mail. Pour les projets supérieurs à 200 €, un acompte de 30% sera demandé avant le début des travaux.
+
+N'hésitez pas si vous avez des questions !
+
+Cordialement,
+Tom Saulzet
+Des Mots Justes
+contact@desmotsjustes.fr</div>
+
+                <h3 style="color: var(--vert-fonce); margin: 30px 0 10px 0;">3. Livraison du projet</h3>
+                <button class="copy-btn" onclick="copyTemplate('template3')">📋 Copier le template</button>
+                <div class="email-template" id="template3">Bonjour [Nom],
+
+Votre projet est terminé ! Vous trouverez en pièce jointe le document corrigé avec le suivi des modifications activé.
+
+📝 COMMENT UTILISER LE DOCUMENT
+• Les corrections apparaissent en couleur
+• Vous pouvez accepter ou refuser chaque modification d'un simple clic
+• N'hésitez pas à me solliciter si vous avez des questions sur certaines corrections
+
+💰 RÈGLEMENT
+Montant dû : [Montant] €
+Mode de paiement : [Coordonnées bancaires / Virement / Autre]
+
+Merci pour votre confiance ! N'hésitez pas à me recontacter pour vos futurs projets.
+
+Vous bénéficiez du tarif actuel à vie sur vos prochains projets grâce à l'offre de lancement.
+
+Cordialement,
+Tom Saulzet
+Des Mots Justes</div>
+
+                <h3 style="color: var(--vert-fonce); margin: 30px 0 10px 0;">4. Relance paiement (si nécessaire)</h3>
+                <button class="copy-btn" onclick="copyTemplate('template4')">📋 Copier le template</button>
+                <div class="email-template" id="template4">Bonjour [Nom],
+
+J'espère que vous êtes satisfait du travail effectué sur votre projet.
+
+Je me permets de vous relancer concernant le règlement du montant de [Montant] € pour la prestation de correction.
+
+Pour rappel, le paiement était prévu sous 30 jours suivant la livraison ([Date]).
+
+Pourriez-vous me confirmer la date de règlement ?
+
+Merci par avance.
+
+Cordialement,
+Tom Saulzet</div>
+            </div>
+        </div>
+
+        <!-- Export/Import -->
+        <div id="export" class="tab-content">
+            <div class="card">
+                <h2>💾 Export / Import de données</h2>
+                
+                <div class="info-box">
+                    ℹ️ <strong>Sauvegarde locale</strong><br>
+                    Vos données sont stockées dans le navigateur (LocalStorage). Pour sauvegarder vos projets, exportez-les régulièrement au format JSON.
+                </div>
+                
+                <h3 style="margin: 20px 0 10px 0;">Export des données</h3>
+                <button class="btn" onclick="exportData()">📥 Télécharger toutes les données (JSON)</button>
+                <button class="btn btn-secondary" onclick="exportCSV()">📊 Télécharger en CSV</button>
+                
+                <h3 style="margin: 30px 0 10px 0;">Import des données</h3>
+                <input type="file" id="importFile" accept=".json" style="margin: 10px 0;">
+                <button class="btn" onclick="importData()">📤 Importer les données</button>
+                
+                <div class="warning-box" style="margin-top: 30px;">
+                    ⚠️ <strong>Attention :</strong> L'import remplacera toutes vos données actuelles. Exportez d'abord vos données pour les sauvegarder !
+                </div>
+                
+                <h3 style="margin: 30px 0 10px 0;">Réinitialisation</h3>
+                <button class="btn btn-danger" onclick="resetData()">🗑️ Supprimer toutes les données</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ⚠️ CHANGEZ CE MOT DE PASSE !
+        const ADMIN_PASSWORD = "TS6776DMJ!fr";
+        
+        const STORAGE_KEYS = {
+            projects: 'dmj_projects'
+        };
+
+        // LOGIN
+        function login() {
+            const password = document.getElementById('passwordInput').value;
+            if (password === ADMIN_PASSWORD) {
+                document.getElementById('loginScreen').style.display = 'none';
+                document.getElementById('adminPanel').style.display = 'block';
+                loadData();
+            } else {
+                document.getElementById('loginError').style.display = 'block';
+                setTimeout(() => {
+                    document.getElementById('loginError').style.display = 'none';
+                }, 3000);
+            }
+        }
+
+        function logout() {
+            document.getElementById('loginScreen').style.display = 'block';
+            document.getElementById('adminPanel').style.display = 'none';
+            document.getElementById('passwordInput').value = '';
+        }
+
+        // TABS
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // CALCULATEUR
+        document.getElementById('calcPrestation').addEventListener('change', function() {
+            document.getElementById('customSec').style.display = 
+                this.value === 'custom' ? 'block' : 'none';
+        });
+
+        function calculateQuote() {
+            const signes = parseInt(document.getElementById('calcSignes').value);
+            const prestation = document.getElementById('calcPrestation').value;
+            const sec = prestation === 'custom' ? 
+                parseInt(document.getElementById('customSecValue').value) : 
+                parseInt(prestation);
+            
+            if (!signes || !sec || signes < 1000) {
+                alert('Veuillez remplir tous les champs correctement (minimum 1000 signes)');
+                return;
+            }
+            
+            const heures = (signes / sec).toFixed(2);
+            const tarif = (heures * 30).toFixed(2);
+            const net = (tarif * 0.739).toFixed(2);
+            const coutHoraire = (net / heures).toFixed(2);
+            
+            document.getElementById('resultHeures').textContent = heures;
+            document.getElementById('resultTarif').textContent = tarif;
+            document.getElementById('resultNet').textContent = net;
+            document.getElementById('resultCoutHoraire').textContent = coutHoraire;
+            document.getElementById('quoteResult').style.display = 'block';
+        }
+
+        // PROJETS
+        function showAddProject() {
+            document.getElementById('addProjectForm').style.display = 'block';
+        }
+
+        function cancelAddProject() {
+            document.getElementById('addProjectForm').style.display = 'none';
+            clearProjectForm();
+        }
+
+        function clearProjectForm() {
+            document.getElementById('projectName').value = '';
+            document.getElementById('projectTitle').value = '';
+            document.getElementById('projectAmount').value = '';
+            document.getElementById('projectDeadline').value = '';
+            document.getElementById('projectProgress').value = 0;
+            document.getElementById('progressValue').textContent = '0%';
+            document.getElementById('projectStatus').value = 'devis';
+        }
+
+        function addProject() {
+            const project = {
+                id: Date.now(),
+                name: document.getElementById('projectName').value,
+                title: document.getElementById('projectTitle').value,
+                amount: parseFloat(document.getElementById('projectAmount').value) || 0,
+                deadline: document.getElementById('projectDeadline').value,
+                progress: parseInt(document.getElementById('projectProgress').value),
+                status: document.getElementById('projectStatus').value,
+                createdAt: new Date().toISOString()
+            };
+            
+            if (!project.name || !project.title) {
+                alert('Veuillez remplir au moins le nom du client et le titre du projet');
+                return;
+            }
+            
+            const projects = getProjects();
+            projects.push(project);
+            saveProjects(projects);
+            
+            document.getElementById('successMsg').style.display = 'block';
+            setTimeout(() => {
+                document.getElementById('successMsg').style.display = 'none';
+            }, 3000);
+            
+            cancelAddProject();
+            loadProjects();
+            updateStats();
+        }
+
+        function deleteProject(id) {
+            if (!confirm('Êtes-vous sûr de vouloir supprimer ce projet ?')) return;
+            const projects = getProjects().filter(p => p.id !== id);
+            saveProjects(projects);
+            loadProjects();
+            updateStats();
+        }
+
+        function updateProjectProgress(id, value) {
+            const projects = getProjects();
+            const project = projects.find(p => p.id === id);
+            if (project) {
+                project.progress = parseInt(value);
+                saveProjects(projects);
+                loadProjects();
+                updateStats();
+            }
+        }
+
+        function updateProjectStatus(id, value) {
+            const projects = getProjects();
+            const project = projects.find(p => p.id === id);
+            if (project) {
+                project.status = value;
+                saveProjects(projects);
+                loadProjects();
+            }
+        }
+
+        // STORAGE
+        function getProjects() {
+            return JSON.parse(localStorage.getItem(STORAGE_KEYS.projects) || '[]');
+        }
+
+        function saveProjects(projects) {
+            localStorage.setItem(STORAGE_KEYS.projects, JSON.stringify(projects));
+        }
+
+        // LOAD DATA
+        function loadData() {
+            loadProjects();
+            updateStats();
+        }
+
+        function loadProjects() {
+            const projects = getProjects();
+            const list = document.getElementById('projectsList');
+            
+            if (projects.length === 0) {
+                list.innerHTML = '<li style="text-align: center; padding: 40px; color: #999;">Aucun projet enregistré. Cliquez sur "+ Nouveau projet" pour commencer.</li>';
+                return;
+            }
+            
+            projects.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+            
+            const statusColors = {
+                'devis': '#3498db',
+                'en-cours': '#f39c12',
+                'livre': '#9b59b6',
+                'paye': '#27ae60'
+            };
+            
+            list.innerHTML = projects.map(p => `
+                <li class="project-item">
+                    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 10px;">
+                        <div>
+                            <h4>${p.name} - ${p.title}</h4>
+                            <p class="project-meta">
+                                💰 ${p.amount.toFixed(2)} € | 
+                                📅 ${p.deadline ? new Date(p.deadline).toLocaleDateString('fr-FR') : 'Pas de date'}
+                            </p>
+                        </div>
+                        <div style="text-align: right;">
+                            <select onchange="updateProjectStatus(${p.id}, this.value)" style="padding: 5px; border-radius: 5px; border: 2px solid ${statusColors[p.status]}; background: white; font-size: 0.85rem; font-weight: 600; color: ${statusColors[p.status]};">
+                                <option value="devis" ${p.status === 'devis' ? 'selected' : ''}>Devis envoyé</option>
+                                <option value="en-cours" ${p.status === 'en-cours' ? 'selected' : ''}>En cours</option>
+                                <option value="livre" ${p.status === 'livre' ? 'selected' : ''}>Livré</option>
+                                <option value="paye" ${p.status === 'paye' ? 'selected' : ''}>Payé</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: ${p.progress}%"></div>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div style="flex: 1; margin-right: 15px;">
+                            <input type="range" min="0" max="100" value="${p.progress}" 
+                                   onchange="updateProjectProgress(${p.id}, this.value)" 
+                                   style="width: 100%;">
+                        </div>
+                        <span style="font-weight: 700; color: var(--vert-stylo); min-width: 50px;">${p.progress}%</span>
+                        <button class="btn btn-danger" onclick="deleteProject(${p.id})" 
+                                style="margin-left: 10px; padding: 8px 15px; font-size: 0.9rem;">🗑️</button>
+                    </div>
+                </li>
+            `).join('');
+        }
+
+        function updateStats() {
+            const projects = getProjects();
+            const activeProjects = projects.filter(p => p.status !== 'paye');
+            const totalRevenue = projects.reduce((sum, p) => sum + (p.amount || 0), 0);
+            
+            document.getElementById('statsTotal').textContent = projects.length;
+            document.getElementById('statsRevenue').textContent = totalRevenue.toFixed(0);
+            document.getElementById('statsActive').textContent = activeProjects.length;
+            
+            const activity = document.getElementById('recentActivity');
+            if (projects.length > 0) {
+                const recent = projects.slice(0, 5);
+                activity.innerHTML = recent.map(p => `
+                    <li class="project-item">
+                        <strong>${p.name}</strong> - ${p.title}
+                        <br><small style="color: #666;">Ajouté le ${new Date(p.createdAt).toLocaleDateString('fr-FR')} • ${p.amount.toFixed(2)} €</small>
+                    </li>
+                `).join('');
+            }
+        }
+
+        // TEMPLATES
+        function copyTemplate(templateId) {
+            const template = document.getElementById(templateId);
+            const text = template.textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                alert('✓ Template copié dans le presse-papier !');
+            }).catch(() => {
+                const textarea = document.createElement('textarea');
+                textarea.value = text;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                alert('✓ Template copié !');
+            });
+        }
+
+        // EXPORT / IMPORT
+        function exportData() {
+            const data = {
+                projects: getProjects(),
+                exportDate: new Date().toISOString(),
+                version: '1.0'
+            };
+            
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `dmj-export-${new Date().toISOString().split('T')[0]}.json`;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        function exportCSV() {
+            const projects = getProjects();
+            if (projects.length === 0) {
+                alert('Aucun projet à exporter');
+                return;
+            }
+            
+            const headers = ['Client', 'Projet', 'Montant', 'Date limite', 'Statut', 'Avancement', 'Date création'];
+            const rows = projects.map(p => [
+                p.name,
+                p.title,
+                p.amount,
+                p.deadline || '',
+                p.status,
+                p.progress + '%',
+                new Date(p.createdAt).toLocaleDateString('fr-FR')
+            ]);
+            
+            let csv = headers.join(';') + '\n';
+            csv += rows.map(row => row.join(';')).join('\n');
+            
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `dmj-projets-${new Date().toISOString().split('T')[0]}.csv`;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        function importData() {
+            const file = document.getElementById('importFile').files[0];
+            if (!file) {
+                alert('Veuillez sélectionner un fichier');
+                return;
+            }
+            
+            if (!confirm('⚠️ L\'import va remplacer toutes vos données actuelles. Continuer ?')) {
+                return;
+            }
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const data = JSON.parse(e.target.result);
+                    if (data.projects) {
+                        saveProjects(data.projects);
+                        alert('✓ Données importées avec succès !');
+                        loadData();
+                    } else {
+                        alert('❌ Format de fichier invalide');
+                    }
+                } catch (error) {
+                    alert('❌ Erreur lors de l\'import : ' + error.message);
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        function resetData() {
+            if (!confirm('⚠️ ATTENTION : Cette action est irréversible ! Toutes vos données seront supprimées. Continuer ?')) {
+                return;
+            }
+            
+            if (!confirm('Êtes-vous VRAIMENT sûr ? Avez-vous exporté vos données ?')) {
+                return;
+            }
+            
+            localStorage.removeItem(STORAGE_KEYS.projects);
+            alert('✓ Toutes les données ont été supprimées');
+            loadData();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L'Œil du Poète | Des Mots Justes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600;700&family=Josefin+Slab:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --vert-fonce: #3C4D2D;
+            --vert-stylo: #5E8C61; 
+            --beige-parchemin: #C4C298;
+            --ivoire: #F9F8F0;
+            --or-subtil: #C5A059;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body { 
+            font-family: 'Josefin Sans', sans-serif; 
+            background-color: var(--vert-fonce); 
+            color: var(--ivoire); 
+            line-height: 1.9; 
+            font-size: 1.3rem;
+        }
+        
+        .container { max-width: 1100px; margin: 0 auto; padding: 100px 5%; }
+        
+        h1 { 
+            font-family: 'Josefin Slab', serif; 
+            font-size: 4.5rem; 
+            color: var(--or-subtil); 
+            font-style: italic; 
+            text-align: center; 
+            margin-bottom: 50px; 
+        }
+        
+        .intro { 
+            font-size: 1.6rem; 
+            text-align: center; 
+            margin-bottom: 80px; 
+            color: var(--beige-parchemin); 
+            font-weight: 300; 
+            font-style: italic;
+        }
+        
+        .section-card { 
+            background: rgba(255,255,255,0.05); 
+            padding: 60px; 
+            border-radius: 20px; 
+            border-left: 8px solid var(--or-subtil); 
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: all 0.4s ease;
+        }
+        
+        .section-card:hover { 
+            background: rgba(255,255,255,0.08);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3), 0 0 40px rgba(197, 160, 89, 0.3);
+            border-left-color: #d4af6a;
+            border-left-width: 12px;
+        }
+
+        h2 { 
+            font-family: 'Josefin Slab', serif; 
+            font-size: 2.8rem; 
+            color: var(--or-subtil); 
+            margin-bottom: 25px;
+        }
+
+        p { margin-bottom: 20px; }
+
+        ul {
+            margin-left: 20px;
+            margin-top: 15px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        /* FORFAITS */
+        .forfaits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 50px 0;
+            padding-top: 15px;
+        }
+
+        .forfait-card {
+            background: var(--or-subtil);
+            color: var(--vert-fonce);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .forfait-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+        }
+
+        .forfait-m {
+            border: 3px solid var(--vert-fonce);
+        }
+
+        .forfait-card h3 {
+            font-family: 'Josefin Slab', serif;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .forfait-pages {
+            font-size: 0.95rem;
+            opacity: 0.8;
+            margin-bottom: 20px;
+        }
+
+        .forfait-prix {
+            font-size: 3rem;
+            font-weight: 700;
+            font-family: 'Josefin Slab', serif;
+            margin: 20px 0;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .forfait-detail {
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .badge-promo {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #e74c3c;
+            color: white;
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .prix-barre {
+            font-size: 1.2rem;
+            text-decoration: line-through;
+            opacity: 0.6;
+            margin: 10px 0;
+        }
+
+        .option-sec {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 40px;
+            text-align: center;
+            min-width: 600px;
+        }
+
+        .option-sec h3 {
+            font-size: 1.8rem;
+            color: var(--or-subtil);
+            margin-bottom: 15px;
+        }
+
+        .btn-devis-poesie {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-devis-poesie:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(197, 160, 89, 0.6), 0 0 30px rgba(197, 160, 89, 0.4);
+            background: #d4af6a;
+            animation: luminousGlow 1.5s ease-in-out infinite;
+        }
+
+        @keyframes luminousGlow {
+            0%, 100% {
+                box-shadow: 0 15px 40px rgba(197, 160, 89, 0.6), 0 0 30px rgba(197, 160, 89, 0.4);
+            }
+            50% {
+                box-shadow: 0 15px 50px rgba(197, 160, 89, 0.8), 0 0 50px rgba(197, 160, 89, 0.6);
+            }
+        }
+
+        .btn-devis-poesie::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+            transform: translateY(-50%);
+            transition: left 0.6s ease;
+        }
+
+        .btn-devis-poesie:hover::before {
+            left: 100%;
+        }
+
+        .back-link { 
+            display: inline-block; 
+            margin-top: 60px; 
+            color: var(--beige-parchemin); 
+            text-decoration: none; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            border: 2px solid var(--beige-parchemin); 
+            padding: 15px 40px; 
+            border-radius: 50px; 
+            transition: all 0.3s ease; 
+        }
+        
+        .back-link:hover { 
+            background: var(--beige-parchemin); 
+            color: var(--vert-fonce); 
+            box-shadow: 0 0 25px rgba(196, 194, 152, 0.4);
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 3rem; }
+            h2 { font-size: 2rem; }
+            .section-card { padding: 40px 30px; }
+            .intro { font-size: 1.3rem; }
+            .forfaits-grid { grid-template-columns: 1fr; }
+            .forfait-prix { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>L'Œil du Poète</h1>
+        <p class="intro">« Corriger de la poésie, ce n'est pas seulement traquer la faute,<br>c'est protéger le chant du texte. »</p>
+
+        <div class="section-card">
+            <h2>Une expertise atypique</h2>
+            <p>Au-delà de la syntaxe et de l'orthographe, je me propose d'analyser la <strong>musicalité</strong> et l'<strong>harmonisation</strong> de vos écrits. Étant moi-même auteur de poésie depuis quinze ans, cela me confère un regard aguerri sur la mécanique complexe du vers.</p>
+            <p>Ce prisme de lecture atypique me permet de déceler les ruptures de rythme involontaires ou les dissonances, tout en respectant scrupuleusement votre intention créatrice. <strong>Mon rôle n'est pas de réécrire ni de vous imposer mes propositions, mais de polir le diamant brut</strong> pour qu'il brille de toute sa force.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Forfaits Poétiques</h2>
+            <p>La poésie demande un travail beaucoup plus approfondi que la correction classique. Chaque vers nécessite une attention chirurgicale au rythme, aux sonorités, à la musicalité. <strong>C'est pourquoi je propose des forfaits adaptés</strong> plutôt qu'un calcul au nombre de signes.</p>
+            
+            <div style="background: rgba(255, 255, 255, 0.08); padding: 20px; border-radius: 12px; margin: 25px 0; border: 2px solid rgba(197, 160, 89, 0.3);">
+                <p style="margin: 0; line-height: 1.7;">
+                    <strong style="color: var(--or-subtil);">💡 Tarif horaire très accessible</strong><br>
+                    Ces forfaits correspondent à <strong>18-25€/h</strong> selon le volume, bien en-dessous des tarifs habituels pour ce type de travail d'orfèvre. Mon objectif ? <strong>Permettre aux poètes d'avoir accès à un vrai travail de qualité</strong>, sans se ruiner.
+                </p>
+            </div>
+
+            <div class="forfaits-grid">
+                <div class="forfait-card" style="border: 3px solid var(--vert-fonce); position: relative;">
+                    <div class="badge-promo">-10% Offre découverte</div>
+                    <h3>Forfait S</h3>
+                    <p class="forfait-pages">30 à 50 pages</p>
+                    <div class="prix-barre">250 €</div>
+                    <div class="forfait-prix">225 €</div>
+                    <p class="forfait-detail">Idéal pour un premier recueil ou une plaquette poétique</p>
+                </div>
+
+                <div class="forfait-card forfait-m" style="border: 3px solid var(--vert-fonce);">
+                    <div style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--vert-fonce); color: white; padding: 5px 20px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">Le plus choisi</div>
+                    <h3>Forfait M</h3>
+                    <p class="forfait-pages">51 à 80 pages</p>
+                    <div style="height: 35px;"></div>
+                    <div class="forfait-prix">350 €</div>
+                    <p class="forfait-detail">Le format standard pour un recueil complet</p>
+                </div>
+
+                <div class="forfait-card">
+                    <h3>Forfait L</h3>
+                    <p class="forfait-pages">81 à 120 pages</p>
+                    <div style="height: 35px;"></div>
+                    <div class="forfait-prix">450 €</div>
+                    <p class="forfait-detail">Pour les œuvres ambitieuses et les anthologies</p>
+                </div>
+            </div>
+
+            <p style="text-align: center; font-size: 1rem; opacity: 0.9; margin-top: 30px;">
+                📖 <strong>Au-delà de 120 pages :</strong> contactez-moi pour un devis personnalisé à partir de 5 €/page
+            </p>
+
+            <p style="margin-top: 25px;"><strong>Chaque forfait comprend :</strong></p>
+            <ul style="columns: 2; column-gap: 30px; margin-top: 15px;">
+                <li>Toutes les corrections de base</li>
+                <li>Analyse rythmique et musicale</li>
+                <li>Typographie poétique</li>
+                <li>Mise en page harmonieuse</li>
+                <li>Sommaire et foliotage</li>
+                <li>Cohérence globale du recueil</li>
+            </ul>
+        </div>
+
+        <div style="text-align: center; background: rgba(197, 160, 89, 0.15); padding: 40px; border-radius: 20px; border: 2px solid var(--or-subtil);">
+            <h3 style="font-size: 2rem; color: var(--or-subtil); margin-bottom: 20px;">Prêt à sublimer votre recueil ?</h3>
+            <p style="margin-bottom: 30px;">Chaque projet est unique. Contactez-moi pour discuter de votre œuvre et choisir ensemble la formule la plus adaptée.</p>
+            <a href="index.html#contact" class="btn-devis-poesie" style="display: inline-block; background: var(--or-subtil); color: var(--vert-fonce); padding: 20px 50px; text-decoration: none; border-radius: 50px; font-weight: 700; font-size: 1.1rem; text-transform: uppercase; transition: all 0.3s ease; box-shadow: 0 10px 30px rgba(0,0,0,0.4); position: relative; overflow: hidden;">
+                <span style="position: relative; z-index: 2;">Demander un devis poésie</span>
+            </a>
+        </div>
+
+        <div style="text-align: center;">
+            <a href="index.html" class="back-link">
+                <i data-lucide="arrow-left" style="vertical-align: middle; margin-right: 10px; width: 24px;"></i> Retour à l'accueil
+            </a>
+        </div>
+    </div>
+    <script>lucide.createIcons();</script>
+</body>
+</html>

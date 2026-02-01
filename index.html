@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Des Mots Justes | Correcteur professionnel - Tom Saulzet</title>
+    <meta name="description" content="Service professionnel de correction et relecture. Préparation de copie, relecture sur épreuves et expertise poésie.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600;700&family=Josefin+Slab:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        :root {
+            --vert-fonce: #3C4D2D;
+            --vert-stylo: #5E8C61; 
+            --vert-lisible: #4A704D;
+            --beige-parchemin: #C4C298;
+            --ivoire: #F9F8F0;
+            --or-subtil: #C5A059;
+            --blanc-parchemin: #F2F1E6;
+            --noir-footer: #151515;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Josefin Sans', sans-serif; background-color: var(--beige-parchemin); color: var(--vert-fonce); line-height: 1.8; font-size: 1.2rem; }
+
+        /* --- HEADER --- */
+        header { 
+            position: fixed; top: 0; width: 100%; background: var(--beige-parchemin); 
+            z-index: 2000; padding: 45px 5% 35px 5%; 
+            display: flex; flex-direction: column; align-items: center; 
+            border-bottom: 1px solid rgba(60, 77, 45, 0.1);
+            transition: padding 0.4s ease, box-shadow 0.4s ease;
+        }
+        .logo-in-menu { 
+            position: absolute; left: 10%; top: 50%; 
+            transform: translateY(-50%) translateZ(0);
+            width: 0; height: 80px; overflow: hidden; display: flex; align-items: center; 
+            justify-content: center; opacity: 0; 
+            border: 2px solid var(--vert-fonce); border-radius: 50%; 
+            background: transparent; cursor: pointer;
+            transition: width 0.4s ease, opacity 0.4s ease;
+            will-change: width, opacity;
+        }
+        .logo-in-menu img {
+            width: 70px; height: 70px; border-radius: 50%; object-fit: cover;
+        }
+        header.shrink { padding: 15px 5%; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        header.shrink .logo-in-menu { width: 80px; opacity: 1; }
+        header.shrink .sub-title { display: none; }
+        header.shrink .main-title { font-size: 1.8rem; }
+        .main-title { 
+            font-family: 'Josefin Slab', serif; font-size: 3.5rem; font-weight: 700; 
+            margin: 0; text-transform: uppercase; letter-spacing: 4px; line-height: 1;
+            transition: font-size 0.3s ease;
+        }
+        .sub-title { 
+            margin: 15px 0 30px 0; font-size: 1.2rem; letter-spacing: 6px; 
+            color: var(--vert-lisible); font-weight: 700; text-transform: uppercase;
+            transition: opacity 0.3s ease;
+        }
+
+        /* --- NAVIGATION --- */
+        nav { display: flex; gap: 35px; align-items: center; position: relative; flex-wrap: wrap; justify-content: center; }
+        .nav-link { 
+            text-decoration: none; color: var(--vert-fonce); font-size: 0.9rem; 
+            font-weight: 700; text-transform: uppercase; letter-spacing: 1px; 
+            position: relative; padding: 5px 0;
+            transition: color 0.3s ease;
+        }
+        .nav-link::after { 
+            content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px;
+            background: var(--or-subtil); transition: width 0.4s ease;
+            box-shadow: 0 0 12px var(--or-subtil);
+        }
+        .nav-link:hover::after { width: 100%; }
+        .nav-link:hover { color: var(--or-subtil); text-shadow: 0 0 15px rgba(197, 160, 89, 0.5); }
+        .nav-poesie { 
+            background: linear-gradient(to right, var(--or-subtil), var(--vert-stylo));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; 
+            background-clip: text; font-weight: 800;
+        }
+        .drop { 
+            display:none; position:absolute; background:var(--beige-parchemin); 
+            min-width:200px; box-shadow:0 15px 30px rgba(0,0,0,0.1); 
+            padding:15px; top:100%; border-radius:10px; z-index: 100; 
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .drop a { 
+            display:block; text-decoration:none; color:var(--vert-fonce); 
+            font-size:0.85rem; font-weight:700; text-transform:uppercase; 
+            padding:10px 0; border-bottom: 1px solid rgba(0,0,0,0.05);
+            transition: color 0.3s ease;
+        }
+        .drop a:hover { color: var(--or-subtil); }
+
+        /* --- SECTIONS --- */
+        section { padding: 140px 10% 80px 10%; min-height: 100vh; }
+        .sec-vert { background-color: var(--vert-fonce); color: var(--blanc-parchemin); }
+        h2.sec-title { 
+            font-family: 'Josefin Slab', serif; font-size: 4rem; 
+            text-align: center; margin-bottom: 60px;
+        }
+
+        /* --- HERO --- */
+        #accueil { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+        .hero-title { font-family: 'Josefin Slab'; font-size: 4.5rem; margin-bottom: 20px; color: var(--beige-parchemin); line-height: 1.2; }
+        .hero-subtitle { font-size: 1.8rem; font-style: italic; opacity: 0.9; margin-bottom: 50px; color: var(--beige-parchemin); max-width: 700px; }
+        .cta-buttons { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
+        .btn-cta { padding: 20px 45px; text-decoration: none; border-radius: 50px; font-weight: 700; font-size: 1.1rem; text-transform: uppercase; transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease; display: inline-block; }
+        .btn-primary { background: var(--or-subtil); color: var(--vert-fonce); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(0,0,0,0.4); background: #d4af6a; }
+        .btn-secondary { background: transparent; color: var(--beige-parchemin); border: 2px solid var(--beige-parchemin); }
+        .btn-secondary:hover { background: var(--beige-parchemin); color: var(--vert-fonce); }
+
+        /* --- POURQUOI --- */
+        .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; padding-top: 10px; }
+        .why-card { 
+            background: white; padding: 35px; border-radius: 15px; 
+            text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.08); 
+            transition: all 0.3s ease;
+        }
+        .why-card:hover { 
+            transform: scale(1.02);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12); 
+        }
+        .why-icon { color: var(--vert-stylo); margin-bottom: 15px; }
+        .why-card h3 { font-family: 'Josefin Slab', serif; font-size: 1.5rem; margin-bottom: 10px; color: var(--vert-fonce); }
+        .why-card p { font-size: 1rem; line-height: 1.6; }
+
+        /* --- PRESTATIONS --- */
+        .prestations-container { max-width: 1200px; margin: 0 auto; }
+        .tabs-container { display: flex; justify-content: center; gap: 10px; margin-bottom: 40px; flex-wrap: wrap; }
+        .tab-btn { 
+            background: rgba(249, 248, 240, 0.15); color: var(--blanc-parchemin); 
+            padding: 15px 30px; border: 2px solid rgba(249, 248, 240, 0.2); border-radius: 10px 10px 0 0;
+            font-family: 'Josefin Sans', sans-serif; font-weight: 700; 
+            font-size: 1rem; text-transform: uppercase; cursor: pointer;
+            transition: all 0.3s ease; 
+            position: relative;
+            will-change: transform;
+        }
+        .tab-btn:hover { 
+            background: rgba(249, 248, 240, 0.25); 
+            transform: translateY(-3px) translateZ(0); 
+            border-color: rgba(249, 248, 240, 0.4);
+        }
+        .tab-btn.active { 
+            background: var(--ivoire); color: var(--vert-fonce); 
+            transform: translateY(-5px) translateZ(0); 
+            box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+            border-color: var(--ivoire);
+        }
+        .tab-btn.poesie-tab.active { background: var(--or-subtil); color: var(--vert-fonce); border-color: var(--or-subtil); }
+        
+        .tab-content { 
+            display: none; background: var(--ivoire); padding: 50px; 
+            border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            animation: slideIn 0.4s ease;
+        }
+        .tab-content.active { display: block; }
+        .tab-content h3 { 
+            font-family: 'Josefin Slab', serif; font-size: 2.5rem; 
+            margin-bottom: 15px; color: var(--vert-fonce); 
+        }
+        .tab-content .tarif { 
+            font-size: 1.1rem; color: var(--vert-stylo); 
+            font-weight: 600; margin-bottom: 25px; 
+        }
+        .tab-content p { font-size: 1.1rem; line-height: 1.7; margin-bottom: 15px; }
+        .tab-content ul { margin-left: 20px; margin-top: 15px; }
+        .tab-content li { margin-bottom: 8px; }
+        .tab-poesie { background: linear-gradient(135deg, var(--vert-fonce) 0%, var(--vert-stylo) 100%); color: white; }
+        .tab-poesie h3 { color: var(--or-subtil); }
+        .tab-poesie .tarif { color: var(--beige-parchemin); }
+        .tab-poesie p { color: white; }
+        
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .badge-populaire { 
+            background: var(--or-subtil); color: white; 
+            padding: 5px 15px; border-radius: 20px; 
+            font-size: 0.75rem; font-weight: 700; 
+            text-transform: uppercase; display: inline-block; 
+            margin-bottom: 10px; 
+        }
+
+        .btn-plus { 
+            display: inline-block; margin-top: 20px; 
+            background: var(--or-subtil); color: var(--vert-fonce); 
+            padding: 12px 30px; text-decoration: none; 
+            border-radius: 50px; font-weight: 700; 
+            font-size: 0.85rem; text-transform: uppercase; 
+            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .btn-plus:hover { 
+            background: #d4af6a; transform: translateY(-2px); 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3); 
+        }
+
+        /* --- OFFRE LANCEMENT (Carte dépliable) --- */
+        .offre-lancement-card {
+            background: var(--or-subtil);
+            color: var(--vert-fonce);
+            padding: 30px 40px;
+            border-radius: 20px;
+            margin-top: 50px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            will-change: transform;
+        }
+        .offre-lancement-card:hover {
+            transform: translateY(-5px) translateZ(0);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+        }
+        .offre-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .offre-header h3 {
+            font-family: 'Josefin Slab', serif;
+            font-size: 2rem;
+            color: var(--vert-fonce);
+            margin: 0;
+        }
+        .offre-toggle {
+            display: inline-block;
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-top: 10px solid var(--vert-fonce);
+            transition: transform 0.3s ease;
+            margin-left: 10px;
+        }
+        .offre-toggle.open {
+            transform: rotate(180deg);
+        }
+        .offre-summary {
+            font-size: 1.1rem;
+            margin: 0;
+            font-weight: 600;
+        }
+        .offre-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+        .offre-content.open {
+            max-height: 400px;
+        }
+        .offre-content p {
+            margin-top: 20px;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+        .offre-btn {
+            display: inline-block;
+            margin-top: 20px;
+            background: var(--vert-fonce);
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+        .offre-btn:hover {
+            background: var(--vert-lisible);
+            transform: translateY(-2px);
+        }
+
+        /* --- SIMULATEUR --- */
+        .sim-container { 
+            background: linear-gradient(145deg, #2d3a22, #1a2314); 
+            color: white; padding: 70px; border-radius: 40px; 
+            text-align: center; box-shadow: 0 30px 60px rgba(0,0,0,0.4); 
+            max-width: 900px; margin: 0 auto; 
+        }
+        .sim-grid { 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+            gap: 30px; text-align: left; margin-bottom: 50px; 
+            border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 40px; 
+        }
+        .sim-grid p { margin: 0; }
+        .sim-input { 
+            padding: 25px; width: 100%; max-width: 450px; 
+            border-radius: 50px; border: none; font-size: 1.4rem; 
+            margin-bottom: 20px; text-align: center; 
+            display: block; margin-left: auto; margin-right: auto; 
+            font-family: 'Josefin Sans', sans-serif; 
+        }
+        #resultat { 
+            font-size: 4rem; font-family: 'Josefin Slab'; 
+            color: var(--beige-parchemin); font-weight: 700; 
+            margin-top: 30px; 
+        }
+
+        /* --- PROFIL --- */
+        .profil-grid { 
+            display: grid; grid-template-columns: 1.5fr 1fr; 
+            gap: 60px; align-items: center; 
+        }
+        .profil-photo { 
+            border: 2px solid var(--vert-fonce); aspect-ratio: 1/1.2; 
+            box-shadow: 20px 20px 0 var(--vert-fonce); 
+            background: #eee; display: flex; align-items: center; 
+            justify-content: center; font-size: 1.5rem; 
+            font-weight: 700; color: #999; 
+        }
+        .code-robert { 
+            background: rgba(0,0,0,0.03); padding: 25px; 
+            border-radius: 10px; margin: 30px 0; 
+            border-left: 4px solid var(--vert-fonce); 
+        }
+        .code-robert a { color: var(--vert-fonce); font-weight: 700; }
+
+        /* --- TÉMOIGNAGES --- */
+        .temoignages-container { max-width: 1200px; margin: 0 auto; }
+        .temoignages-intro {
+            text-align: center;
+            background: rgba(94, 140, 97, 0.1);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            border-left: 4px solid var(--vert-stylo);
+        }
+        .temoignages-intro p {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+        .grid-temoignages { 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 30px; margin-bottom: 40px;
+            padding-top: 10px;
+        }
+        .card-temoignage { 
+            background: white; padding: 35px; border-radius: 15px; 
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08); 
+            border-left: 4px solid var(--or-subtil); 
+            transition: all 0.3s ease;
+        }
+        .card-temoignage:hover { 
+            transform: scale(1.02);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12); 
+        }
+        .temoignage-note { 
+            color: var(--or-subtil); font-size: 1.2rem; 
+            margin-bottom: 10px; 
+        }
+        .temoignage-texte { 
+            font-style: italic; color: var(--vert-fonce); 
+            margin-bottom: 20px; line-height: 1.6; font-size: 1.05rem; 
+        }
+        .temoignage-auteur { 
+            font-weight: 700; color: var(--vert-stylo); font-size: 0.95rem; 
+        }
+        .lien-avis { 
+            display: inline-block; margin-top: 20px; 
+            padding: 15px 35px; background: var(--ivoire); 
+            color: var(--vert-fonce); text-decoration: none; 
+            border-radius: 50px; font-weight: 700; 
+            font-size: 0.9rem; text-transform: uppercase; 
+            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .lien-avis:hover { 
+            background: white; transform: translateY(-2px); 
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15); 
+        }
+
+        /* --- FORMULAIRE --- */
+        .form-container { 
+            max-width: 700px; margin: 0 auto; 
+            background: rgba(255,255,255,0.05); 
+            padding: 50px; border-radius: 20px; 
+            backdrop-filter: blur(10px); 
+            border: 1px solid rgba(255,255,255,0.1); 
+        }
+        .form-info { 
+            background: rgba(197, 160, 89, 0.15); 
+            padding: 20px; border-radius: 10px; 
+            margin-bottom: 30px; 
+            border-left: 4px solid var(--or-subtil); 
+            font-size: 0.95rem; line-height: 1.6; 
+        }
+        .form-group { margin-bottom: 25px; }
+        .form-group label { 
+            display: block; font-weight: 600; 
+            margin-bottom: 8px; color: var(--beige-parchemin); 
+            font-size: 1rem; 
+        }
+        .form-group input, .form-group select, .form-group textarea { 
+            width: 100%; padding: 15px 20px; 
+            border: 2px solid rgba(255,255,255,0.2); 
+            border-radius: 10px; background: rgba(255,255,255,0.1); 
+            color: white; font-family: 'Josefin Sans', sans-serif; 
+            font-size: 1rem; transition: border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+        }
+        .form-group input::placeholder, .form-group textarea::placeholder { 
+            color: rgba(255,255,255,0.5); 
+        }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { 
+            outline: none; border-color: var(--or-subtil); 
+            background: rgba(255,255,255,0.15); 
+            box-shadow: 0 0 20px rgba(197, 160, 89, 0.3); 
+        }
+        .form-group select option { 
+            background: var(--vert-fonce); color: white; 
+        }
+        .form-group textarea { resize: vertical; min-height: 120px; }
+        .form-required { color: var(--or-subtil); }
+        .btn-submit { 
+            background: var(--or-subtil); color: var(--vert-fonce); 
+            padding: 18px 50px; font-size: 1.1rem; 
+            font-weight: 700; text-transform: uppercase; 
+            border: none; border-radius: 50px; cursor: pointer; 
+            width: 100%; margin-top: 20px; 
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3); 
+            transition: all 0.3s ease;
+            font-family: 'Josefin Sans', sans-serif; 
+        }
+        .btn-submit:hover { 
+            transform: translateY(-3px); 
+            box-shadow: 0 8px 30px rgba(0,0,0,0.4); 
+            background: #d4af6a;
+        }
+        .btn-submit:hover i,
+        .btn-submit:hover {
+            color: #689F38;
+        }
+
+        /* --- FOOTER --- */
+        footer { 
+            background: var(--noir-footer); color: white; 
+            padding: 60px 10% 30px 10%; 
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            gap: 60px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+        }
+        .footer-section h4 {
+            font-family: 'Josefin Slab', serif;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--beige-parchemin);
+        }
+        .footer-section p, .footer-section a {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+            transition: color 0.3s ease;
+        }
+        .footer-section a:hover {
+            color: var(--or-subtil);
+        }
+        .footer-contact {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .footer-contact i {
+            color: var(--beige-parchemin);
+        }
+        .footer-contact a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+        .footer-contact a:hover {
+            color: var(--or-subtil);
+        }
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--beige-parchemin);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        .social-icon:hover {
+            color: var(--or-subtil);
+            transform: translateY(-3px);
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        .footer-bottom p {
+            font-size: 0.85rem;
+            opacity: 0.5;
+        }
+
+        /* --- TOOLTIP SEC --- */
+        .tooltip-container {
+            position: relative;
+            display: inline-block;
+            cursor: help;
+            color: var(--or-subtil);
+            text-decoration: underline dotted;
+            font-weight: 700;
+        }
+        .tooltip-text {
+            visibility: hidden;
+            width: 220px;
+            background-color: var(--vert-fonce);
+            color: white;
+            text-align: center;
+            border-radius: 8px;
+            padding: 10px;
+            position: absolute;
+            z-index: 1000;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            font-size: 0.85rem;
+            font-weight: normal;
+            white-space: nowrap;
+        }
+        .tooltip-text::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: var(--vert-fonce) transparent transparent transparent;
+        }
+        .tooltip-container:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* --- RESPONSIVE --- */
+
+        /* Effet hover cartes Pour qui */
+        .carte-public:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(94, 140, 97, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .main-title { font-size: 2.5rem; }
+            h2.sec-title { font-size: 2.5rem; }
+            .hero-title { font-size: 3rem; }
+            .hero-subtitle { font-size: 1.4rem; }
+            section { padding: 100px 5% 60px 5%; }
+            .sim-container, .form-container { padding: 40px 30px; }
+            nav { gap: 20px; }
+            .profil-grid { grid-template-columns: 1fr; }
+            .why-grid { grid-template-columns: 1fr; }
+            .grid-temoignages { grid-template-columns: 1fr; }
+            .logo-in-menu { left: 5%; }
+            .tabs-container { flex-direction: column; }
+            .tab-btn { width: 100%; border-radius: 10px; }
+            .footer-content { flex-direction: column; gap: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+<header id="main-header">
+    <div class="logo-in-menu" onclick="window.scrollTo(0,0)">
+        <img src="logo.png" alt="Logo Des Mots Justes">
+    </div>
+    <h1 class="main-title">Des Mots Justes</h1>
+    <p class="sub-title">Relecture & Correction</p>
+    <nav>
+        <a href="#pourquoi" class="nav-link">Description</a>
+        <a href="#prestations" class="nav-link">Prestations</a>
+        <a href="poesie.html" class="nav-link nav-poesie">L'Œil du Poète</a>
+        <a href="#simulateur" class="nav-link">Simulateur</a>
+        <a href="#contact" class="nav-link">Contact</a>
+        <div style="position:relative; display:flex; align-items:center;" onmouseover="this.querySelector('.drop').style.display='block'" onmouseout="this.querySelector('.drop').style.display='none'">
+            <a href="#" class="nav-link">Plus ▾</a>
+            <div class="drop">
+                <a href="tarifs.html">Transparence &amp; Tarification</a>
+                <a href="cgv.html">CGV & RGPD</a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<section id="accueil" class="sec-vert">
+    <h2 class="hero-title" style="font-size: 2.8rem; white-space: nowrap;">Écrire, c'est bien. Bien écrire, c'est encore mieux.</h2>
+    <p class="hero-subtitle" style="font-size: 1.4rem;">Correction professionnelle sur mesure pour particuliers et entreprises</p>
+    <div class="cta-buttons">
+        <a href="#prestations" class="btn-cta btn-primary">Découvrir mes services</a>
+        <a href="#contact" class="btn-cta btn-secondary">Demander un devis</a>
+    </div>
+</section>
+
+<section id="pourquoi" style="background: var(--beige-parchemin);">
+    <h2 class="sec-title">Pourquoi Des Mots Justes ?</h2>
+    <div class="why-grid">
+        <div class="why-card">
+            <i data-lucide="eye" class="why-icon" size="40"></i>
+            <h3 style="white-space: nowrap;">Authenticité</h3>
+            <p>Un œil aguerri, professionnel et investi sur tous vos documents</p>
+        </div>
+        <div class="why-card">
+            <i data-lucide="heart" class="why-icon" size="40"></i>
+            <h3 style="white-space: nowrap;">Passion</h3>
+            <p>Respect de tous les styles, spécialisation dans les écrits créatifs</p>
+        </div>
+        <div class="why-card">
+            <i data-lucide="check-check" class="why-icon" size="40"></i>
+            <h3 style="white-space: nowrap;">Rigueur</h3>
+            <p>Travail méticuleux et professionnel pour un rendu impeccable</p>
+        </div>
+        <div class="why-card">
+            <i data-lucide="message-circle" class="why-icon" size="40"></i>
+            <h3 style="white-space: nowrap;">Écoute attentive</h3>
+            <p>Des suggestions efficaces et adaptées à vos textes, une communication claire</p>
+        </div>
+    </div>
+
+    <!-- OFFRE DE LANCEMENT -->
+    <div style="max-width: 900px; margin: 50px auto 0 auto; padding: 0 5%;">
+        <div class="offre-lancement-card" onclick="toggleOffre()">
+            <div class="offre-header">
+                <h3>✨ Une offre de lancement avantageuse</h3>
+                <span class="offre-toggle" id="offre-toggle"></span>
+            </div>
+            <p class="offre-summary">Un tarif horaire fixe pour les premiers d'entre vous</p>
+            <div class="offre-content" id="offre-content">
+                <p><strong>Si vous faites partie des premiers, vous bénéficierez du tarif actuel sur vos projets futurs, et ce... À VIE !</strong></p>
+                <p>Vous intégrerez également ma liste prioritaire en cas de nombreuses demandes.</p>
+                <p><strong>Pourquoi ?</strong> Parce que vous m'aidez ainsi à développer mon activité et à constituer mon portfolio professionnel. Mon tarif horaire sera susceptible d'évoluer légèrement en même temps que mon activité, mais pas pour vous. 😊</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- POUR QUI - 3 cartes en ligne -->
+    <div style="max-width: 1000px; margin: 60px auto 0 auto; padding: 0 5%;">
+        <h3 style="font-family: 'Josefin Slab'; font-size: 2rem; text-align: center; color: var(--vert-fonce); margin-bottom: 35px;">
+            Pour qui ?
+        </h3>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin-bottom: 35px;">
+            
+            <div class="carte-public" style="padding: 30px 20px; background: rgba(94, 140, 97, 0.1); border-radius: 12px; border-left: 4px solid var(--vert-stylo); text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; min-height: 160px; display: flex; flex-direction: column; justify-content: center;">
+                <h4 style="font-size: 1.3rem; margin-bottom: 12px; color: var(--vert-fonce); line-height: 1.3;">🖋️ Auteurs, Éditeurs</h4>
+                <p style="opacity: 0.9; font-size: 0.95rem; margin: 0;">Romans, recueils, nouvelles, essais...</p>
+            </div>
+            
+            <div class="carte-public" style="padding: 30px 20px; background: rgba(94, 140, 97, 0.1); border-radius: 12px; border-left: 4px solid var(--vert-stylo); text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; min-height: 160px; display: flex; flex-direction: column; justify-content: center;">
+                <h4 style="font-size: 1.3rem; margin-bottom: 12px; color: var(--vert-fonce); line-height: 1.3;">🏢 Entreprises</h4>
+                <p style="opacity: 0.9; font-size: 0.95rem; margin: 0 0 10px 0;">Plaquettes, sites web, rapports, newsletters...</p>
+                <p style="font-size: 0.85rem; opacity: 0.7; margin: 0;">💡 Partenariats durables possibles</p>
+            </div>
+            
+            <div class="carte-public" style="padding: 30px 20px; background: rgba(94, 140, 97, 0.1); border-radius: 12px; border-left: 4px solid var(--vert-stylo); text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; min-height: 160px; display: flex; flex-direction: column; justify-content: center;">
+                <h4 style="font-size: 1.3rem; margin-bottom: 12px; color: var(--vert-fonce); line-height: 1.3;">🎓 Étudiants, Chercheurs</h4>
+                <p style="opacity: 0.9; font-size: 0.95rem; margin: 0;">Mémoires, thèses, articles, dossiers...</p>
+            </div>
+            
+        </div>
+        
+        <p style="text-align: center; font-size: 1.05rem; padding: 18px; background: rgba(94, 140, 97, 0.08); border-radius: 10px; color: var(--vert-fonce); border-left: 4px solid var(--vert-stylo);">
+            💡 <strong>Même exigence pour tous :</strong> la précision littéraire appliquée à chacun de vos projets
+        </p>
+    </div>
+</section>
+
+<section id="prestations" style="background: var(--vert-fonce);">
+    <div class="prestations-container">
+        <h2 class="sec-title" style="color: var(--blanc-parchemin);">Mes prestations</h2>
+        
+        <div class="tabs-container">
+            <button class="tab-btn active" onclick="openTab(event, 'prep')">
+                <i data-lucide="file-edit" size="18" style="vertical-align:middle; margin-right:5px;"></i>
+                Préparation de copie
+            </button>
+            <button class="tab-btn" onclick="openTab(event, 'relec')">
+                <i data-lucide="file-check" size="18" style="vertical-align:middle; margin-right:5px;"></i>
+                Relecture sur épreuve
+            </button>
+            <button class="tab-btn" onclick="openTab(event, 'pdf')">
+                <i data-lucide="printer" size="18" style="vertical-align:middle; margin-right:5px;"></i>
+                Relecture PDF
+            </button>
+            <button class="tab-btn" onclick="openTab(event, 'cible')">
+                <i data-lucide="target" size="18" style="vertical-align:middle; margin-right:5px;"></i>
+                Correction ciblée
+            </button>
+            <button class="tab-btn poesie-tab" onclick="openTab(event, 'poesie')">
+                <i data-lucide="feather" size="18" style="vertical-align:middle; margin-right:5px;"></i>
+                L'Œil du Poète
+            </button>
+            <button class="tab-btn" onclick="openTab(event, 'pdf-poesie')">
+                <i data-lucide="book-open" size="18" style="vertical-align:middle; margin-right:5px;"></i>
+                Relecture PDF Poésie
+            </button>
+        </div>
+
+        <div id="prep" class="tab-content active">
+            <span class="badge-populaire">⭐ La plus demandée</span>
+            <h3>Préparation de copie</h3>
+            <p class="tarif"><strong>~</strong> 8 000 <span class="tooltip-container" style="color: var(--vert-stylo); text-decoration: underline dotted var(--vert-stylo);">SEC<span class="tooltip-text">SEC = Signes Espaces Comprises</span></span>/h • 30 €/h</p>
+            <p>Le premier nettoyage en profondeur de votre texte, sous-entendant qu'aucun travail de correction n'a été effectué avant.</p>
+            <p><strong>Je m'engage à vous rendre un texte visant une qualité de publication.</strong></p>
+            <p>Cette prestation comprend :</p>
+            <ul>
+                <li><strong>Orthographe</strong> : traque de toutes les coquilles</li>
+                <li><strong>Grammaire</strong> : respect des règles de conjugaison, accords, syntaxe</li>
+                <li><strong>Ponctuation & typographie</strong> : harmonisation selon les normes éditoriales</li>
+                <li><strong>Cohérence</strong> : logique du récit, concordance des temps, noms propres</li>
+                <li><strong>Reformulation</strong> : suggestions pour améliorer la fluidité et la clarté (sans dénaturer votre voix)</li>
+                <li><strong>Réécriture</strong> : je m'y adonne si nécessaire, uniquement en cas de besoin</li>
+                <li><strong>Révision des informations</strong> : cohérence factuelle et narrative</li>
+            </ul>
+            <p style="margin-top:20px;"><strong>Idéal pour :</strong> Romans, essais, rapports d'entreprise, brochures, manuscrits bruts jamais relus par un professionnel.</p>
+        </div>
+
+        <div id="relec" class="tab-content">
+            <h3>Relecture sur épreuve</h3>
+            <p class="tarif"><strong>~</strong> 11 000 <span class="tooltip-container" style="color: var(--vert-stylo); text-decoration: underline dotted var(--vert-stylo);">SEC<span class="tooltip-text">SEC = Signes Espaces Comprises</span></span>/h • 30 €/h</p>
+            <p>Un deuxième travail de correction destiné à un texte dépourvu des principales coquilles et dont la mise en page est quasi prête avant le passage au format PDF.</p>
+            <p>Optez pour cela si votre document est <strong>déjà propre</strong> car cette relecture vise à traquer les dernières erreurs avant publication. À ce stade, il n'est normalement plus question de toucher à la formulation.</p>
+            <p style="margin-top:20px;"><strong>Idéal pour :</strong> documents à mi-chemin entre une préparation de copie et une version finale avant impression.</p>
+            <p style="font-size:0.9rem; opacity:0.8; margin-top:20px;">💡 Le seuil de productivité varie entre 10 000 et 12 000 SEC/h selon la complexité du document. Devis personnalisé sur mesure.</p>
+        </div>
+
+        <div id="pdf" class="tab-content">
+            <h3>Relecture sur épreuve finale (PDF)</h3>
+            <p class="tarif">Devis au temps estimé • 30 €/h</p>
+            <p>Le PDF est le support de la révision ultime, le document proche du BAT (bon à tirer). Comme il est impossible d'y calculer automatiquement le nombre de signes, je propose un <strong>devis au temps estimé</strong>.</p>
+            <p><strong>Cette prestation est facturée au temps réel passé</strong> (tarif horaire de 30 €). Pour votre sérénité, je fournis une estimation d'heures et <strong>m'engage à ne jamais dépasser un plafond convenu ensemble</strong> sans votre accord préalable.</p>
+            <p style="margin-top:20px;"><strong>Idéal pour :</strong> la dernière révision avant impression ou publication.</p>
+        </div>
+
+        <div id="pdf-poesie" class="tab-content">
+            <h3>Relecture PDF Poésie</h3>
+            <p class="tarif"><strong>~</strong> 8 500 <span class="tooltip-container" style="color: var(--vert-stylo); text-decoration: underline dotted var(--vert-stylo);">SEC<span class="tooltip-text">SEC = Signes Espaces Comprises</span></span>/h • 30 €/h</p>
+            <p>Relecture approfondie d'un recueil de poésie déjà mis en page (format PDF). À mi-chemin entre la relecture classique et l'Œil du Poète.</p>
+            <p><strong>Cette prestation comprend :</strong></p>
+            <ul>
+                <li>Correction orthographique et grammaticale</li>
+                <li>Ponctuation et typographie poétique</li>
+                <li>Vérification du rythme et de la musicalité</li>
+                <li>Cohérence des vers et strophes</li>
+                <li>Mise en page respectée (pas de reformulation majeure)</li>
+            </ul>
+            <p style="margin-top:20px;"><strong>Optez pour cela si votre recueil est déjà propre</strong> mais que vous souhaitez une dernière vérification avec un œil poétique.</p>
+            <p style="font-size:0.9rem; opacity:0.8; margin-top:15px;">💡 Le seuil de 8 500 SEC/h est une estimation moyenne. Un devis personnalisé vous sera proposé après analyse de votre document.</p>
+        </div>
+
+        <div id="cible" class="tab-content">
+            <h3>Correction ciblée</h3>
+            <p class="tarif">Tarif sur devis personnalisé</p>
+            <p>Si vous désirez un rapide coup d'œil sur l'un de vos documents ou une section de celui-ci, sans passer par toute une révision complète.</p>
+            <p><strong>Idéal pour les retouches finales ou pour une révision précise sur des éléments spécifiques :</strong></p>
+            <ul>
+                <li>Foliotage</li>
+                <li>Titres et sous-titres</li>
+                <li>Ponctuation</li>
+                <li>Concordance des temps</li>
+                <li>Typographie spécifique</li>
+            </ul>
+            <p style="margin-top:15px;"><strong>Exemples :</strong> Ponctuation uniquement, harmonisation titres, concordance des temps, ou encore articles de blog, pages web, newsletters.</p>
+            <p style="margin-top:10px;">Contactez-moi pour discuter de vos besoins spécifiques.</p>
+        </div>
+
+        <div id="poesie" class="tab-content tab-poesie">
+            <h3>L'Œil du Poète</h3>
+            <p class="tarif">Un service unique • Forfaits 250-450 € ou sur devis</p>
+            <p>Au-delà de la syntaxe et de la grammaire, je corrigerai vos poèmes en tenant compte de leur <strong>rythme et musicalité</strong>, de la versification et tout ce qui fait le cœur des créations poétiques.</p>
+            <p>Je veillerai à l'harmonisation de votre recueil et à sa cohérence, selon votre style, votre art.</p>
+            <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 20px; padding: 15px; background: rgba(197, 160, 89, 0.1); border-radius: 8px; border-left: 3px solid var(--or-subtil);">
+                💡 <strong>Tarif accessible :</strong> Ces forfaits correspondent à un taux horaire de 18-25€/h, bien en-dessous des tarifs habituels pour ce type de travail approfondi sur la poésie.
+            </p>
+            <a href="poesie.html" class="btn-plus">Découvrir les forfaits →</a>
+        </div>
+
+        <p style="text-align: center; margin-top: 40px; padding: 20px; background: rgba(255,255,255,0.05); border-radius: 10px; font-size: 0.95rem; color: var(--beige-parchemin);">
+            💡 Pour toutes les prestations, vous n'êtes jamais forcé·e d'accepter les modifications proposées.<br><a href="tarifs.html" style="color: var(--or-subtil); text-decoration: underline;">Plus d'infos dans l'onglet Transparence.</a>
+        </p>
+    </div>
+</section>
+
+<section id="simulateur" style="background: var(--blanc-parchemin);">
+    <h2 class="sec-title" style="color: var(--vert-fonce);">Estimez votre devis</h2>
+    <div class="sim-container">
+        <div class="sim-grid">
+            <div><p><strong>Seuil de productivité :</strong><br><strong>~</strong> 8 000 SEC/h (préparation)<br><strong>~</strong> 11 000 SEC/h (relecture)</p></div>
+            <div>
+                <p><strong>Tarif horaire :</strong><br>30 € (forfait juste et transparent)</p>
+                <p style="font-size: 0.85rem; opacity: 0.75; margin-top: 12px; white-space: nowrap;">💡 Signes espaces comprises dans Propriétés&nbsp;→&nbsp;Statistiques</p>
+            </div>
+        </div>
+        <h3 style="font-family: 'Josefin Slab'; font-size: 2rem; margin-bottom: 30px;">Calculez votre tarif</h3>
+        <input type="number" id="signes" class="sim-input" placeholder="Signes espaces comprises" min="1000">
+        <select id="type-presta" class="sim-input" style="appearance: none; background: white url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"%235E8C61\" stroke-width=\"2\"><polyline points=\"6 9 12 15 18 9\"></polyline></svg>') no-repeat right 20px center; cursor: pointer; padding-right: 50px;">
+            <option value="8000">Préparation de copie (8 000 SEC/h)</option>
+            <option value="11000">Relecture sur épreuve (11 000 SEC/h)</option>
+            <option value="8500">Relecture PDF Poésie (8 500 SEC/h - estimation)</option>
+        </select>
+        <div id="resultat">0,00 €</div>
+        <p style="font-size: 0.9rem; opacity: 0.7; margin-top: 20px;">💡 <strong>Estimation selon seuil moyen.</strong> Le tarif définitif sera ajusté en fonction de la complexité réelle de votre document lors du devis personnalisé que je vous proposerai.</p>
+    </div>
+</section>
+
+<section id="profil" style="background: var(--ivoire);">
+    <div class="profil-grid">
+        <div>
+            <h2 style="font-family: 'Josefin Slab'; font-size: 4rem; margin:0 0 15px 0; white-space: nowrap;">L'écriture en étendard</h2>
+            <p style="color: var(--vert-stylo); font-weight: 700; margin-bottom: 40px;">QUI SUIS-JE ?</p>
+            <p style="text-align: justify;">Je m'appelle <strong>Tom SAULZET</strong>.</p>
+            <p style="text-align: justify;">Issu de formations littéraires (Bac L, Licence LLCER) et après un parcours complexe, j'ai décidé de lancer mon activité de correcteur indépendant.</p>
+            <p style="text-align: justify;"><strong>L'écriture est ma passion.</strong> J'écris notamment de la poésie depuis quinze ans (publications à venir).</p>
+            <p style="text-align: justify;">Le temps est venu d'allier cet amour des mots à ma vie professionnelle. Pour cela, le meilleur moyen est de mettre à profit mes capacités rédactionnelles pour vous.</p>
+            <p style="text-align: justify;">C'est pourquoi j'ai suivi une formation auprès de l'EFLC (École Française de Lecteur-Correcteur) et obtenu ma <strong>certification de niveau Expert en langue française</strong>, grâce à un excellent score à l'examen « Le Robert ».</p>
+            <div class="code-robert">
+                Code référence : <strong>RMAVX7HRCK</strong> • <a href="https://examen.certification-le-robert.com/index.html#/certificationPublic/" target="_blank">Vérifier mon expertise</a>
+            </div>
+            <div style="text-align: center; margin-top: 20px; display: flex; justify-content: center; align-items: center; gap: 60px; flex-wrap: wrap;">
+                <img src="logo-le-robert.png" alt="Certification Le Robert" style="width: 250px; opacity:0.9;">
+                <img src="logo.png" alt="Des Mots Justes" style="width: 180px; height: 180px; border-radius: 50%; object-fit: cover; opacity:0.9;">
+            </div>
+        </div>
+        <div class="profil-photo">
+            <img src="photo-de-profil.jpg" alt="Tom Saulzet" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+    </div>
+</section>
+
+<section id="temoignages" style="background: var(--blanc-parchemin);">
+    <div class="temoignages-container">
+        <h2 class="sec-title">Mes débuts sur ComeUp</h2>
+        <div class="temoignages-intro">
+            <p><strong>Avant ma certification</strong>, j'ai proposé des services de correction polyvalents et d'écriture de poèmes et de paroles de chansons sur mesure.<br>Voici quelques retours de mes premiers clients (2023-2024). N'utilisant plus la plateforme, mon compte vendeur est masqué, tout n'est pas visible (il ne reste qu'une archive d'un service).</p>
+        </div>
+        <div class="grid-temoignages">
+            <div class="card-temoignage">
+                <p class="temoignage-type" style="font-style: italic; font-size: 0.8rem; opacity: 0.7; margin-bottom: 8px;">Corrections - Pages web, textes marketing</p>
+                <div class="temoignage-note">★★★★★</div>
+                <p class="temoignage-texte">"Très professionnel je recommande à 100%. Travail très précis et de qualité je recommande vivement."</p>
+                <p class="temoignage-auteur">— Pinkmystery <span style="font-size:0.8rem; opacity:0.7;">(Cliente récurrente)</span></p>
+            </div>
+            <div class="card-temoignage">
+                <p class="temoignage-type" style="font-style: italic; font-size: 0.8rem; opacity: 0.7; margin-bottom: 8px;">Corrections - Rapports, documents institutionnels</p>
+                <div class="temoignage-note">★★★★★</div>
+                <p class="temoignage-texte">"Très bien comme d'habitude. Très professionnel je recommande à 100%"</p>
+                <p class="temoignage-auteur">— Maevag. <span style="font-size:0.8rem; opacity:0.7;">(Cliente récurrente)</span></p>
+            </div>
+            <div class="card-temoignage">
+                <p class="temoignage-type" style="font-style: italic; font-size: 0.8rem; opacity: 0.7; margin-bottom: 8px;">Correction - Dossier professionnel</p>
+                <div class="temoignage-note">★★★★★</div>
+                <p class="temoignage-texte">"Je suis très satisfaite du travail qui a été réalisé ! La commande a été livrée rapidement et les corrections apportées au document dépassent mes attentes !"</p>
+                <p class="temoignage-auteur">— DgyAnneNra</p>
+            </div>
+            <div class="card-temoignage">
+                <p class="temoignage-type" style="font-style: italic; font-size: 0.8rem; opacity: 0.7; margin-bottom: 8px;">Poèmes sur mesure</p>
+                <div class="temoignage-note">★★★★★</div>
+                <p class="temoignage-texte">"QUEL TALENT !!! Je suis époustouflée devant le travail de ce compositeur talentueux, les mots sont plus que juste. Le travail est livré très rapidement."</p>
+                <p class="temoignage-auteur">— Lyd_M</p>
+            </div>
+            <div class="card-temoignage">
+                <p class="temoignage-type" style="font-style: italic; font-size: 0.8rem; opacity: 0.7; margin-bottom: 8px;">Poésie de marque</p>
+                <div class="temoignage-note">★★★★★</div>
+                <p class="temoignage-texte">"Une prestation sur mesure m'a été proposée afin de satisfaire mes attentes. Il a été très à l'écoute, patient et très professionnel. Sans retouche d'ailleurs."</p>
+                <p class="temoignage-auteur">— NinaO.</p>
+            </div>
+            <div class="card-temoignage">
+                <p class="temoignage-type" style="font-style: italic; font-size: 0.8rem; opacity: 0.7; margin-bottom: 8px;">Paroles de chanson</p>
+                <div class="temoignage-note">★★★★★</div>
+                <p class="temoignage-texte">"Entièrement satisfait de la prestation, très à l'écoute et beaucoup de sensibilité dans le texte. Merci"</p>
+                <p class="temoignage-auteur">— Raim</p>
+            </div>
+        </div>
+        <div style="text-align: center;">
+            <a href="https://web.archive.org/web/20250426213635/https://comeup.com/fr/service/334209/relire-et-corriger-tous-vos-types-de-textes-de-maniere-professionnelle" target="_blank" class="lien-avis">Voir l'archive ComeUp</a>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="sec-vert">
+    <h2 class="sec-title" style="color:var(--beige-parchemin)">Demander un devis</h2>
+    <div class="form-container">
+        <div class="form-info" style="margin-bottom: 30px;">
+            📋 <strong>Pour un devis précis</strong>, merci de remplir ce formulaire avec toutes les informations nécessaires. Je m'engage à vous répondre sous 48h maximum afin de vous proposer un tarif adapté et mes disponibilités.
+            <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 12px;">
+                💡 Le premier bouton ouvrira votre application de messagerie. Si vous n'en avez pas, copiez le formulaire à l'aide du deuxième bouton.
+            </p>
+        </div>
+        
+        <div id="formulaire-devis">
+            <div class="form-group">
+                <label for="nom">Nom complet <span class="form-required">*</span></label>
+                <input type="text" id="nom" name="nom" required placeholder="Votre nom">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email <span class="form-required">*</span></label>
+                <input type="email" id="email" name="email" required placeholder="votre@email.com">
+            </div>
+
+            <div class="form-group">
+                <label for="type-doc">Type de document <span class="form-required">*</span></label>
+                <select id="type-doc" name="type-doc" required>
+                    <option value="">Sélectionnez un type</option>
+                    <option value="article-blog-web">Article de blog / Page web</option>
+                    <option value="article-presse">Article de presse</option>
+                    <option value="memoire">Mémoire</option>
+                    <option value="nouvelle">Nouvelle</option>
+                    <option value="poesie">Recueil de poésie</option>
+                    <option value="revue">Revue / Magazine</option>
+                    <option value="roman">Roman</option>
+                    <option value="these">Thèse</option>
+                    <option value="autre">Autre</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="deja-corrige">A-t-il déjà fait l'objet d'une correction ? <span class="form-required">*</span></label>
+                <select id="deja-corrige" name="deja-corrige" required>
+                    <option value="">Sélectionnez</option>
+                    <option value="non">Non, première correction</option>
+                    <option value="oui">Oui, déjà corrigé</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="prestation">Prestation souhaitée <span class="form-required">*</span></label>
+                <select id="prestation" name="prestation" required>
+                    <option value="">Sélectionnez une prestation</option>
+                    <option value="preparation">Préparation de copie (manuscrit brut)</option>
+                    <option value="relecture">Relecture sur épreuve (texte déjà corrigé)</option>
+                    <option value="relecture-pdf">Relecture PDF finale (avant impression)</option>
+                    <option value="ciblee">Correction ciblée (ponctuation, typographie...)</option>
+                    <option value="poesie">L'Œil du Poète (recueil complet)</option>
+                    <option value="pdf-poesie">Relecture PDF Poésie (recueil déjà mis en page)</option>
+                    <option value="hesitation">Je ne sais pas / À discuter</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="signes-form">Nombre exact de signes espaces comprises <span class="form-required">*</span></label>
+                <input type="number" id="signes-form" name="signes" required placeholder="Ex : 50000" min="1000">
+                <small style="color: rgba(255,255,255,0.7); font-size: 0.85rem; display: block; margin-top: 5px;">
+                    💡 Trouvez cette info dans les propriétés de votre document Word
+                </small>
+            </div>
+
+            <div class="form-group">
+                <label for="delai">Délai idéal</label>
+                <input type="text" id="delai" name="delai" placeholder="Ex : 2 semaines">
+            </div>
+
+            <div class="form-group">
+                <label for="message">Informations complémentaires</label>
+                <textarea id="message" name="message" placeholder="Précisions, questions, particularités du document..."></textarea>
+            </div>
+
+            <div style="background: rgba(197, 160, 89, 0.2); padding: 20px; border-radius: 10px; margin-bottom: 20px; border-left: 4px solid var(--or-subtil);">
+                <p style="font-size: 1.1rem; margin: 0 0 10px 0;"><strong>⚠️ N'oubliez pas de joindre votre manuscrit à votre envoi !</strong></p>
+                <p style="font-size: 0.9rem; opacity: 0.85; margin: 0;">📄 <strong>Note :</strong> Les documents doivent être envoyés dans un format éditable (.docx/Word de préférence) ou PDF en fonction de la prestation choisie et ceux qui ne pourront pas faire l'objet d'un travail de ma part ne seront pas conservés.</p>
+            </div>
+
+            <div style="display: flex; gap: 15px; flex-wrap: wrap; justify-content: center;">
+                <button onclick="envoyerDevis()" class="btn-submit" type="button">
+                    <i data-lucide="send" style="vertical-align: middle; margin-right: 10px;"></i>
+                    Envoyer par email
+                </button>
+                
+                <button onclick="copierFormulaire()" class="btn-submit" type="button" style="background: transparent; border: 2px solid var(--or-subtil); color: var(--beige-parchemin);">
+                    <i data-lucide="copy" style="vertical-align: middle; margin-right: 10px;"></i>
+                    Copier le formulaire
+                </button>
+            </div>
+        </div>
+
+<div style="margin-top: 40px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.2); text-align: center;">
+            <p style="font-size: 1rem; opacity: 0.9; margin-bottom: 15px;">
+                Vous pouvez aussi me contacter pour toute information via <a href="mailto:contact@desmotsjustes.fr" style="color: var(--or-subtil); text-decoration: underline; font-weight: 700;">contact@desmotsjustes.fr</a>
+            </p>
+        </div>
+
+        <div style="margin-top: 30px; text-align: center;">
+            <p style="font-size: 1rem; opacity: 0.9; margin-bottom: 0;">
+                Je vous invite également à consulter 
+                <a href="cgv.html" style="color: var(--or-subtil); text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; font-weight: 600;">
+                    les Conditions Générales de Vente & RGPD
+                </a>
+            </p>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-section">
+            <h4>Des Mots Justes</h4>
+            <p>Relecture & Correction</p>
+            <p style="margin-top:15px;">Certifié par Le Robert</p>
+        </div>
+        <div class="footer-section">
+            <h4>Navigation</h4>
+            <a href="#pourquoi">Description</a>
+            <a href="#prestations">Prestations</a>
+            <a href="poesie.html">L'Œil du Poète</a>
+            <a href="tarifs.html">Transparence &amp; Tarification</a>
+            <a href="cgv.html">CGV & RGPD</a>
+        </div>
+        <div class="footer-section">
+            <h4>Contact</h4>
+            <div class="footer-contact">
+                <a href="mailto:contact@desmotsjustes.fr">contact@desmotsjustes.fr</a>
+            </div>
+            <div class="social-icons">
+                <a href="https://www.instagram.com/des_mots_justes_/" target="_blank" class="social-icon" aria-label="Instagram">
+                    <i data-lucide="instagram" size="20"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/tom-saulzet" target="_blank" class="social-icon" aria-label="LinkedIn">
+                    <i data-lucide="linkedin" size="20"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2026 DES MOTS JUSTES - RELECTURE & CORRECTION - TOM SAULZET. Tous droits réservés.</p>
+    </div>
+</footer>
+
+<script>
+    lucide.createIcons();
+    
+    // Header shrink au scroll
+    window.onscroll = function() {
+        const h = document.getElementById("main-header");
+        if (window.pageYOffset > 50) {
+            h.classList.add("shrink");
+        } else {
+            h.classList.remove("shrink");
+        }
+    };
+
+    // Système d'onglets prestations
+    function openTab(evt, tabName) {
+        const tabcontents = document.getElementsByClassName("tab-content");
+        for (let i = 0; i < tabcontents.length; i++) {
+            tabcontents[i].classList.remove("active");
+        }
+        
+        const tabbtns = document.getElementsByClassName("tab-btn");
+        for (let i = 0; i < tabbtns.length; i++) {
+            tabbtns[i].classList.remove("active");
+        }
+        
+        document.getElementById(tabName).classList.add("active");
+        evt.currentTarget.classList.add("active");
+        lucide.createIcons();
+    }
+
+
+    // Fonction copier formulaire
+    function copierFormulaire() {
+        const nom = document.getElementById('nom').value || '[Votre nom]';
+        const email = document.getElementById('email').value || '[Votre email]';
+        const typeDoc = document.getElementById('type-doc').value || '[À compléter]';
+        const dejaCorrige = document.getElementById('deja-corrige').value || '[À compléter]';
+        const prestation = document.getElementById('prestation').value || '[À compléter]';
+        const signes = document.getElementById('signes-form').value || '[À compléter]';
+        const delai = document.getElementById('delai').value || '[À compléter]';
+        const message = document.getElementById('message').value || '[À compléter]';
+        
+        const texte = `DEMANDE DE DEVIS - Des Mots Justes
+
+À envoyer à : contact@desmotsjustes.fr
+Objet : Demande de devis - ${nom}
+
+═══════════════════════════════════════
+
+NOM COMPLET : ${nom}
+
+EMAIL : ${email}
+
+TYPE DE DOCUMENT : ${typeDoc}
+
+A-T-IL DÉJÀ ÉTÉ CORRIGÉ ? ${dejaCorrige}
+
+PRESTATION SOUHAITÉE : ${prestation}
+
+NOMBRE DE SIGNES (SEC) : ${signes}
+
+DÉLAI IDÉAL : ${delai}
+
+INFORMATIONS COMPLÉMENTAIRES :
+${message}
+
+═══════════════════════════════════════
+
+⚠️ N'OUBLIEZ PAS DE JOINDRE VOTRE MANUSCRIT À CET EMAIL !
+
+Les documents qui ne pourront pas faire l'objet d'une correction ne seront pas conservés.`;
+        
+        navigator.clipboard.writeText(texte).then(() => {
+            alert('✅ Formulaire copié ! Collez-le dans votre messagerie et envoyez à contact@desmotsjustes.fr');
+        }).catch(() => {
+            const textarea = document.createElement('textarea');
+            textarea.value = texte;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            alert('✅ Formulaire copié ! Collez-le dans votre messagerie et envoyez à contact@desmotsjustes.fr');
+        });
+    }
+
+    // Fonction envoi devis par email
+    function envoyerDevis() {
+        const nom = document.getElementById('nom').value;
+        const email = document.getElementById('email').value;
+        const typeDoc = document.getElementById('type-doc').value;
+        const dejaCorrige = document.getElementById('deja-corrige').value;
+        const prestation = document.getElementById('prestation').value;
+        const signes = document.getElementById('signes-form').value;
+        const delai = document.getElementById('delai').value;
+        const message = document.getElementById('message').value;
+        
+        if (!nom || !email || !typeDoc || !dejaCorrige || !prestation || !signes) {
+            alert('Merci de remplir tous les champs obligatoires (*)');
+            return;
+        }
+        
+        const corps = `Demande de devis - ${nom}
+
+NOM COMPLET : ${nom}
+EMAIL : ${email}
+
+TYPE DE DOCUMENT : ${typeDoc}
+DÉJÀ CORRIGÉ ? ${dejaCorrige}
+PRESTATION SOUHAITÉE : ${prestation}
+
+NOMBRE DE SIGNES (SEC) : ${signes}
+DÉLAI IDÉAL : ${delai || 'Non précisé'}
+
+INFORMATIONS COMPLÉMENTAIRES :
+${message || 'Aucune'}
+
+---
+⚠️ N'OUBLIEZ PAS DE JOINDRE VOTRE MANUSCRIT À CET EMAIL !
+---`;
+        
+        const mailto = `mailto:contact@desmotsjustes.fr?subject=Demande de devis - ${encodeURIComponent(nom)}&body=${encodeURIComponent(corps)}`;
+        window.location.href = mailto;
+    }
+
+    // Toggle offre de lancement
+    function toggleOffre() {
+        const content = document.getElementById('offre-content');
+        const toggle = document.getElementById('offre-toggle');
+        content.classList.toggle('open');
+        toggle.classList.toggle('open');
+    }
+
+    // Simulateur de devis
+    const s = document.getElementById('signes');
+    const p = document.getElementById('type-presta');
+    const r = document.getElementById('resultat');
+
+    function calculer() {
+        const nbSignes = parseInt(s.value);
+        const sec = parseInt(p.value);
+        
+        if (nbSignes && sec && nbSignes > 0) {
+            const heures = nbSignes / sec;
+            const tarif = heures * 30;
+            r.textContent = tarif.toFixed(2) + ' €';
+        } else {
+            r.textContent = '0,00 €';
+        }
+    }
+
+    if (s && p) {
+        s.addEventListener('input', calculer);
+        p.addEventListener('change', calculer);
+    }
+</script>
+
+</body>
+</html>
