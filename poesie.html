@@ -2,9 +2,44 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="robots" content="index, follow">
     <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
     <title>L'Œil du Poète | Des Mots Justes</title>
+    <meta name="description" content="L'Œil du Poète : correction de recueils. Le mot juste pour l'émotion. Respect du style, du rythme et de la musicalité. Tarifs accessibles.">
+    <meta name="keywords" content="correction poétique, L'Œil du Poète, correction recueils, le mot juste pour l'émotion, respect du style, rythme poétique, musicalité, versification, correction poèmes, relecture poésie, textes créatifs, Figeac, Villefranche-de-Rouergue, Aveyron, Lot, Occitanie">
+    <link rel="canonical" href="https://desmotsjustes.fr/poesie.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="L'Œil du Poète | Le mot juste pour l'émotion">
+    <meta property="og:description" content="Correction de recueils poétiques. Respect du style, du rythme et de la musicalité. Tarifs accessibles.">
+    <meta property="og:url" content="https://desmotsjustes.fr/poesie.html">
+    <meta property="og:image" content="https://desmotsjustes.fr/logo.png">
+    
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Correction poétique professionnelle",
+      "name": "L'Œil du Poète",
+      "description": "Correction de recueils poétiques : le mot juste pour l'émotion. Respect du style, du rythme et de la musicalité.",
+      "provider": {
+        "@type": "Person",
+        "name": "Tom Saulzet",
+        "jobTitle": "Correcteur professionnel certifié Le Robert - Spécialiste poésie"
+      },
+      "areaServed": "Occitanie, France",
+      "url": "https://desmotsjustes.fr/poesie.html"
+    }
+    </script>
+    
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600;700&family=Josefin+Slab:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
@@ -59,7 +94,7 @@
             background: rgba(255,255,255,0.08);
             box-shadow: 0 10px 30px rgba(0,0,0,0.3), 0 0 40px rgba(197, 160, 89, 0.3);
             border-left-color: #d4af6a;
-            border-left-width: 12px;
+            border-left-width: 8px;
         }
 
         h2 { 
@@ -88,12 +123,14 @@
             gap: 30px;
             margin: 50px 0;
             padding-top: 15px;
+	    max-width: 1200px;
+    	    width: 95%;
         }
 
         .forfait-card {
             background: var(--or-subtil);
             color: var(--vert-fonce);
-            padding: 40px;
+            padding: 40px 30px;
             border-radius: 20px;
             text-align: center;
             box-shadow: 0 15px 40px rgba(0,0,0,0.4);
@@ -233,88 +270,732 @@
             transform: scale(1.05);
         }
 
-        @media (max-width: 768px) {
-            h1 { font-size: 3rem; }
-            h2 { font-size: 2rem; }
-            .section-card { padding: 40px 30px; }
-            .intro { font-size: 1.3rem; }
-            .forfaits-grid { grid-template-columns: 1fr; }
-            .forfait-prix { font-size: 2.5rem; }
+	/* Bulles d'info */
+	.info-bulle {
+    	    position: absolute;
+    	    width: 40px;
+    	    height: 40px;
+    	    background: linear-gradient(135deg, #C5A059, #d4b66e);
+    	    border-radius: 50%;
+    	    display: flex;
+    	    align-items: center;
+    	    justify-content: center;
+    	    cursor: pointer;
+    	    box-shadow: 0 3px 10px rgba(197, 160, 89, 0.4);
+    	    transition: all 0.3s ease;
+    	    z-index: 9999;
+    	    font-weight: 700;
+    	    font-size: 1.1rem;
+    	    color: var(--vert-fonce);
+	}
+
+	.info-bulle:hover {
+    	    transform: scale(1.15);
+    	    box-shadow: 0 5px 15px rgba(197, 160, 89, 0.6);
+	}
+
+	.info-bulle.active {
+    	    animation: pulse-bulle 0.3s ease;
+	}
+
+	@keyframes pulse-bulle {
+    	    0%, 100% { transform: scale(1); }
+    	    50% { transform: scale(1.2); }
+	}
+
+	.info-popup {
+    	    position: absolute;
+    	    background: white;
+    	    padding: 0;
+    	    border-radius: 12px;
+    	    box-shadow: 0 10px 35px rgba(0,0,0,0.3);
+	    min-width: 320px;
+    	    max-width: 450px;
+    	    width: auto;
+    	    display: none;
+    	    z-index: 10000;
+    	    border: 3px solid var(--or-subtil);
+    	    overflow: hidden;
+	}
+
+	.info-popup-header {
+    	    background: var(--or-subtil);
+    	    color: var(--vert-fonce);
+    	    padding: 15px 20px;
+    	    font-weight: 700;
+    	    font-size: 1.05rem;
+    	    border-bottom: 2px solid #d4b66e;
+	}
+
+	.info-popup-body {
+    	    padding: 20px;
+	    color: #333;
+	}
+
+	.info-popup-examples {
+    	    background: #f9f9f9;
+    	    padding: 15px;
+    	    border-radius: 8px;
+    	    margin: 15px 0;
+    	    line-height: 1.8;
+	    color: #333 !important;
+	}
+
+	.info-popup-examples p {
+    	    color: #333 !important;
+	    margin:5px 0;
+	}
+
+	.info-popup-examples div {
+    	    margin-bottom: 8px;
+	}
+
+	.info-popup-conseil {
+    	    background: rgba(94, 140, 97, 0.1);
+    	    padding: 12px 15px;
+    	    border-radius: 8px;
+    	    border-left: 4px solid var(--vert-stylo);
+    	    font-size: 0.9rem;
+    	    color: #333 !important;
+    	    line-height: 1.6;
+    	    margin-top: 15px;
+	}
+
+	.info-popup.active {
+    	    display: block;
+    	    animation: slideIn 0.3s ease;
+	}
+
+	@keyframes slideIn {
+    	    from {
+            opacity: 0;
+            transform: translateY(-10px);
+    	}
+    	to {
+            opacity: 1;
+            transform: translateY(0);
+    	}
+	}
+
+	.info-popup strong {
+    	    color: var(--vert-fonce);
+     	    display: inline;  /* ← INLINE AU LIEU DE BLOCK */
+    	    font-size: 1.05rem;
+	}
+
+	.info-popup-header strong {
+    	    display: block;  /* ← SEULEMENT LE HEADER EN BLOCK */
+    	  margin-bottom: 10px;
+	}
+
+	.info-popup em {
+    	    color: #666;
+	}
+
+	.info-popup .correction {
+    	    text-decoration: underline;
+    	    text-decoration-style: wavy;
+    	    text-decoration-color: #C5A059;
+    	    font-weight: 600;
+	}
+
+	.info-popup small {
+    	    display: block;
+    	    margin-top: 10px;
+    	    font-size: 0.85rem;
+    	    color: #999;
+    	    font-style: italic;
+	}
+
+        /* Footer styles */
+        footer { 
+            background: #2C2C2C;
+            color: white; 
+            padding: 60px 10% 30px 10%; 
         }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            gap: 60px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+        }
+        .footer-section h4 {
+            font-family: 'Josefin Slab', serif;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--beige-parchemin);
+        }
+        .footer-section p, .footer-section a {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+            transition: color 0.3s ease;
+        }
+        .footer-section a:hover {
+            color: #C5A059;
+        }
+        .footer-contact {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--beige-parchemin);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        .social-icon:hover {
+            color: #C5A059;
+            transform: translateY(-3px);
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        .footer-bottom p {
+            font-size: 0.85rem;
+            opacity: 0.5;
+            text-align: center;
+        }
+
+        /* Citations en filigrane - positionnées individuellement */
+        .citation-filigrane {
+            position: fixed;
+            font-size: 1.3rem;
+            color: rgba(197, 160, 89, 0.2);
+            font-style: italic;
+            z-index: 0;
+            pointer-events: none;
+            max-width: 400px;
+            line-height: 1.6;
+        }
+        
+        .citation-1 {
+            top: 15%;
+            left: 5%;
+            transform: rotate(-8deg);
+        }
+        
+        .citation-2 {
+            top: 35%;
+            right: 8%;
+            transform: rotate(5deg);
+        }
+        
+        .citation-3 {
+            top: 55%;
+            left: 3%;
+            transform: rotate(-6deg);
+        }
+        
+        .citation-4 {
+            top: 75%;
+            right: 5%;
+            transform: rotate(7deg);
+        }
+        
+        .citation-5 {
+            top: 90%;
+            left: 50%;
+            transform: translateX(-50%) rotate(-3deg);
+        }
+
+	/* Force le style du bouton */
+        a[href*="contact"] {
+            text-decoration: none !important;
+        }
+        
+        a[href*="contact"]:hover,
+        a[href*="contact"]:visited,
+        a[href*="contact"]:active {
+            text-decoration: none !important;
+        }
+
+/* ============================= */
+/* OPTIMISATION RESPONSIVE GLOBALE */
+/* ============================= */
+
+/* 1. Typographie intelligente */
+
+html {
+    hyphens: auto;
+}
+
+p, li {
+    hyphens: auto;
+    overflow-wrap: break-word;
+    word-break: normal;
+}
+
+h1, h2, h3 {
+    text-wrap: balance;
+}
+
+/* Évite les mots seuls */
+h1, h2, h3, .subtitle {
+    max-width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 2. Responsive mobile global */
+
+@media (max-width: 768px) {
+    /* 1. ÉLARGISSEMENT DE LA ZONE (Pour que les mots respirent) */
+    body { font-size: 1.05rem; }
+    .container { 
+        padding: 30px 3% !important; /* On passe de 6% à 3% pour donner plus de largeur aux mots */
+    }
+
+    /* 2. LE FILTRE ANTI-JUSTIFY (La méthode qui marchait) */
+    [style*="text-align: justify"], [style*="text-align:justify"] {
+        text-align: left !important;
+        hyphens: auto;
+    }
+
+    /* 3. FORCE UNE SEULE COLONNE (La version liste aérée que tu aimais) */
+    ul[style*="columns: 2"], .colonnes-corrections {
+        columns: 1 !important;
+        display: block !important;
+    }
+
+    /* 4. LE BANDEAU "LE PLUS COURANT" */
+    .forfait-m div[style*="position: absolute"] {
+        position: relative !important;
+        top: 0 !important;
+        left: 0 !important;
+        transform: none !important;
+        width: 100% !important;
+        margin-bottom: 15px !important;
+        background: var(--vert-fonce) !important;
+        padding: 8px !important;
+        border-radius: 10px !important;
+        display: block !important;
+    }
+
+    /* 5. FIX TITRES & FORFAITS (Centrage et pas de coupure sur "Forfait") */
+    h1, h2, h3, .forfait-card h3 {
+        hyphens: none !important;
+        text-align: center !important;
+    }
+
+    .forfaits-grid { 
+        grid-template-columns: 1fr !important; 
+        width: 100% !important; 
+        gap: 35px;
+    }
+    
+    .forfait-card {
+        text-align: center !important;
+    }
+
+    .option-sec { min-width: unset !important; width: 100% !important; }
+
+    /* 6. NETTOYAGE (On cache les exemples et les filigranes) */
+    .exemples-mobile, .citation-filigrane, .info-bulle, .info-popup, body::before, .filigrane {
+        display: none !important;
+    }
+
+    /* 7. FOOTER */
+    .footer-content { flex-direction: column; align-items: center; text-align: center; gap: 40px; }
+    .footer-section { width: 100%; }
+    .footer-section p, .footer-bottom p { text-align: center !important; }
+    .footer-contact, .social-icons { justify-content: center; }
+    footer { padding: 40px 6% 30px 6%; }
+}
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>L'Œil du Poète</h1>
-        <p class="intro">« Corriger de la poésie, ce n'est pas seulement traquer la faute,<br>c'est protéger le chant du texte. »</p>
+
+<!-- CITATIONS EN FILIGRANE -->
+    <div class="citation-filigrane citation-1">« La poésie est cette musique que tout le monde porte en soi. »<br>— Wiliam Shakespeare</div>
+    
+    <div class="citation-filigrane citation-2">« Le poète est un monde enfermé dans un homme. »<br>— Victor Hugo</div>
+    
+    <div class="citation-filigrane citation-3">« Écrire, c'est aussi ne pas parler. C'est se taire. C'est hurler sans bruit. »<br>— Marguerite Duras</div>
+    
+    <!-- Citations Vides -->
+    <div class="citation-filigrane citation-4">« Le poète est semblable au prince des nuées. Ses ailes de géant l'empêchent de marcher. »<br>— Charles Baudelaire</div>
+    
+    <div class="citation-filigrane citation-5">« Trouver d'abord, chercher ensuite. »<br>— Jean Cocteau</div>
+
+    <!-- <div class="container"> -->
+
+    <div class="container" style="position: relative;">
+
+<!-- Bulle 1 : Apostrophe typographique (GAUCHE) -->
+<div class="info-bulle" style="left: 30px; top: 1000px;" onclick="toggleInfo(1)">i</div>
+<div class="info-popup" id="info-1" style="left: -370px; top: 1050px;">
+    <div class="info-popup-header">🎯 Apostrophe typographique (')</div>
+    <div class="info-popup-body" style="color: #333;">
+        <div class="info-popup-examples" style="background: #f9f9f9; padding: 15px; border-radius: 8px; margin: 15px 0;">
+            <p style="margin: 5px 0; color: #333;">❌ "l<u style="color: #e74c3c;">'</u>ombre" (apostrophe droite)</p>
+            <p style="margin: 5px 0; color: #333;">✅ "l<strong style="color: #C5A059;">'</strong>ombre" (apostrophe courbe)</p>
+        </div>
+        <div class="info-popup-conseil" style="background: rgba(94, 140, 97, 0.1); padding: 12px 15px; border-radius: 8px; border-left: 4px solid var(--vert-stylo); color: #333;">
+            <strong style="color: #333;">💡 Raccourci :</strong> <span style="color: #555;">Alt+0146 pour ' (apostrophe courbe)</span><br>
+            <strong style="color: #333;">📌 Règle :</strong> <span style="color: #555;">L'apostrophe doit être courbe ('), pas droite ('). En poésie, chaque détail typographique compte pour un rendu professionnel.</span>
+        </div>
+    </div>
+</div>
+
+<!-- Bulle 2 : Majuscule en début de vers (DROITE) -->
+<div class="info-bulle" style="right: 30px; top: 1550px;" onclick="toggleInfo(2)">i</div>
+<div class="info-popup" id="info-2" style="right: -370px; top: 1600px;">
+    <div class="info-popup-header">✨ Majuscule en début de vers</div>
+    <div class="info-popup-body">
+        <div class="info-popup-examples">
+            <p style="margin: 5px 0;"><strong>Classique :</strong> "Le ciel est gris<br><strong style="color: #C5A059;">L</strong>a pluie tombe"</p>
+            <p style="margin: 5px 0;"><strong>Contemporain :</strong> "le ciel est gris<br><strong style="color: #C5A059;">la</strong> pluie tombe"</p>
+        </div>
+        <div class="info-popup-conseil">
+            <strong>📌 Code poétique :</strong><br>
+            • <strong>Classique</strong> : Majuscule systématique (même si phrase continue)<br>
+            • <strong>Contemporain</strong> : Minuscule si phrase continue<br>
+            <strong>Choix de style :</strong> Aucune règle absolue ! Cohérence dans tout le recueil.
+        </div>
+    </div>
+</div>
+
+<!-- Bulle 3 : Enjambement et ponctuation (GAUCHE) -->
+<div class="info-bulle" style="left: 30px; top: 2100px;" onclick="toggleInfo(3)">i</div>
+<div class="info-popup" id="info-3" style="left: -370px; top: 2150px;">
+    <div class="info-popup-header">🌊 Enjambement : rythme et souffle</div>
+    <div class="info-popup-body">
+        <div class="info-popup-examples">
+            <p style="margin: 5px 0;"><strong>Avec enjambement :</strong><br>"Le vent souffle et traverse<strong style="color: #C5A059;">,</strong><br>lentement, la plaine immense"</p>
+            <p style="margin: 5px 0;"><strong>Sans enjambement :</strong><br>"Le vent souffle et traverse.<br><strong style="color: #C5A059;">L</strong>entement la plaine immense"</p>
+        </div>
+        <div class="info-popup-conseil">
+            <strong>📌 Technique poétique :</strong><br>
+            L'<strong>enjambement</strong> fait couler une phrase sur plusieurs vers. La ponctuation guide ce flux :<br>
+            • <strong>Virgule</strong> : pause légère, continuité fluide<br>
+            • <strong>Point</strong> : rupture nette, nouvelle respiration<br>
+            <strong>À vous de choisir !</strong> L'enjambement crée le rythme et guide la lecture à voix haute.
+        </div>
+    </div>
+</div>
+
+<!-- Bulle 4 : Élision du e muet (DROITE) -->
+<div class="info-bulle" style="right: 30px; top: 2650px;" onclick="toggleInfo(4)">i</div>
+<div class="info-popup" id="info-4" style="right: -370px; top: 2700px;">
+    <div class="info-popup-header">🎭 Élision du e muet (métrique)</div>
+    <div class="info-popup-body">
+        <div class="info-popup-examples">
+            <p style="margin: 5px 0;"><strong>Sans élision (7 syllabes) :</strong><br>"<u style="color: #e74c3c;">Encore</u> un soir de mélancolie" (En/cor'/un/soir/de/mé/lan/co/lie)</p>
+            <p style="margin: 5px 0;"><strong>Avec élision (6 syllabes) :</strong><br>"<strong style="color: #C5A059;">Encor</strong> un soir de mélancolie" (En/cor/un/soir/de/mé/lan/co/lie)</p>
+        </div>
+        <div class="info-popup-conseil">
+            <strong>📌 Prosodie classique :</strong><br>
+            L'élision du <strong>e muet final</strong> réduit le nombre de syllabes pour respecter la métrique (alexandrin 12, décasyllabe 10, octosyllabe 8).<br>
+            <strong>Exemples :</strong> encor, comm', jusqu'au bord', quatr'<br>
+            <strong>Choix stylistique :</strong> Surtout en poésie classique/romantique. En contemporain, on préfère souvent la forme complète. L'essentiel : la cohérence dans tout le recueil !
+        </div>
+    </div>
+</div>
+
+<!-- Bulle 5 : Césure à l'hémistiche (GAUCHE) -->
+<div class="info-bulle" style="left: 30px; top: 3200px;" onclick="toggleInfo(5)">i</div>
+<div class="info-popup" id="info-5" style="left: -370px; top: 3250px;">
+    <div class="info-popup-header">⚡ Césure à l'hémistiche (alexandrin)</div>
+    <div class="info-popup-body">
+        <div class="info-popup-examples">
+            <p style="margin: 5px 0;">"Les sanglots longs // des violons de l'automne" (6//6)</p>
+            <p style="margin: 5px 0;">"Ô lac ! // l'année à peine a fini sa carrière" (2//10)</p>
+        </div>
+        <div class="info-popup-conseil">
+            <strong>📌 Métrique classique :</strong><br>
+            La <strong>césure</strong> coupe l'alexandrin (12 syllabes) en deux hémistiches :<br>
+            • <strong>Classique</strong> : 6//6 (symétrie)<br>
+            • <strong>Romantique</strong> : 4//8, 3//9 (rupture du rythme)<br>
+            <strong>En contemporain :</strong> Liberté totale ! Le rythme suit l'intention.
+        </div>
+    </div>
+</div>
+
+<!-- Bulle 6 : Virgule et respiration (DROITE) -->
+<div class="info-bulle" style="right: 30px; top: 3750px;" onclick="toggleInfo(6)">i</div>
+<div class="info-popup" id="info-6" style="right: -370px; top: 3800px;">
+    <div class="info-popup-header">🌬️ Virgule : souffle et syntaxe</div>
+    <div class="info-popup-body">
+        <div class="info-popup-examples">
+            <p style="margin: 5px 0;">❌ "Le vent qui souffle fort traverse"</p>
+            <p style="margin: 5px 0;">✅ "Le vent<strong style="color: #C5A059;">,</strong> qui souffle fort<strong style="color: #C5A059;">,</strong> traverse"</p>
+            <p style="margin: 5px 0;">✅ "Lentement<strong style="color: #C5A059;">,</strong> doucement<strong style="color: #C5A059;">,</strong> la nuit tombe"</p>
+        </div>
+        <div class="info-popup-conseil">
+            <strong>📌 Général (utile partout) :</strong><br>
+            • Incises : entre virgules<br>
+            • Énumérations : virgules de séparation<br>
+            <strong>En poésie :</strong> La virgule guide le souffle et reste soumise aux règles syntaxiques. Lis à voix haute !
+        </div>
+    </div>
+</div>
+
+<!-- Bulle 7 : Tiret cadratin dialogues/incises (GAUCHE) -->
+<div class="info-bulle" style="left: 30px; top: 4300px;" onclick="toggleInfo(7)">i</div>
+<div class="info-popup" id="info-7" style="left: -370px; top: 4350px;">
+    <div class="info-popup-header">✏️ Tiret cadratin (— incises & dialogues)</div>
+    <div class="info-popup-body">
+        <div class="info-popup-examples">
+            <p style="margin: 5px 0;">❌ "La mer <u style="color: #e74c3c;">-</u> immense <u style="color: #e74c3c;">-</u> murmurait"</p>
+            <p style="margin: 5px 0;">✅ "La mer <strong style="color: #C5A059;">—</strong> immense <strong style="color: #C5A059;">—</strong> murmurait"</p>
+            <p style="margin: 5px 0;">✅ "<strong style="color: #C5A059;">—</strong> Viens ici !" (dialogue)</p>
+        </div>
+        <div class="info-popup-conseil">
+            <strong>💡 Raccourci :</strong> Alt+0151 pour — (cadratin)<br>
+            <strong>📌 Général :</strong> Le tiret <strong>cadratin (—)</strong> marque les incises et dialogues en français. Plus élégant que le trait d'union simple (-).
+        </div>
+    </div>
+</div>
+
+<!-- Bulle 8 : Guillemets français vs anglais (DROITE) -->
+<div class="info-bulle" style="right: 30px; top: 4850px;" onclick="toggleInfo(8)">i</div>
+<div class="info-popup" id="info-8" style="right: -370px; top: 4900px;">
+    <div class="info-popup-header">🎭 Guillemets français « » vs anglais " "</div>
+    <div class="info-popup-body">
+        <div class="info-popup-examples">
+            <p style="margin: 5px 0;">❌ <u style="color: #e74c3c;">"</u>Viens<u style="color: #e74c3c;">"</u>, dit-elle</p>
+            <p style="margin: 5px 0;">✅ <strong style="color: #C5A059;">«</strong> Viens <strong style="color: #C5A059;">»</strong>, dit-elle</p>
+            <p style="margin: 5px 0;">✅ « Il dit : <strong style="color: #C5A059;">"</strong>Reviens<strong style="color: #C5A059;">"</strong> » (citation dans citation)</p>
+        </div>
+        <div class="info-popup-conseil">
+            <strong>💡 Raccourcis :</strong> Alt+174 pour «, Alt+175 pour »<br>
+            <strong>📌 Général :</strong> Guillemets français « » avec espace insécable. Guillemets anglais " " pour citation dans citation uniquement.
+        </div>
+    </div>
+</div>
+
+<!-- Bulle 9 : Points de suspension (GAUCHE) -->
+<div class="info-bulle" style="left: 30px; top: 5400px;" onclick="toggleInfo(9)">i</div>
+<div class="info-popup" id="info-9" style="left: -370px; top: 5450px;">
+    <div class="info-popup-header">📖 Points de suspension (… caractère unique)</div>
+    <div class="info-popup-body">
+        <div class="info-popup-examples">
+            <p style="margin: 5px 0;">❌ "Le temps s'écoule<u style="color: #e74c3c;">...</u>" (trois points tapés)</p>
+            <p style="margin: 5px 0;">✅ "Le temps s'écoule<strong style="color: #C5A059;">…</strong>" (caractère unique)</p>
+        </div>
+        <div class="info-popup-conseil">
+            <strong>💡 Raccourci :</strong> Alt+0133 pour …<br>
+            <strong>📌 Général :</strong> Le caractère unique (U+2026) évite les coupures de ligne et respecte l'espace insécable. En poésie, marque la suspension, le silence.
+        </div>
+    </div>
+</div>
+
+<!-- Bulle 10 : Blanc typographique (silence) (DROITE) -->
+<div class="info-bulle" style="right: 30px; top: 5950px;" onclick="toggleInfo(10)">i</div>
+<div class="info-popup" id="info-10" style="right: -370px; top: 6000px;">
+    <div class="info-popup-header">⬜ Blanc typographique (le silence)</div>
+    <div class="info-popup-body">
+        <div class="info-popup-examples">
+            <p style="margin: 5px 0;">"Le vent<br><br>souffle"<br><span style="font-size: 0.9rem;">(double interligne = silence long)</span></p>
+        </div>
+        <div class="info-popup-conseil">
+            <strong>📌 Spécifique poésie :</strong><br>
+            Le <strong>blanc</strong> (espace vide sur la page) fait partie du poème. Il marque :<br>
+            • Le <strong>silence</strong>, la respiration<br>
+            • La <strong>rupture</strong> entre deux moments<br>
+            • L'<strong>isolement</strong> d'un mot (mise en valeur)<br>
+            <strong>Principe de Mallarmé :</strong> "Le blanc compte autant que le noir." Le vide structure le poème.
+        </div>
+    </div>
+</div>
+
+<!-- ========== FIN DES BULLES ========== -->
+
+        <h1 style="text-shadow: 3px 3px 6px rgba(0,0,0,0.3);">L'Œil du Poète</h1>
+        <p class="intro">Corriger de la poésie, ce n'est pas seulement traquer la faute,<br>c'est protéger le chant du texte.</p>
 
         <div class="section-card">
             <h2>Une expertise atypique</h2>
-            <p>Au-delà de la syntaxe et de l'orthographe, je me propose d'analyser la <strong>musicalité</strong> et l'<strong>harmonisation</strong> de vos écrits. Étant moi-même auteur de poésie depuis quinze ans, cela me confère un regard aguerri sur la mécanique complexe du vers.</p>
-            <p>Ce prisme de lecture atypique me permet de déceler les ruptures de rythme involontaires ou les dissonances, tout en respectant scrupuleusement votre intention créatrice. <strong>Mon rôle n'est pas de réécrire ni de vous imposer mes propositions, mais de polir le diamant brut</strong> pour qu'il brille de toute sa force.</p>
+            <p>Au-delà de la syntaxe et de l'orthographe, je vous propose d'analyser la <strong>musicalité</strong> et l'<strong>harmonisation</strong> de vos écrits. Étant auteur de poésie depuis quinze ans, j'ai un regard aguerri sur la mécanique complexe du vers.</p>
+            <p>Ce prisme de lecture associé à mon expérience de correcteur me permet de déceler les ruptures de rythme involontaires ou les dissonances, tout en respectant scrupuleusement votre intention créatrice. <strong>Mon rôle n'est pas de réécrire ni de vous imposer mes propositions, mais de polir le diamant brut</strong> pour qu'il brille de toute sa force.</p>
+<!-- PREUVE SOCIALE -->
+            <div style="background: rgba(94, 140, 97, 0.15); border: 2px solid var(--vert-stylo); padding: 25px; border-radius: 12px; margin: 40px 0;">
+                <h4 style="font-family: 'Josefin Slab'; font-size: 1.4rem; margin: 0 0 15px 0; color: #C5A059; font-weight: 700;">🎭 Qui fait appel à L'Œil du Poète ?</h4>
+                <ul style="margin: 0; line-height: 1.8; padding-left: 20px;">
+                    <li>Poètes auto-édités préparant leur premier recueil</li>
+                    <li>Auteurs publiés cherchant un regard neuf</li>
+                    <li>Étudiants en lettres pour leurs créations personnelles</li>
+		    <li>Passionnés d'écriture voulant progresser</li>
+                </ul>
+            </div>
         </div>
 
-        <div class="section-card">
-            <h2>Forfaits Poétiques</h2>
-            <p>La poésie demande un travail beaucoup plus approfondi que la correction classique. Chaque vers nécessite une attention chirurgicale au rythme, aux sonorités, à la musicalité. <strong>C'est pourquoi je propose des forfaits adaptés</strong> plutôt qu'un calcul au nombre de signes.</p>
-            
-            <div style="background: rgba(255, 255, 255, 0.08); padding: 20px; border-radius: 12px; margin: 25px 0; border: 2px solid rgba(197, 160, 89, 0.3);">
-                <p style="margin: 0; line-height: 1.7;">
-                    <strong style="color: var(--or-subtil);">💡 Tarif horaire très accessible</strong><br>
-                    Ces forfaits correspondent à <strong>18-25€/h</strong> selon le volume, bien en-dessous des tarifs habituels pour ce type de travail d'orfèvre. Mon objectif ? <strong>Permettre aux poètes d'avoir accès à un vrai travail de qualité</strong>, sans se ruiner.
-                </p>
-            </div>
+        <div class="section-card" style="margin-top: 100px;">
+    <h2>Forfaits Poétiques</h2>
+    <p style="text-align: justify;">La poésie demande un travail beaucoup plus approfondi que la correction classique. Chaque vers nécessite une attention chirurgicale au rythme, aux sonorités, à la musicalité et bien sûr aux rimes.</p>
+    
+    <!-- LES 3 PILIERS -->
+    <div style="background: rgba(197, 160, 89, 0.1); padding: 25px; border-radius: 12px; margin: 30px 0; border-left: 5px solid var(--or-subtil);">
+        <p style="margin: 0 0 15px 0; text-align: justify;"><strong style="color: var(--or-subtil);">📖 L'unité poétique :</strong> en poésie, <strong>la page est l'unité de mesure logique</strong>, car le blanc et la disposition visuelle font partie intégrante du texte. Compter seulement les mots n'aurait aucun sens.</p>
+        
+        <p style="margin: 0 0 15px 0; text-align: justify;"><strong style="color: var(--or-subtil);">💰 L'accessibilité :</strong> ces forfaits sont conçus pour être <strong>environ 15% moins chers</strong> qu'une facturation au temps passé, afin de soutenir la création poétique.</p>
+        
+        <p style="margin: 0; text-align: justify;"><strong style="color: var(--or-subtil);">✨ La qualité artisanale :</strong> ce n'est pas une simple correction orthographique, c'est une <strong>relecture de cohérence rythmique et typographique de la part d'un poète passionné.</strong>.</p>
+    </div>
+    
+    	<p style="margin-bottom: 30px; text-align: justify;"><strong>Base de calcul :</strong> une page ≃ 30 à 35 vers (police 12pt, interlignage standard). Cette mesure garantit l'équité et évite les abus de mise en page.</p>
+
+	<p style="text-align: center; color: #F9F8F0; background: rgba(249, 248, 240, 0.1); padding: 15px; border-radius: 8px; margin-bottom: 30px; border: 1px dashed #F9F8F0; font-size: 0.95rem;">
+    	<span style="color: #C5A059; font-weight: bold;">✨ Tarif de lancement :</span> ces forfaits incluent déjà la réduction de bienvenue (base 30 €/h au lieu de 35 €). 
+    	<span style="display: block; font-size: 0.85rem; margin-top: 5px; opacity: 0.9; color: #F9F8F0;">
+        (Découvrez vos avantages exclusifs en bas de page ↓)
+    	</span>
+	</p>
 
             <div class="forfaits-grid">
                 <div class="forfait-card" style="border: 3px solid var(--vert-fonce); position: relative;">
-                    <div class="badge-promo">-10% Offre découverte</div>
-                    <h3>Forfait S</h3>
-                    <p class="forfait-pages">30 à 50 pages</p>
-                    <div class="prix-barre">250 €</div>
-                    <div class="forfait-prix">225 €</div>
-                    <p class="forfait-detail">Idéal pour un premier recueil ou une plaquette poétique</p>
+                    <h3>Forfait S*</h3>
+                    <p class="forfait-pages">25 à 40 pages</p>
+                    <div style="height: 35px;"></div>
+                    <div class="forfait-prix" style="margin-top: -20px;">250 €</div>
+                    <p class="forfait-detail">Idéal pour un premier recueil ou un format court</p>
                 </div>
 
                 <div class="forfait-card forfait-m" style="border: 3px solid var(--vert-fonce);">
-                    <div style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--vert-fonce); color: white; padding: 5px 20px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">Le plus choisi</div>
+                    <div style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--vert-fonce); color: white; padding: 5px 20px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">Le plus courant</div>
                     <h3>Forfait M</h3>
-                    <p class="forfait-pages">51 à 80 pages</p>
+                    <p class="forfait-pages">41 à 70 pages</p>
                     <div style="height: 35px;"></div>
-                    <div class="forfait-prix">350 €</div>
+                    <div class="forfait-prix" style="margin-top: -20px;">400 €</div>
                     <p class="forfait-detail">Le format standard pour un recueil complet</p>
                 </div>
 
                 <div class="forfait-card">
                     <h3>Forfait L</h3>
-                    <p class="forfait-pages">81 à 120 pages</p>
+                    <p class="forfait-pages">71 à 100 pages</p>
                     <div style="height: 35px;"></div>
-                    <div class="forfait-prix">450 €</div>
-                    <p class="forfait-detail">Pour les œuvres ambitieuses et les anthologies</p>
+                    <div class="forfait-prix" style="margin-top: -20px;">550 €</div>
+                    <p class="forfait-detail">Pour les recueils volumineux</p>
                 </div>
             </div>
 
-            <p style="text-align: center; font-size: 1rem; opacity: 0.9; margin-top: 30px;">
-                📖 <strong>Au-delà de 120 pages :</strong> contactez-moi pour un devis personnalisé à partir de 5 €/page
-            </p>
+		<div style="text-align: center; margin-top: 25px;">
+    		<p style="font-size: 1.1rem; color: #F9F8F0; margin-bottom: 15px;">
+        	<strong style="color: #C5A059; font-size: 1.3rem;">*</strong> 
+        	<strong>Micro-recueil :</strong> pour moins de 25 pages, contactez-moi directement pour un devis adapté.
+    		</p>
+		</div>
+            	<p style="text-align: center; font-size: 1rem; opacity: 0.9; margin-top: 30px; margin-bottom: 30px">
+                📌 <strong>Au-delà de 100 pages :</strong> tarif personnalisé sur la base de <strong>5 €/page supplémentaire</strong>.
+            	</p>
 
-            <p style="margin-top: 25px;"><strong>Chaque forfait comprend :</strong></p>
-            <ul style="columns: 2; column-gap: 30px; margin-top: 15px;">
-                <li>Toutes les corrections de base</li>
-                <li>Analyse rythmique et musicale</li>
+	<div style="background: rgba(94, 140, 97, 0.15); border: 2px solid var(--vert-stylo); padding: 25px; border-radius: 12px; margin: 40px 0;">
+            <p><strong>Ce qui est corrigé ou vérifié :</strong></p>
+	    <ul style="columns: 2; column-gap: 20px; margin: 0; line-height: 1.8;">
+                <li>Syntaxe, grammaire, orthographe</li>
+                <li>Rythme et musicalité</li>
+		<li>Rimes, jeux de sonorités</li>
                 <li>Typographie poétique</li>
-                <li>Mise en page harmonieuse</li>
+                <li>Harmonie de la mise en page</li>
                 <li>Sommaire et foliotage</li>
-                <li>Cohérence globale du recueil</li>
+                <li>Impact et cohérence globale du recueil</li>
             </ul>
+	    <p style="text-align: justify; margin-top: 30px">En plus des corrections de base et des standards du métier, des propositions pourront vous être transmises sur tous ces points. Vous restez toujours libre d'accepter ou non chaque élément, qu'il s'agisse d'une correction basique ou d'une proposition de reformulation.</p>
+	
+	</div>
+		<div style="background: rgba(94, 140, 97, 0.15); border: 2px solid var(--or-subtil); padding: 25px; border-radius: 12px; margin: 40px 0;">
+		<p style="text-align: justify">J'ai conscience de l'intimité des choix poétiques : ils sont le cœur même de l'identité du poète. Je ne vous ferai des suggestions que si elles servent la fluidité ou l'intention de l'œuvre. L'idée est avant tout de <span style="color: var(--or-subtil)"><strong>corriger et sublimer le texte</strong></span> pour qu'il soit impeccable, et de vous aider à <span style="color: var(--or-subtil)"><strong>renforcer son impact et son message</strong></span>, si possible, pas de modifier votre style. La frontière est mince entre une correction bienvenue et une chose à ne surtout pas toucher, c'est ce qui rend ce travail si délicat. Je sais discerner ces limites. Et puis, je veillerai à répondre à vos attentes, que vous me donniez plus ou moins de liberté d'action.</p>
+	</div>
+ </div>
+
+            <!-- RELECTURE PDF POÉSIE -->
+	    <div class="section-card" style="margin-top: 80px;">
+    		<h2>Relecture PDF Poésie</h2>
+    		<p>Votre recueil est déjà corrigé et mis en page ? Je propose également une <strong>relecture finale sur PDF</strong> pour traquer les dernières coquilles avant impression.</p>
+    
+    		<div style="background: rgba(94, 140, 97, 0.1); padding: 20px; border-radius: 12px; margin: 25px 0; border-left: 4px solid var(--vert-stylo);">
+        		<p style="margin: 0; line-height: 1.7;">
+            	<strong style="color: var(--vert-stylo);">📄 Relecture PDF vs L'Œil du Poète</strong><br>
+            Cette prestation se limite à la <strong>vérification orthotypographique</strong> et à la cohérence d'un texte déjà propre. Ici, il n'est plus question d'analyser les vers en profondeur ou de faire des suggestions de reformulations. Pour un travail plus approfondi sur le rythme, la musicalité et l'intention poétique, préférez L'Œil du Poète.<br><br>
+            	<strong>💰 Tarification :</strong> un tarif réduit de 50% par rapport au prix d'une correction complète, pour une vérification finale de sécurité.
+        		</p>
+    		</div>
+
+   			<div class="forfaits-grid">
+    			<div class="forfait-card">
+        		<h3>Forfait S - PDF</h3>
+        		<p class="forfait-pages">Jusqu'à 40 pages</p>
+        		<div class="forfait-prix" style="margin-top: 10px; white-space: nowrap;">125 €</div>
+    			</div>
+
+    			<div class="forfait-card">
+        		<h3>Forfait M - PDF</h3>
+        		<p class="forfait-pages">41 à 70 pages</p>
+        		<div class="forfait-prix" style="margin-top: 10px; white-space: nowrap;">200 €</div>
+    			</div>
+
+    			<div class="forfait-card">
+        		<h3>Forfait L - PDF</h3>
+        		<p class="forfait-pages">71 à 100 pages</p>
+        		<div class="forfait-prix" style="margin-top: 10px; white-space: nowrap;">275 €</div>
+    		</div>
+	    </div>
+		<div style="text-align: center; margin-top: 25px;">
+    		<p style="font-size: 1.1rem; color: #F9F8F0; margin-bottom: 15px;">
+        	<strong style="color: #C5A059; font-size: 1.3rem;">*</strong> 
+        	<strong>Micro-recueil :</strong> pour moins de 25 pages, contactez-moi directement.
+    		</p>
+		</div>
+    		<p style="text-align: center; font-size: 1rem; opacity: 0.9; margin-top: 30px;">
+        	📌 <strong>Plus de 100 pages :</strong> tarif personnalisé sur la base de <strong>2,50 €/page</strong>.
+    		</p>
+    
+    <p style="margin-top: 20px; padding: 15px; border-radius: 8px; text-align: center;">
+    <strong>⚠️ Important :</strong> cette prestation suppose que le texte est déjà très propre, clair et mis en page, qu'il a été corrigé en amont. Si un travail de fond est nécessaire, je vous orienterai vers L'Œil du Poète.
+    </p>
+</div>
+
+ 	<!-- RAPPEL OFFRE LANCEMENT -->
+        <div style="background: linear-gradient(135deg, var(--or-subtil), #d4b66e); color: var(--vert-fonce); padding: 35px; border-radius: 15px; margin: 60px 0; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+            <h3 style="margin: 0 0 15px 0; font-size: 2rem; font-family: 'Josefin Slab';">✨ Offre de lancement ✨</h3>
+            <p style="font-size: 1.15rem; margin-bottom: 10px; line-height: 1.7;">
+                <strong>Faites partie des premiers !</strong>
+            </p>
+            <ul style="list-style: none; padding: 0; margin: 0 0 25px 0; font-size: 1.05rem; line-height: 2;">
+    		<li>→ Tarif pivot actuel de 30 €/h (au lieu de <span style="text-decoration: line-through; opacity: 0.6;">35 €</span>) garanti <strong>à vie</strong></li>
+    		<li>→ <strong>2 premières pages gratuites</strong> sur votre première commande (dès 15 pages commandées)</li>
+    		<li>→ Liste prioritaire en cas de forte demande</li>
+	    </ul>
+            <p style="font-size: 0.95rem; opacity: 0.85; margin-bottom: 20px;">
+                <strong>Jusqu'au 31 mai 2026</strong> • <span style="color: #d9534f; font-weight: 700; text-decoration: underline;">Places limitées</span>
+            </p>
+            <a href="index.html#contact" 
+                style="display: inline-block; background: var(--vert-fonce); color: #C5A059; padding: 15px 40px; text-decoration: none; border-radius: 50px; font-weight: 700; font-size: 1.05rem; transition: all 0.3s ease; box-shadow: 0 5px 15px rgba(0,0,0,0.3);"
+    onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.4)';"
+    onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 5px 15px rgba(0,0,0,0.3)';">🎁 Profiter de l'offre
+            </a>
         </div>
 
         <div style="text-align: center; background: rgba(197, 160, 89, 0.15); padding: 40px; border-radius: 20px; border: 2px solid var(--or-subtil);">
-            <h3 style="font-size: 2rem; color: var(--or-subtil); margin-bottom: 20px;">Prêt à sublimer votre recueil ?</h3>
-            <p style="margin-bottom: 30px;">Chaque projet est unique. Contactez-moi pour discuter de votre œuvre et choisir ensemble la formule la plus adaptée.</p>
-            <a href="index.html#contact" class="btn-devis-poesie" style="display: inline-block; background: var(--or-subtil); color: var(--vert-fonce); padding: 20px 50px; text-decoration: none; border-radius: 50px; font-weight: 700; font-size: 1.1rem; text-transform: uppercase; transition: all 0.3s ease; box-shadow: 0 10px 30px rgba(0,0,0,0.4); position: relative; overflow: hidden;">
-                <span style="position: relative; z-index: 2;">Demander un devis poésie</span>
-            </a>
-        </div>
+    		<h3 style="font-size: 2rem; color: var(--or-subtil); margin-bottom: 20px;">Prêt à sublimer votre recueil ?</h3>
+    		<p style="margin-bottom: 30px; color: var(--or-subtil);">Chaque projet est unique.<br>Contactez-moi pour discuter de votre œuvre et de vos attentes.<br>Je vous invite également à consulter les pages annexes, notamment les <a href="cgv.html" style="color: white; text-decoration: underline; font-weight: 600;">CGV</a> et la <a href="faq.html" style="color: white; text-decoration: underline; font-weight: 600;">FAQ</a>.</p>
+    		<a href="index.html#contact" style="display: inline-block; background: #C5A059; color: #3C4D2D; padding: 20px 50px; text-decoration: none; border-radius: 50px; font-weight: 700; font-size: 1.1rem; text-transform: uppercase; transition: all 0.3s ease; box-shadow: 0 10px 30px rgba(0,0,0,0.4); border: none; outline: none;" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 15px 40px rgba(0,0,0,0.5)'; this.style.color='#3C4D2D'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 30px rgba(0,0,0,0.4)'; this.style.color='#3C4D2D'">
+    Demander un devis poésie
+            </p>
+    		</a>
+	</div>
 
         <div style="text-align: center;">
             <a href="index.html" class="back-link">
@@ -322,6 +1003,124 @@
             </a>
         </div>
     </div>
-    <script>lucide.createIcons();</script>
+    </div>
+
+	<!-- Exemples mobile uniquement -->
+	<div class="exemples-mobile" style="display: none;">
+    	<h3 style="text-align: center; margin-bottom: 20px; color: var(--vert-fonce);">💡 Quelques exemples de corrections</h3>
+    
+    	<details>
+            <summary>Ligature œ + espace insécable</summary>
+            <p>"Dans son <em>oeil</em>, ciel livide…" → "Dans son <strong>œil</strong>, ciel livide…"<br>
+            <small>Ligature œ (Alt+0156) + espace insécable avant ; (Alt+255)</small></p>
+    	</details>
+    
+    	<details>
+            <summary>Majuscule après ? et !</summary>
+            <p>"Pourquoi partir ? <em>la</em> nuit tombe." → "Pourquoi partir ? <strong>L</strong>a nuit tombe."<br>
+            <small>Majuscule si la phrase recommence</small></p>
+    	</details>
+    
+    	<details>
+            <summary>Points de suspension</summary>
+            <p>"Le temps s'écoule<em>...</em>" → "Le temps s'écoule<strong>…</strong>"<br>
+            <small>… est UN caractère (Alt+0133)</small></p>
+    	</details>
+    
+    	<details>
+            <summary>Guillemets français</summary>
+            <p>"<em>"</em>Viens<em>"</em>, dit-elle." → "<strong>« </strong>Viens<strong> »</strong>, dit-elle."<br>
+            <small>Guillemets « » (Alt+174 et Alt+175)</small></p>
+    	</details>
+    
+    	<details>
+            <summary>Tiret cadratin</summary>
+            <p>"La mer <em>-</em> immense <em>-</em> murmurait." → "La mer <strong>—</strong> immense <strong>—</strong> murmurait."<br>
+            <small>Tiret cadratin — (Alt+0151)</small></p>
+    	</details>
+	</div>
+
+    <footer style="text-align: center; display: flex; flex-direction: column; align-items: center; padding: 40px 20px;">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Des Mots Justes</h4>
+                <p>Relecture & Correction</p>
+                <p style="margin-top:15px;">Certifié par Le Robert</p>
+            </div>
+            <div class="footer-section">
+                <h4>Navigation</h4>
+                <a href="index.html">Accueil</a>
+                <a href="index.html#prestations">Prestations</a>
+                <a href="poesie.html" style="color: #C5A059; font-weight: 600;">L'Œil du Poète</a>
+                <a href="atelier-ludique.html">L'Atelier Ludique</a>
+                <a href="tarifs.html">Transparence & Tarification</a>
+                <a href="faq.html">FAQ</a>
+                <a href="cgv.html">CGV & RGPD</a>
+            </div>
+            <div class="footer-section" style="display: flex; flex-direction: column; align-items: center;">
+    <h4>Contact</h4>
+    <div class="footer-contact">
+        <a href="mailto:contact@desmotsjustes.fr">contact@desmotsjustes.fr</a>
+    </div>
+    <div class="social-icons" style="display: flex; justify-content: center; gap: 15px; margin-top: 10px;">
+        <a href="https://www.instagram.com/des_mots_justes_/" target="_blank" class="social-icon" aria-label="Instagram">
+            <i data-lucide="instagram" size="20"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/tom-saulzet-30485a362/" target="_blank" class="social-icon" aria-label="LinkedIn">
+            <i data-lucide="linkedin" size="20"></i>
+        </a>
+    </div>
+</div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Des Mots Justes - Relecture & Correction.<br>SIRET : 100 013 242 00019<br>Site créé par Tom SAULZET, EI. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+
+    <script>
+	function toggleInfo(num) {
+    		const popup = document.getElementById('info-' + num);
+    		const bulle = event.target;
+    		const isActive = popup.classList.contains('active');
+    
+    // Ferme tous les popups
+    	document.querySelectorAll('.info-popup').forEach(p => p.classList.remove('active'));
+    	document.querySelectorAll('.info-bulle').forEach(b => b.classList.remove('active'));
+    
+    // Ouvre celui cliqué (sauf s'il était déjà ouvert)
+    	if (!isActive) {
+        popup.classList.add('active');
+        bulle.classList.add('active');
+    	}
+    }
+
+	// Ferme au clic ailleurs
+	document.addEventListener('click', function(e) {
+    	if (!e.target.classList.contains('info-bulle') && !e.target.closest('.info-popup')) {
+        document.querySelectorAll('.info-popup').forEach(p => p.classList.remove('active'));
+        document.querySelectorAll('.info-bulle').forEach(b => b.classList.remove('active'));
+    	}
+    });
+</script>
+
+<button id="backToTop" title="Remonter en haut" style="position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px; background-color: var(--or-subtil); color: var(--vert-fonce); border: none; border-radius: 50%; cursor: pointer; display: none; justify-content: center; align-items: center; font-size: 24px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 1000; transition: opacity 0.3s;">↑</button>
+
+<script>
+    const backToTop = document.getElementById("backToTop");
+    window.addEventListener("scroll", () => {
+        if (window.pageYOffset > 300) {
+            backToTop.style.display = "block";
+        } else {
+            backToTop.style.display = "none";
+        }
+    });
+    backToTop.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+</script>
 </body>
 </html>

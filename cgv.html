@@ -3,8 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CGV & Mentions Légales | Des Mots Justes</title>
+    <meta name="description" content="Conditions générales de vente et mentions légales. SIRET, paiements, délais, confidentialité RGPD, médiation. Des Mots Justes. Tom Saulzet. Occitanie.">
+    <meta name="keywords" content="CGV correction, mentions légales, SIRET, RGPD, conditions vente, confidentialité, médiation, Tom Saulzet, Occitanie">
+    <link rel="canonical" href="https://desmotsjustes.fr/cgv.html">
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600;700&family=Josefin+Slab:wght@700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
@@ -89,75 +95,276 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.2); 
         }
 
-        @media (max-width: 768px) {
-            h1 { font-size: 2rem; }
-            h2 { font-size: 1.3rem; }
-            .section { padding: 20px; }
+        /* Footer styles */
+        footer { 
+            background: #2C2C2C;
+            color: white; 
+            padding: 80px 10% 50px 10%;
+    	    page-break-inside: avoid;
         }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            gap: 60px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+        }
+        .footer-section h4 {
+            font-family: 'Josefin Slab', serif;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--beige-parchemin);
+        }
+        .footer-section p, .footer-section a {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+            transition: color 0.3s ease;
+        }
+        .footer-section a:hover {
+            color: #C5A059;
+        }
+        .footer-contact {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--beige-parchemin);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        .social-icon:hover {
+            color: #C5A059;
+            transform: translateY(-3px);
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        .footer-bottom p {
+            font-size: 0.85rem;
+            opacity: 0.5;
+            text-align: center;
+        }
+
+/* --- CONFIGURATION DU PDF --- */
+@media print {
+    /* 1. Cache le bouton de téléchargement et son conteneur */
+    /* On cible la div qui entoure le bouton pour ne pas laisser d'espace vide */
+    .container > div:has(a[download]),
+    [download],
+    .back-link,
+    footer,
+    script {
+        display: none !important;
+    }
+
+    /* 2. Optimise la mise en page pour le papier */
+    .container {
+        width: 100% !important;
+        max-width: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    /* 3. Évite qu'un titre se retrouve seul en bas de page */
+    h2 { 
+        page-break-after: avoid; 
+        margin-top: 30px;
+    }
+
+    /* 4. Supprime les ombres portées pour un rendu plus net */
+    .section {
+        box-shadow: none !important;
+        border: 1px solid #eee !important;
+        margin-bottom: 15px !important;
+    }
+}
+
+/* ============================= */
+/* OPTIMISATION RESPONSIVE GLOBALE */
+/* ============================= */
+
+html { hyphens: auto; }
+
+p, li { 
+    hyphens: auto; 
+    overflow-wrap: break-word; 
+    text-wrap: pretty; /* Améliore la répartition des mots */
+}
+
+h1, h2 { text-wrap: balance; }
+
+@media (max-width: 768px) {
+    /* 1. ÉLARGISSEMENT & BASE */
+    body { font-size: 1.05rem; }
+    .container { padding: 40px 4% !important; }
+    h1 { font-size: 2.1rem; text-align: center; }
+    
+    /* 2. LE SCALPEL ANTI-JUSTIFY */
+    p, li, .section p {
+        text-align: left !important;
+        hyphens: auto;
+    }
+
+    /* 3. FIX DÉBORDEMENTS (Médiateur et Titres) */
+    li strong, .section ul li, h2 {
+        word-break: break-word !important;
+        hyphens: auto !important;
+    }
+
+    /* 4. FOOTER (On s'assure que tout est centré) */
+    .footer-content {
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        gap: 40px !important;
+    }
+    .footer-section {
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+
+    /* 5. BOUTON PDF */
+    [download] {
+        width: 100%;
+        display: block !important;
+        text-align: center;
+    }
+}
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Conditions Générales de Vente & Mentions Légales</h1>
         
+	<div style="text-align: center; margin-bottom: 40px;">
+    	    <a href="cgv.pdf" download style="display: inline-block; background: var(--vert-stylo); color: white; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; transition: all 0.3s ease; box-shadow: 0 5px 15px rgba(0,0,0,0.2);" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.3)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 5px 15px rgba(0,0,0,0.2)'">
+            <i data-lucide="download" style="vertical-align: middle; margin-right: 10px; width: 20px;"></i>
+        	Télécharger les CGV en PDF
+    	    </a>
+	</div>
+
+	<div class="section">
+    		<h2>Mentions Légales</h2>
+    		<p><strong>Dénomination sociale :</strong> Des Mots Justes – Relecture & Correction.</p>
+		<p><strong>Immatriculation :</strong> SIRET : 100 013 242 00019.</p>
+    		<p><strong>Siège de l'entreprise :</strong> 75, rue du Rempart, 12700 Causse-et-Diège, France.</p>
+    		<p><strong>Informations de contact :</strong><br>Email : contact@desmotsjustes.fr<br>Téléphone : 0769678330.</p>
+    		<p><strong>Responsable de publication :</strong> Tom SAULZET EI, entrepreneur individuel.</p>
+    		<p><strong>Propriété intellectuelle :</strong> l'ensemble du contenu de ce site est la propriété exclusive de Tom SAULZET EI. Toute reproduction, même partielle, est interdite.</p>
+		<p><strong>Hébergement :</strong> GitHub Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA. Contact : support@github.com/</p>
+	</div>
+
         <div class="section">
-            <h2>1. Devis et Commande</h2>
-            <p>Le contrat est considéré comme conclu dès réception par mail du devis dûment <strong>daté et signé</strong> (numériquement ou via une photo/scan du document imprimé) avec la mention "Bon pour accord". Une validation explicite par retour de mail peut également faire office d'engagement contractuel.</p>
+    		<h2>1. Devis et Commande</h2>
+    		<p>Les devis émis par Des Mots Justes ont une durée de validité de <strong>30 jours</strong> à compter de leur date d'émission. Le contrat est considéré comme conclu dès réception par mail du devis dûment <strong>daté et signé</strong> (numériquement ou via une photo/scan du document imprimé) avec la mention "Bon pour accord". Une validation explicite par retour de mail peut également faire office d'engagement contractuel.</p>
+    
+    		<p>La prestation débute après réception du document final à corriger, du devis signé et de l'encaissement effectif de l'acompte de 50 % (cf. Modalités de paiement).</p>
+
+    		<p style="font-style: italic; border-left: 2px solid var(--vert-stylo); padding-left: 15px; margin-top: 15px;">
+    		<strong>Droit de rétractation </strong>— Conformément à l'article L221-18 du Code de la consommation, le Client particulier dispose d'un délai de 14 jours pour se rétracter. Toutefois, pour les prestations devant débuter avant la fin de ce délai, le Client accepte expressément que l'exécution commence dès la signature du devis. En cas de rétractation en cours de prestation, les travaux déjà réalisés seront facturés. Le droit de rétractation ne pourra plus être exercé une fois la prestation pleinement exécutée.
+		</p>
+	</div>
+
+        <div class="section">
+            	<h2>2. Délais et Livraison</h2>
+            	<p>Chaque prestation fait l'objet d'un délai de réalisation spécifique exprimé en <strong>jours ouvrés</strong> (hors week-ends et jours fériés), indiqué sur le devis. Ce délai court à partir de la réception du document final à corriger, de la signature du devis et, le cas échéant, du versement de l'acompte.</p>
+            	<p>Tout retard de livraison dû à un manquement du Client (envoi tardif du manuscrit, absence de réponse aux précisions demandées) entraînera un décalage automatique de la date de livraison finale.</p>
+            	<p>En cas de force majeure ou de difficulté technique imprévue, Des Mots Justes s'engage à en avertir le Client immédiatement pour convenir d'un nouvel aménagement du délai, sans que cela ne puisse donner lieu à l'annulation de la commande.</p>
+            	<p><strong>Communication :</strong> pour garantir la qualité et le respect des délais, le Client s'engage à rester joignable via le moyen de contact initial jusqu'à la livraison finale.</p>
+        </div>
+
+	<div class="section">
+    <h2>3. Contact et Échanges</h2>
+    <p style="text-align: left;">Les échanges se font exclusivement par voie électronique à l'adresse <a href="mailto:contact@desmotsjustes.fr" style="color: var(--vert-stylo); text-decoration: underline;">contact@desmotsjustes.fr</a>. Pour les projets en cours nécessitant des précisions spécifiques, un entretien oral peut être envisagé sur rendez-vous.</p>
+    
+    <p>Pour les projets en cours nécessitant des précisions spécifiques (retouches, ajustements, clarifications sur le projet), un <strong>entretien oral peut être envisagé sur rendez-vous</strong>.</p>
+</div>
+
+        <div class="section">
+            	<h2>4. Modalités de Paiement</h2>
+            	<p>Le règlement s'effectue exclusivement par virement bancaire.</p>
+            	<ul>
+                <li><strong>Acompte :</strong> pour toute commande, un acompte de <strong>50 %</strong> est demandé afin de valider la commande. La prestation débute à réception de celui-ci.</li>
+                <li><strong>Solde :</strong> le paiement du solde (50 % restants) est dû à réception du document corrigé et de la facture finale. Le délai maximal de paiement est de 30 jours à compter de cette réception.</li>
+            	</ul>
         </div>
 
         <div class="section">
-            <h2>2. Délais et Livraison</h2>
-            <p>Chaque prestation fait l'objet d'un délai de réalisation spécifique, indiqué sur le devis. Ce délai court à partir de la réception du document final à corriger et, le cas échéant, du versement de l'acompte.</p>
-            <p>Tout retard de livraison dû à un manquement du Client (envoi tardif du manuscrit, absence de réponse aux précisions demandées) entraînera un décalage automatique de la date de livraison finale.</p>
-            <p><strong>Communication :</strong> Il est possible que je revienne vers vous (et ce même plusieurs fois) entre le début et la fin d'une réalisation. En cas de difficultés rencontrées et pour ne pas nuire au respect des délais, je vous demanderai de rester joignable via le moyen de contact initialement utilisé jusqu'à ce que vous ayez reçu le document final.</p>
-        </div>
+    <h2>5. Retards de Paiement</h2>
+    <p>Tout retard de paiement entraînera de plein droit l'application de pénalités calculées sur la base d'un taux annuel de <strong>10 %</strong>.</p>
+    <p>Pour les clients professionnels, une <strong>indemnité forfaitaire de 40 €</strong> pour frais de recouvrement sera appliquée systématiquement dès le premier jour de retard, sans qu'un rappel soit nécessaire.</p>
+</div>
 
         <div class="section">
-            <h2>3. Modalités de Paiement</h2>
-            <p>Le règlement s'effectue par virement bancaire.</p>
-            <ul>
-                <li><strong>Acompte :</strong> Pour toute commande supérieure à <strong>200 €</strong>, un acompte de <strong>30 %</strong> est exigé avant le début de la prestation.</li>
-                <li><strong>Solde :</strong> Après versement de l'acompte ou pour les prestations inférieures à 200 €, le paiement se fait à la livraison du document corrigé.</li>
-                <li><strong>Engagement :</strong> La signature du devis engage le Client au paiement intégral de la prestation une fois celle-ci réalisée.</li>
-            </ul>
-        </div>
-
-        <div class="section">
-            <h2>4. Retards de Paiement</h2>
-            <p>En cas de retard de règlement <strong>au-delà de 30 jours suivant la date d'échéance</strong>, des pénalités basées sur le taux légal en vigueur seront appliquées. Pour les professionnels, une indemnité forfaitaire de 40 € pour frais de recouvrement est ajoutée conformément à la loi. L'échéance débute à la date de réception du document corrigé et finalisé.</p>
-        </div>
-
-        <div class="section">
-            <h2>5. Obligation de moyens & Responsabilité</h2>
+            <h2>6. Obligation de moyens & Responsabilité</h2>
             <p>La correction est un travail de précision humaine. Je m'engage à une <strong>obligation de moyens</strong> : cela signifie que je mobilise toute mon expertise, ma rigueur et mes outils pour traquer la moindre erreur.</p>
             <p>Le document vous est livré avec le <strong>suivi des modifications activé</strong>. Une relecture attentive de votre part vous permet de valider ou refuser chaque correction proposée.</p>
-            <p><strong>Révisions incluses :</strong> Une repasse sur le document est incluse dans le tarif si vous constatez des erreurs manifestes ou des incohérences dans le travail fourni. Au-delà, toute demande de modification substantielle (reformulation de passages, ajout de contenu nouveau, changement de style) fera l'objet d'un devis complémentaire.</p>
-            <p>Toutefois, le risque "zéro" n'existant pas en correction manuelle, l'auteur reste responsable de la validation finale de son œuvre. En cas de litige, ma responsabilité se limite au remboursement des sommes perçues pour la prestation en cause.</p>
+            <p><strong>Repasse incluse :</strong> une repasse sur le document livré est incluse dans le tarif si vous constatez des erreurs manifestes ou des incohérences dans le travail fourni. Celles-ci doivent être signalées dans les <strong>7 jours ouvrés</strong> suivant la livraison. Au-delà, toute demande de modification substantielle (reformulation de passages, ajout de contenu nouveau) fera l'objet d'un devis complémentaire. Cette repasse permet de valider vos choix, de me faire part de vos remarques et de finaliser les derniers ajustements. Cela dit, je m'efforcerai toujours de répondre à vos demandes légitimes, car mon objectif est de vous rendre un travail de qualité ; c'est dans l'intérêt mutuel.</p>
+            <p>Toutefois, le risque « zéro » n'existant pas en correction, l'auteur reste responsable de la validation finale de son œuvre. En cas de litige, ma responsabilité se limite au remboursement des sommes perçues pour la prestation en cause.</p>
+	    <p style="margin-top: 20px; padding: 15px; background: rgba(94, 140, 97, 0.05); border-left: 3px solid var(--vert-stylo); font-style: italic;">
+    <strong>Analyse initiale et Ajustement :</strong> l'ensemble des tarifs est établi sur la base de l'analyse du document complet ou de l'échantillon représentatif fourni lors du devis. Des Mots Justes s'engage à avertir le Client dès la détection d'une complexité majeure non décelable initialement qui modifierait substantiellement la charge de travail prévue. Pour les tarifs fixes (forfaits), un avenant sera proposé. En cas de désaccord sur cet ajustement, la collaboration pourra être interrompue de manière équitable : les travaux déjà réalisés seront facturés et le surplus perçu sera remboursé au Client au prorata du travail restant à effectuer, calculé selon la même logique et base tarifaire initiales.
+	    </p>
+	    <p><strong>Force majeure :</strong> la responsabilité de Des Mots Justes ne pourra être engagée en cas d'inexécution ou de retard résultant d'un événement imprévisible et irrésistible (panne informatique majeure, maladie grave, catastrophe naturelle, etc.). Dans ce cas, les délais de livraison seront suspendus ou prolongés de plein droit.</p>
         </div>
 
-        <div class="section">
-            <h2>6. Confidentialité & RGPD</h2>
-            <p>Les manuscrits sont traités avec une <strong>confidentialité absolue</strong>.</p>
-            <p>Conformément au RGPD, vos données personnelles ne servent qu'à la facturation et à la communication professionnelle.</p>
-            <p>Sauf demande contraire de votre part, les fichiers sont supprimés de mes archives <strong>6 mois après la prestation</strong>.</p>
-        </div>
+<div class="section">
+    <h2>7. Nature de la prestation : Correction, non réécriture</h2>
+    <p>Les prestations proposées relèvent de la <strong>correction professionnelle</strong> : orthographe, grammaire, syntaxe, typographie et cohérence. Je corrige, et malgré des propositions de reformulation et un travail de réécriture quand cela est nécessaire, <strong>je n'écris pas à votre place</strong>.</p>
+    <p>Toute demande de <strong>réécriture importante</strong> (reformulation substantielle, restructuration de paragraphes, modification du style ou du ton) sort du cadre de la correction et fera l'objet d'un <strong>devis complémentaire spécifique</strong>.</p>
+</div>
 
         <div class="section">
-            <h2>7. Propriété intellectuelle</h2>
+    <h2>8. Confidentialité & RGPD</h2>
+    <p>Les manuscrits sont traités avec une <strong>confidentialité absolue</strong>.</p>
+    <p>Conformément au RGPD, vos données personnelles ne servent qu'à la facturation et à la communication professionnelle. Elles ne sont jamais cédées à des tiers.</p>
+    <p><strong>Sécurité des documents :</strong> les textes soumis pour simple devis et n'aboutissant pas à une prestation sont immédiatement supprimés. Pour les projets réalisés, les fichiers sont supprimés des archives <strong>6 mois après la livraison finale</strong> (norme légale de sécurité pour le suivi client) avant d'être définitivement détruits, sauf demande contraire de votre part.</p>
+    <p>Vous disposez d'un droit d'accès, de rectification et de suppression de vos données en écrivant à contact@desmotsjustes.fr.</p>
+	</div>
+
+        <div class="section">
+            <h2>9. Propriété intellectuelle</h2>
             <p>Le travail de correction n'altère en rien vos droits d'auteur. Vous restez l'unique propriétaire de votre œuvre. Les corrections apportées ne constituent pas une co-création et ne donnent lieu à aucun droit patrimonial de ma part.</p>
         </div>
 
         <div class="section">
-            <h2>8. Médiation et règlement des litiges</h2>
-            <p>En cas de litige, nous nous engageons à rechercher une solution amiable avant toute action judiciaire.</p>
-            <p><strong>Pour les clients particuliers :</strong> Conformément à l'article L.612-1 du Code de la consommation, vous pouvez recourir gratuitement à un médiateur de la consommation en cas de litige non résolu. Le médiateur compétent est :</p>
-            <ul>
-                <li><strong>Médiateur de la consommation CNPM - MÉDIATION DE LA CONSOMMATION</strong></li>
-                <li>27 avenue de la Libération, 42400 Saint-Chamond</li>
-                <li>Site : <a href="https://cnpm-mediation-consommation.eu" target="_blank" style="color: var(--vert-stylo);">cnpm-mediation-consommation.eu</a></li>
-            </ul>
-            <p><strong>Droit applicable :</strong> Les présentes CGV sont soumises au droit français. En cas de litige non résolu à l'amiable ou par médiation, les tribunaux français seront seuls compétents.</p>
-        </div>
+    	    <h2>10. Médiation et règlement des litiges</h2>
+    	    <p>La communication est la clé d'une collaboration réussie. En cas de désaccord, je vous invite à me contacter directement afin que nous puissions trouver ensemble une solution amiable.</p>
+    
+    	    <p>Si cette démarche n'aboutissait pas, conformément à l'article L.612-1 du Code de la consommation, le Client particulier peut recourir gratuitement au médiateur de la consommation suivant :</p>
+    
+    	    <ul>
+            <p><strong>CNPM - MÉDIATION CONSOMMATION DÉVELOPPEMENT</strong></p>
+            <li>3, rue J. Constant Milleret, 42000 Saint-Étienne</li>
+            <li>Site : <a href="https://cnpm-mediation-consommation.eu" target="_blank" style="color: var(--vert-stylo);">cnpm-mediation-consommation.eu</a></li>
+<li>Contact : contact-admin@cnpm-mediation-consomation.eu / 09 88 30 27 72
+    	    </ul>
+    
+    	    <p><strong>Droit applicable </strong>— Les présentes CGV sont soumises au droit français. En cas de litige non résolu à l'amiable ou par médiation, les tribunaux français seront seuls compétents.</p>
+	</div>
 
         <div style="text-align: center;">
             <a href="index.html" class="back-link">
@@ -165,6 +372,48 @@
             </a>
         </div>
     </div>
+
+    <footer style="text-align: center; display: flex; flex-direction: column; align-items: center; padding: 40px 20px;">
+        <div class="footer-content">
+            <div class="footer-section" style="display: flex; flex-direction: column; align-items: center;">
+    		<h4>Des Mots Justes</h4>
+    		<p>Relecture & Correction</p>
+    		<p style="margin-top:15px;">Certifié par Le Robert</p>
+	    </div>
+            <div class="footer-section">
+                <h4>Navigation</h4>
+                <a href="index.html">Accueil</a>
+                <a href="index.html#prestations">Prestations</a>
+                <a href="poesie.html">L'Œil du Poète</a>
+                <a href="atelier-ludique.html">L'Atelier Ludique</a>
+                <a href="tarifs.html">Transparence & Tarification</a>
+                <a href="faq.html">FAQ</a>
+                <a href="cgv.html" style="color: #C5A059; font-weight: 600;">CGV & RGPD</a>
+            </div>
+            <div class="footer-section" style="display: flex; flex-direction: column; align-items: center;">
+    <h4>Contact</h4>
+    <div class="footer-contact">
+        <a href="mailto:contact@desmotsjustes.fr">contact@desmotsjustes.fr</a>
+    </div>
+    <div class="social-icons" style="display: flex; justify-content: center; gap: 15px; margin-top: 10px;">
+        <a href="https://www.instagram.com/des_mots_justes_/" target="_blank" class="social-icon" aria-label="Instagram">
+            <i data-lucide="instagram" size="20"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/tom-saulzet-30485a362/" target="_blank" class="social-icon" aria-label="LinkedIn">
+            <i data-lucide="linkedin" size="20"></i>
+        </a>
+    </div>
+</div>
+        </div>
+        <div class="footer-bottom" style="display: block !important; width: 100% !important; text-align: center !important; margin: 30px auto 0 auto !important; padding-top: 20px !important; border-top: 1px solid rgba(255,255,255,0.1) !important; clear: both !important;">
+    <p style="display: block !important; text-align: center !important; margin: 0 !important; width: 100% !important; color: #aaa !important; font-size: 0.9rem !important;">
+        © 2026 Des Mots Justes - Relecture et Correction.<br>
+        SIRET : 100 013 242 00019<br>
+        Site créé par Tom SAULZET, EI. Tous droits réservés.
+    </p>
+</div>
+    </footer>
+
     <script>lucide.createIcons();</script>
 </body>
 </html>

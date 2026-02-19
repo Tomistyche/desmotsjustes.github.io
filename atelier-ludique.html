@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>L'Atelier Ludique | Des Mots Justes</title>
+    <meta name="description" content="Correction professionnelle de règles de jeux. Le mot juste pour la règle. Clarté, logique et fluidité pour vos livrets et manuels. Devis sur mesure.">
+    <meta name="keywords" content="correction règles de jeux, L'Atelier Ludique, relecture jeux de société, le mot juste pour la règle, clarté règles, livret jeux, manuel jeux, jeux de rôle, SEC, Figeac, Villefranche-de-Rouergue, Aveyron, Lot, Occitanie">
+    <link rel="canonical" href="https://desmotsjustes.fr/atelier-ludique.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="L'Atelier Ludique | Le mot juste pour la règle">
+    <meta property="og:description" content="Correction spécialisée de règles de jeux. Clarté et fluidité pour vos livrets. Expertise SEC.">
+    <meta property="og:url" content="https://desmotsjustes.fr/atelier-ludique.html">
+    <meta property="og:image" content="https://desmotsjustes.fr/logo.png">
+    
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Correction de règles de jeux de société",
+      "name": "L'Atelier Ludique",
+      "description": "Correction professionnelle de règles de jeux : le mot juste pour la règle. Clarté, logique et fluidité pour éditeurs et créateurs.",
+      "provider": {
+        "@type": "Person",
+        "name": "Tom Saulzet",
+        "jobTitle": "Correcteur professionnel spécialisé en règles de jeux"
+      },
+      "areaServed": "France",
+      "url": "https://desmotsjustes.fr/atelier-ludique.html"
+    }
+    </script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600;700&family=Josefin+Slab:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --vert-fonce: #3C4D2D; 
+            --vert-stylo: #5E8C61; 
+            --beige-parchemin: #C4C298; 
+            --ivoire: #F9F8F0;
+            --or-subtil: #C5A059; 
+            --blanc-parchemin: #F2F1E6;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body { 
+            font-family: 'Josefin Sans', sans-serif; 
+            background: linear-gradient(135deg, #F9F8F0 0%, #F2F1E6 100%);
+            color: var(--vert-fonce); 
+            line-height: 1.8; 
+            font-size: 1.15rem;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        /* Gaming icons watermark */
+        body::before {
+            content: '🎲 ♟️ 🎴 🃏 ♠️ ♥️ ♣️ ♦️ 🎯 🎲 ♟️ 🎴 🃏 ♠️ ♥️ ♣️ ♦️ 🎯 🎲 ♟️ 🎴 🃏 🎯 🎲';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 120%;
+            height: 100%;
+            font-size: 10rem;
+            color: #C5A059;
+            opacity: 0.08;
+            z-index: 10;
+            pointer-events: none;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-around;
+            padding: 50px;
+            line-height: 1.5;
+            letter-spacing: 80px;
+            transform: rotate(-15deg);
+        }
+        
+        .container { 
+            max-width: 1000px; 
+            margin: 0 auto; 
+            padding: 80px 5% 60px 5%;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero {
+            text-align: center;
+            margin-bottom: 60px;
+            padding: 60px 40px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 25px;
+            border: 3px solid var(--or-subtil);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+        
+        h1 { 
+            font-family: 'Josefin Slab', serif; 
+            font-size: 4rem; 
+            margin-bottom: 15px;
+            color: var(--vert-fonce);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .subtitle { 
+            font-style: italic; 
+            color: #C5A059; 
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+        
+        .hero-intro {
+            font-size: 1.2rem;
+            line-height: 1.9;
+            margin-top: 25px;
+        }
+        
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 50px;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            border-left: 8px solid var(--or-subtil);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+        }
+        
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+        }
+        
+        h2 { 
+            font-family: 'Josefin Slab', serif; 
+            font-size: 2.5rem; 
+            margin-bottom: 25px;
+            color: var(--vert-fonce);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        h3 {
+            font-family: 'Josefin Slab', serif;
+            font-size: 1.8rem;
+            color: #C5A059;
+            margin: 30px 0 15px 0;
+        }
+        
+        p { 
+            margin-bottom: 18px; 
+            line-height: 1.9;
+        }
+        
+        .highlight-box {
+            background: rgba(197, 160, 89, 0.1);
+            border-left: 5px solid var(--or-subtil);
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 10px;
+        }
+        
+        .highlight-box strong {
+            color: #C5A059;
+            font-size: 1.15rem;
+        }
+        
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+        
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            border: 2px solid rgba(197, 160, 89, 0.2);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .card:hover {
+            border-color: #C5A059;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+        }
+        
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+        
+        .card h4 {
+            font-family: 'Josefin Slab', serif;
+            font-size: 1.4rem;
+            color: var(--vert-fonce);
+            margin-bottom: 12px;
+        }
+        
+        .card p {
+            font-size: 1rem;
+            margin: 0;
+            line-height: 1.6;
+        }
+        
+        .prestations-list {
+            background: var(--ivoire);
+            padding: 30px;
+            border-radius: 12px;
+            margin: 25px 0;
+        }
+        
+        .prestations-list ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .prestations-list li {
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        
+        .prestations-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .prestations-list i {
+            color: #C5A059;
+            flex-shrink: 0;
+            margin-top: 5px;
+        }
+        
+        .test-play-highlight {
+            background: linear-gradient(135deg, rgba(197, 160, 89, 0.15), rgba(197, 160, 89, 0.05));
+            border: 3px solid var(--or-subtil);
+            padding: 35px;
+            border-radius: 15px;
+            margin: 35px 0;
+        }
+        
+        .test-play-highlight h3 {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 0;
+        }
+        
+        .examples-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 25px 0;
+        }
+        
+        .example-tag {
+            background: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            color: var(--vert-fonce);
+            border: 2px solid rgba(197, 160, 89, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .example-tag:hover {
+            background: var(--or-subtil);
+            color: white;
+            border-color: #C5A059;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, var(--or-subtil), #d4af6a);
+            color: white;
+            padding: 50px;
+            border-radius: 20px;
+            text-align: center;
+            margin: 50px 0;
+            box-shadow: 0 15px 40px rgba(197, 160, 89, 0.3);
+        }
+        
+        .cta-section h2 {
+            color: white;
+            font-size: 2.8rem;
+            justify-content: center;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: var(--vert-fonce);
+            padding: 18px 45px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-top: 25px;
+            transition: all 0.3s ease;
+            border: 3px solid white;
+        }
+        
+        .cta-button:hover {
+            background: transparent;
+            color: white;
+            transform: scale(1.05);
+        }
+        
+        .back-link { 
+            display: inline-block; 
+            margin-top: 30px; 
+            color: var(--vert-fonce); 
+            text-decoration: none; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            border: 2px solid var(--vert-fonce); 
+            padding: 15px 40px; 
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+        .back-link:hover { 
+            background: var(--vert-fonce); 
+            color: var(--ivoire); 
+            transform: scale(1.05);
+        }
+        
+        /* Footer */
+        footer { 
+            background: #2C2C2C;
+            color: white; 
+            padding: 60px 10% 30px 10%; 
+            position: relative;
+            z-index: 1;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            gap: 60px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+        }
+        .footer-section h4 {
+            font-family: 'Josefin Slab', serif;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--beige-parchemin);
+        }
+        .footer-section p, .footer-section a {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+            transition: color 0.3s ease;
+        }
+        .footer-section a:hover {
+            color: #C5A059;
+        }
+        .footer-contact {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--beige-parchemin);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        .social-icon:hover {
+            color: #C5A059;
+            transform: translateY(-3px);
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        .footer-bottom p {
+            text-align: center;
+            font-size: 0.85rem;
+            opacity: 0.5;
+        }
+
+        /* Forfaits ludiques */
+        .forfaits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin: 40px 0;
+        }
+        
+        .forfait-card-ludique {
+            background: white;
+            padding: 35px 15px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            border: 3px solid var(--or-subtil);
+            transition: all 0.3s ease;
+	    position: relative; /* Indispensable pour que la note se cale en bas */
+            padding-bottom: 60px;
+        }
+        
+        .forfait-card-ludique:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(197, 160, 89, 0.3);
+        }
+        
+        .forfait-card-ludique h3 {
+            font-family: 'Josefin Slab', serif;
+            font-size: 1.8rem;
+            color: var(--or-subtil);
+            margin-bottom: 10px;
+	    min-height: 40px; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .forfait-volume {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 20px;
+	    min-height: 60px; /* Aligne le début des prix */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .forfait-prix-ludique {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--vert-fonce);
+            font-family: 'Josefin Slab', serif;
+            margin: 20px 0;
+    	    min-height: 80px;
+    	    display: flex;
+    	    align-items: baseline;
+    	    justify-content: center;
+	    line-height: 80px;
+        }
+        
+        .forfait-detail-ludique {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 15px;
+	    min-height: 80px; /* Aligne les petites notes de bas de carte */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .forfait-note {
+            font-size: 0.85rem;
+            color: #888;
+            font-style: italic;
+	    position: absolute;
+            bottom: 30px;
+            left: 0;
+            right: 0;
+        }
+
+/* ============================= */
+/* CONFIGURATION MOBILE FINALE */
+/* ============================= */
+
+@media (max-width: 768px) {
+    /* SÉCURITÉ ANTI-DÉBORDEMENT */
+    *, ::before, ::after { box-sizing: border-box !important; }
+    
+    html, body { 
+        overflow-x: hidden !important; 
+        width: 100% !important; 
+        position: relative;
+    }
+
+    .container { padding: 40px 15px !important; }
+
+    /* LES ENJEUX (Les 4 points parfaitement serrés) */
+    .enjeux-grid, .colonnes-enjeux { 
+        display: block !important; 
+    }
+    .highlight-box div[style*="column-count"] {
+        column-count: 1 !important;
+        display: block !important;
+    }
+    .highlight-box p { 
+        margin: 2px 0 !important; 
+        line-height: 1.3 !important;
+    }
+
+    /* LES FORFAITS (Centrage et blocs validés) */
+    .forfaits-grid { 
+        display: flex !important; 
+        flex-direction: column !important; 
+        align-items: center !important; 
+    }
+    
+    .forfait-card-ludique {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 0 20px 0 !important;
+        padding: 25px 15px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+    }
+
+    .forfait-volume, .forfait-prix-ludique, .forfait-detail-ludique, .forfait-note {
+        position: static !important;
+        width: 100% !important;
+        text-align: center !important;
+        text-justify: none !important;
+        margin: 10px 0 !important;
+        min-height: auto !important;
+    }
+
+    /* CARTES JEUX CONCERNÉS & CONFIANCE (Largeur maîtrisée) */
+    .cards-grid, .examples-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        padding: 0 !important;
+    }
+
+    .card, .notre-methode-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 0 15px 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    /* TEXTES GLOBAUX ET TITRES */
+    h1 { font-size: 1.8rem !important; text-align: center !important; }
+    h2 { font-size: 1.5rem !important; text-align: center !important; }
+
+    /* SEULS les paragraphes de texte long passent en LEFT */
+    .section p, 
+    .highlight-box p:not(:has(strong)), 
+    .test-play-highlight p {
+    	text-align: left !important; 
+    	hyphens: auto !important; 
+    }
+
+/* GARDE le centrage là où c'est nécessaire */
+.card p, 
+.notre-methode-card p, 
+.forfait-card-ludique p,
+.footer-section p, 
+.footer-bottom p,
+h1, h2, h3 {
+    text-align: center !important;
+}
+
+    .card p, .notre-methode-card p, .footer-section p, .footer-bottom p {
+        text-align: center !important;
+        text-justify: none !important;
+    }
+
+    /* ICÔNES GÉNÉRALES (On garde uniquement la taille pour celles qui marchent) */
+    h1 span, .card-icon, .icon-ludique, i[data-lucide] {
+        font-size: 40px !important;
+        width: 40px !important;
+        height: auto !important;
+        margin: 0 auto 10px auto !important;
+        display: block !important;
+    }
+
+    /* FOOTER (Centrage validé) */
+    footer, .footer-content, .footer-section, .footer-bottom {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        width: 100% !important;
+    }
+    
+    .footer-section { margin-bottom: 30px !important; }
+
+/* Icône titre principal (dés) - RÉDUIRE */
+    h1 span {
+        font-size: 2rem !important;
+    }
+    
+    /* Icônes sections - HARMONISER À 32px */
+    h2 i[data-lucide] {
+        width: 32px !important;
+        height: 32px !important;
+        min-width: 32px !important;
+    }
+    
+    /* Exception : icône puzzle (reste petit) */
+    h2 i[data-lucide="puzzle"] {
+        width: 24px !important;
+        height: 24px !important;
+    }
+
+    .offre-titre {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 10px !important;
+        flex-wrap: wrap !important;
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="container style="position: relative;">
+        <div class="hero">
+            <h1>
+                <span>🎲</span>
+                L'Atelier Ludique
+                <span>♟️</span>
+            </h1>
+            <p class="subtitle">Correction de règles de jeux • Lecture-test • Passion & Précision</p>
+            <p class="hero-intro">
+                Joueur passionné, poète et correcteur professionnel, je mets la même exigence technique au service de vos règles de jeux qu'au service de la poésie. Parce qu'une règle claire et fluide, c'est l'assurance d'une expérience de jeu réussie.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2><i data-lucide="target"></i> Pourquoi corriger vos règles ?</h2>
+            <p style="text-align: justify;">Une règle de jeu, c'est bien plus qu'un simple texte technique. C'est <strong>la porte d'entrée</strong> vers l'univers que vous avez créé. Si elle est ambiguë ou incohérente, vos joueurs perdront du temps, s'agaceront, et l'expérience de jeu en pâtira.</p>
+            
+            <div class="highlight-box">
+    		<p style="text-align: center;"><strong>Les enjeux d'une bonne règle</strong></p>
+    
+    		<div style="column-count: 2; column-gap: 20px; text-align: center; margin-top: 10px;">
+        	<p style="margin: 0;">✓ Clarté absolue<br>
+            ✓ Fluidité</p>
+        	<p style="margin: 0;">✓ Cohérence<br>
+            ✓ Immersion
+        </p>
+    </div>
+</div>
+
+            <p style="text-align: justify;">En tant qu'amoureux de l'esprit du jeu (stratégie, plateau, cartes), je connais l'importance d'une règle bien écrite. J'ai déjà <strong>créé</strong> — par pur plaisir — <strong>et corrigé des livrets de règles</strong>, c'est pourquoi je comprends parfaitement l'enjeu derrière les subtilités techniques.</p>
+        </div>
+
+        <!-- TARIFS PAR CATÉGORIE -->
+        <div class="section" style="margin-top: 70px; background: rgba(255,255,255,0.6); padding: 50px; border-radius: 20px; border: 2px solid var(--or-subtil);">
+            <h2 style="text-align: center; margin-bottom: 30px;"><i data-lucide="calculator"></i> Tarifs par catégorie</h2>
+            
+            <p style="text-align: justify; margin-bottom: 40px;">Pour le secteur ludique, je vérifie non seulement l'orthographe et la grammaire, mais aussi <strong>la cohérence et la fluidité des mécaniques de jeu, du lexique technique et des références croisées</strong> (cartes, tuiles, pions, plateau). C'est pourquoi je propose des <strong>forfaits fixes par catégorie</strong>, plus simples et rassurants.</p>
+            
+            <!-- Encadré transparence -->
+           <div style="text-align: center; margin-bottom: 40px;">
+    <p style="color: #000000; background: #f4f4f4; padding: 25px 30px; border-radius: 12px; border: 1px solid #ccc; display: inline-block; max-width: 900px; line-height: 1.7; text-align: left;">
+        <span style="color: #C5A059; font-weight: bold; font-size: 1.2rem; display: block; text-align: center; margin-bottom: 15px;">💡 Transparence tarifaire</span>
+        
+        Mes forfaits sont calculés sur une base de <strong>30 € / heure</strong> (tarif de lancement), soit environ <strong>9 € le feuillet</strong> (1500 signes).<br><br>
+        
+        <span style="font-size: 0.95rem; line-height: 1.8;">
+            ✅ <strong>Prix bloqué :</strong> le forfait vous garantit que même si la complexité de vos règles demande plus de temps, le tarif ne bougera pas. Un forfait est l'assurance d'un engagement mutuel sur un projet bien défini.<br><br>
+            
+            ✅ <strong>Aucun dépassement sans votre accord :</strong> vous n'êtes jamais forcé·e de payer plus que le prix convenu au devis. Si des éléments imprévus devaient rallonger le travail, je vous en avertirai le plus tôt possible et il vous reviendra de décider de poursuivre ou non.<br><br>
+            
+            ✅ <strong>Économie :</strong> en profitant du tarif de lancement actuellement en vigueur, vous économisez <strong>15 %</strong> sur le tarif standard (35 €/h).
+        </span>
+        
+        <span style="display: block; margin-top: 20px; padding-top: 15px; border-top: 1px solid rgba(0,0,0,0.1); font-size: 0.85rem; opacity: 0.8; text-align: center;">
+            📄 Pour de plus amples explications, consultez <a href="tarifs.html" style="color: var(--vert-stylo); text-decoration: underline; font-weight: 600;">Transparence & Tarification</a>, la <a href="faq.html" style="color: var(--vert-stylo); text-decoration: underline; font-weight: 600;">FAQ</a> et les <a href="cgv.html" style="color: var(--vert-stylo); text-decoration: underline; font-weight: 600;">CGV</a>.
+        </span>
+    </p>
+</div>
+            
+            <!-- Grille forfaits -->
+            <div class="forfaits-grid">
+                
+                <!-- Quickstart -->
+                <div class="forfait-card-ludique">
+                    <h3>Quickstart</h3>
+                    <p class="forfait-volume">Jusqu'à 10 feuillets<br>(15 000 signes espaces comprises)</p>
+                    <div class="forfait-prix-ludique">90 €</div>
+                    <p class="forfait-detail-ludique">Jeux de cartes, livrets de règles courts, jeux enfants</p>
+                    <p class="forfait-note">≈ 3h de travail</p>
+                </div>
+                
+                <!-- CoreBox -->
+                <div class="forfait-card-ludique" style="border-color: var(--vert-stylo); position: relative;">
+                    <div style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--vert-stylo); color: white; padding: 5px 15px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">Le plus fréquent</div>
+                    <h3>CoreBox</h3>
+                    <p class="forfait-volume">11 à 25 feuillets<br>(15 001 à 37 500 signes espaces comprises)</p>
+                    <div class="forfait-prix-ludique">180 €</div>
+                    <p class="forfait-detail-ludique">Jeux de plateau, règles intermédiaires, extensions</p>
+                    <p class="forfait-note">≈ 6h de travail</p>
+                </div>
+                
+                <!-- Compendium -->
+                <div class="forfait-card-ludique">
+                    <h3>Compendium</h3>
+                    <p class="forfait-volume">Plus de 25 feuillets<br>(> 37 500 signes espaces comprises)</p>
+                    <div class="forfait-prix-ludique" style="font-size: 3rem;">9 €<span style="font-size: 1.2rem; font-weight: 400;">/feuillet</span></div>
+                    <p class="forfait-detail-ludique" style="margin-top: -5px;">Livres volumineux, campagnes étendues</p>
+                    <p class="forfait-note">≈ 4-5 feuillets/h</p>
+                </div>
+                
+            </div>
+            
+            <!-- Note devis perso -->
+            <div style="background: rgba(94, 140, 97, 0.1); border: 1px solid var(--vert-stylo); padding: 25px; border-radius: 12px; margin: 40px auto; max-width: 900px;">
+    				<h4 style="color: #C5A059; margin-top: 0;">🧩 Un projet spécifique ?</h4>
+    				<p style="text-align: justify; color: #000000 !important; font-size: 1rem; line-height: 1.6;">À chaque jeu sa propre complexité. Si votre projet ne rentre pas exactement dans les cases, pas de panique : <strong>on en discute</strong>.</p>
+    				<ul style="color: #000000 !important; font-size: 0.95rem; line-height: 1.8;">
+        			<li><strong>Micro-projets :</strong> pour les jeux de moins de 5 feuillets, contactez-moi pour un devis ajusté.</li>
+        			<li><strong>Volumes dégressifs :</strong> au-delà de 25 feuillets (Compendium), le tarif devient automatiquement dégressif pour s'adapter aux projets de grande envergure.</li>
+        			<li><strong>Cohérence d'univers :</strong> besoin d'une vérification de la terminologie ou d'une aide à la réécriture ? Le devis sera ajusté selon votre besoin réel.</li>
+    				</ul>
+    				<p style="margin-top: 15px; font-weight: bold; font-size: 0.95rem; color: var(--or-subtil); text-align: center;">L'objectif : un tarif juste, respectueux de votre budget et de mon temps de travail, bloqué dès la signature du devis.</p>
+</div>
+		<p style="margin-top: 10px; padding-top: 20px; font-size: 0.95rem; color: #000; text-align: center; line-height: 1.4;">💡 Le nombre de signes espaces comprises se trouve dans les Propriétés/Statistiques de votre fichier.
+        </div>
+
+        <div class="test-play-highlight">
+            <h3><i data-lucide="gamepad-2" size="32"></i> La Lecture-test : ma proposition unique</h3>
+            <p style="text-align: justify;">En plus de les corriger, je lis vos règles <strong>comme si j'allais jouer pour la première fois</strong>.<br>Il s'agit d'un <strong>travail complet</strong> qui nécessite que votre document soit dans un <strong>format texte éditable</strong> (Word de préférence).</p>
+	    <p style="text-align: justify;"><br><strong>« Et si mon document est au format PDF, qu'il a déjà été corrigé et que je ne cherche pas à faire tout vérifier ? »</strong><br>Eh bien, dans ce cas-là, il s'agira d'une <strong><a href="index.html#prestations" style="color: var(--vert-fonce); text-decoration: underline;">Relecture finale sur PDF</a></strong>. Vous pouvez en effet n'avoir besoin que d'une dernière vérification sur vos créations.<br><br>Le service que je vous propose ici à travers les différents forfaits est adapté à l'exigence des mécaniques de jeux. Hormis la Relecture PDF pour des documents <strong>déjà corrigés et mis en page</strong>, les autres prestations ne peuvent se substituer à celle de <em>L'Atelier Ludique</em>. C'est un moyen pour moi de vous proposer un prix juste et cohérent.</p>
+            
+            <div class="cards-grid" style="margin-top: 30px;">
+                <div class="card">
+                    <div class="card-icon">🎯</div>
+                    <h4>Clarté absolue</h4>
+                    <p>Chaque joueur comprend exactement ce qu'il doit faire</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">⚡</div>
+                    <h4>Fluidité optimale</h4>
+                    <p>Lecture sans accroc, évitant les retours en arrière constants</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🧩</div>
+                    <h4>Cohérence technique</h4>
+                    <p>Terminologie précise et uniforme</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">✨</div>
+                    <h4>Immersion renforcée</h4>
+                    <p>Ton et style renforcent l'univers du jeu</p>
+                </div>
+            </div>
+		<p style="text-align: justify; margin-top: 25px; background: white; padding: 20px; border-radius: 10px;">💡 Cette lecture-test peut être combinée avec une <strong><a href="index.html#prestations" style="color: var(--vert-fonce); text-decoration: underline;">Correction ciblée</a></strong>, uniquement pour des éléments bien précis (glossaire, aides de jeu, scénarios…). Si tel est votre besoin, je vous proposerai un devis adapté. Cela fait partie intégrante de mon approche : <em>corriger et améliorer l'expérience de joueur</em>.
+            	</p>
+
+	</div>
+
+        <!-- TYPES DE JEUX TRAITÉS -->
+        <div class="section">
+            <h2><i data-lucide="dices"></i> Jeux concernés</h2>
+	    <p style="margin: -10px 0 25px 0; color: #000; font-size: 1.05rem; opacity: 0.9;">Des jeux pour enfants aux projets plus complexes, la clarté des règles est indispensable.</p>
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon">🎴</div>
+                    <h3>Jeux de cartes</h3>
+                    <p>TCG, LCG, deck-building, party games</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">♟️</div>
+                    <h3>Jeux de plateau</h3>
+                    <p>Gestion, stratégie, coopératifs, Roll & Write</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🎲</div>
+                    <h3>Jeux de rôle</h3>
+                    <p>JDR complets, one-shots, campagnes, suppléments</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">⚔️</div>
+                    <h3>Wargames</h3>
+                    <p>Escarmouche, batailles, jeux narratifs</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🚀</div>
+                    <h3>Projets crowdfunding</h3>
+                    <p>Kickstarter, Gamefound, Ulule</p>
+                </div>
+		<div class="card" style="background: rgba(197, 160, 89, 0.05); border-style: dashed;">
+            	    <div class="card-icon">📚</div>
+            	    <h3>Mes références</h3>
+           	    <p style="font-size: 0.85rem;">Échecs, RISK, Loups-Garous, LOTR TCG, Warhammer 40k, Magic : The Gathering, Zombicide, Monopoly, Stormbound, etc…</p>
+        	</div>
+            </div>
+		<p style="margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(0,0,0,0.05); font-size: 1.1rem; color: #000; text-align: center; line-height: 1.4;">N'hésitez pas, je connais ce langage et j'aime plonger dans de nouveaux univers !</p>
+        </div>
+
+        <div class="section">
+            <h2><i data-lucide="lightbulb"></i> Pourquoi me faire confiance ?</h2>
+            
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon">✍️</div>
+                    <h4>Correcteur certifié</h4>
+                    <p>Formation Le Robert, même exigence que pour tous mes textes</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🎮</div>
+                    <h4>Joueur passionné</h4>
+                    <p>Je comprends les enjeux techniques et l'univers ludique</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🔍</div>
+                    <h4>Œil de joueur</h4>
+                    <p>Je détecte les zones d'ombre que d'autres manqueraient</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">💬</div>
+                    <h4>Échange constant</h4>
+                    <p>Communication maintenue pour un résultat optimal</p>
+                </div>
+            </div>
+        </div>
+
+	<div style="background: linear-gradient(135deg, var(--or-subtil), #d4b66e); color: #1a1a1a; padding: 30px; border-radius: 15px; margin: 40px 0; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
+    <h3 class="offre-titre" style="margin: 0 0 15px 0; font-size: 1.8rem; font-family: 'Josefin Slab'; color: #1a1a1a !important;">
+    <span>✨</span>
+    <span>Offre de lancement</span>
+    <span>✨</span>
+</h3>
+    <p style="font-size: 1.1rem; margin-bottom: 15px; line-height: 1.7;">
+        <strong>Faites partie des premiers ludistes !</strong>
+    </p>
+    <ul style="list-style: none; padding: 0; margin: 0 0 20px 0; font-size: 1.05rem; line-height: 2; display: inline-block; text-align: left;">
+        <li>→ Tarif pivot actuel de 30 €/h (au lieu de <span style="text-decoration: line-through; opacity: 0.6;">35 €</span>) garanti <strong>à vie</strong></li>
+        <li>→ <strong>2 premiers feuillets offerts</strong> (dès 10 feuillets commandés)</li>
+        <li>→ Liste prioritaire en cas de forte demande</li>
+    </ul>
+    <p style="font-size: 0.95rem; opacity: 0.85; margin: 0;">
+        <strong>Jusqu'au 31 mai 2026</strong> • <span style="color: #d9534f; font-weight: 700; text-decoration: underline;">Places limitées</span>
+    </p>
+</div>
+
+        <div class="cta-section">
+            <h2>🎲 Prêt à me confier vos créations ?</h2>
+            <p style="font-size: 1.2rem; margin-top: 20px;">
+                Remplissez le formulaire de contact et joignez votre document par email.<br>
+                Je vous réponds le plus rapidement possible (48-72 h) avec un devis détaillé.
+            </p>
+            <a href="index.html#contact" class="cta-button">
+                <i data-lucide="send" style="vertical-align: middle; margin-right: 10px;"></i>
+                Demander un devis
+            </a>
+        </div>
+
+        <div style="text-align: center;">
+            <a href="index.html" class="back-link" style="margin-top: 40px;">
+                <i data-lucide="arrow-left" style="vertical-align: middle; margin-right: 10px;"></i>
+                Retour à l'accueil
+            </a>
+        </div>
+    </div>
+
+
+    <footer style="text-align: center; display: flex; flex-direction: column; align-items: center; padding: 40px 20px;">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Des Mots Justes</h4>
+                <p>Relecture & Correction</p>
+                <p style="margin-top:15px;">Certifié par Le Robert</p>
+            </div>
+            <div class="footer-section">
+                <h4>Navigation</h4>
+                <a href="index.html">Accueil</a>
+                <a href="index.html#prestations">Prestations</a>
+                <a href="poesie.html">L'Œil du Poète</a>
+                <a href="atelier-ludique.html" style="color: #C5A059; font-weight: 600;">L'Atelier Ludique</a>
+                <a href="tarifs.html">Transparence & Tarification</a>
+                <a href="faq.html">FAQ</a>
+                <a href="cgv.html">CGV & RGPD</a>
+            </div>
+            <div class="footer-section" style="display: flex; flex-direction: column; align-items: center;">
+    <h4>Contact</h4>
+    <div class="footer-contact">
+        <a href="mailto:contact@desmotsjustes.fr">contact@desmotsjustes.fr</a>
+    </div>
+    <div class="social-icons" style="display: flex; justify-content: center; gap: 15px; margin-top: 10px;">
+        <a href="https://www.instagram.com/des_mots_justes_/" target="_blank" class="social-icon" aria-label="Instagram">
+            <i data-lucide="instagram" size="20"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/tom-saulzet-30485a362/" target="_blank" class="social-icon" aria-label="LinkedIn">
+            <i data-lucide="linkedin" size="20"></i>
+        </a>
+    </div>
+</div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Des Mots Justes - Relecture et Correction.<br>SIRET : 100 013 242 00019<br>Site créé par Tom SAULZET, EI. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+<button id="backToTop" title="Remonter en haut" style="position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px; background-color: var(--or-subtil); color: white; border: none; border-radius: 50%; cursor: pointer; display: none; justify-content: center; align-items: center; font-size: 24px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 1000; transition: opacity 0.3s;">↑</button>
+
+<script>
+    const btn = document.getElementById("backToTop");
+    window.onscroll = function() {
+        // Apparaît après 300px de scroll
+        if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+            btn.style.display = "flex";
+        } else {
+            btn.style.display = "none";
+        }
+    };
+    btn.onclick = function() {
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    };
+</script>
+</body>
+</html>

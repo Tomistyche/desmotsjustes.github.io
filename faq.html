@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Questions fréquentes | Des Mots Justes</title>
+    <meta name="description" content="Questions fréquentes sur la correction. Délais, tarifs, méthodes, signes espaces comprises, formats acceptés. Réponses claires et transparentes.">
+    <meta name="keywords" content="FAQ correction, questions fréquentes, délais relecture, méthodes correction, signes espaces comprises, SEC, formats acceptés, Word, PDF, Figeac, Aveyron, Lot, Occitanie">
+    <link rel="canonical" href="https://desmotsjustes.fr/faq.html">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600;700&family=Josefin+Slab:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --vert-fonce: #3C4D2D; 
+            --vert-stylo: #5E8C61; 
+            --beige-parchemin: #C4C298; 
+            --ivoire: #F9F8F0;
+            --or-subtil: #C5A059; 
+            --blanc-parchemin: #F2F1E6;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: 'Josefin Sans', sans-serif; 
+            background-color: var(--beige-parchemin); 
+            color: var(--vert-fonce); 
+            line-height: 1.8; 
+            font-size: 1.1rem; 
+        }
+        .container { 
+            max-width: 900px; 
+            margin: 0 auto; 
+            padding: 80px 5% 60px 5%; 
+        }
+        h1 { 
+            font-family: 'Josefin Slab', serif; 
+            font-size: 3.5rem; 
+            text-align: center; 
+            margin-bottom: 15px;
+            color: var(--vert-fonce);
+        }
+        .subtitle { 
+            text-align: center; 
+            font-style: italic; 
+            margin-bottom: 50px; 
+            color: var(--vert-stylo); 
+            font-size: 1.3rem; 
+        }
+        
+        .faq-intro {
+            background: var(--ivoire);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 40px;
+            border-left: 5px solid var(--or-subtil);
+        }
+        
+        .faq-category {
+            margin-bottom: 40px;
+        }
+        
+        .category-title {
+            font-family: 'Josefin Slab', serif;
+            font-size: 1.8rem;
+            color: var(--vert-stylo);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .faq-item {
+            background: var(--ivoire);
+            border-radius: 12px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item:hover {
+            border-color: var(--vert-stylo);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .faq-question {
+            padding: 20px 25px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: var(--vert-fonce);
+            transition: color 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            color: var(--vert-stylo);
+        }
+        
+        .faq-question i {
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+        }
+        
+        .faq-item.open .faq-question i {
+            transform: rotate(180deg);
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            padding: 0 25px;
+        }
+        
+        .faq-item.open .faq-answer {
+            max-height: 2000px;
+            padding: 0 25px 25px 25px;
+        }
+        
+        .faq-answer p {
+            margin-bottom: 12px;
+            line-height: 1.7;
+        }
+        
+        .faq-answer strong {
+            color: var(--vert-stylo);
+        }
+        
+        .back-link { 
+            display: inline-block; 
+            margin-top: 50px; 
+            color: var(--vert-fonce); 
+            text-decoration: none; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            border: 2px solid var(--vert-fonce); 
+            padding: 15px 40px; 
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+        .back-link:hover { 
+            background: var(--vert-fonce); 
+            color: var(--ivoire); 
+            transform: scale(1.05);
+        }
+        
+        /* Footer */
+        footer { 
+            background: #2C2C2C;
+            color: white; 
+            padding: 60px 10% 30px 10%; 
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            gap: 60px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+        }
+        .footer-section h4 {
+            font-family: 'Josefin Slab', serif;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--beige-parchemin);
+        }
+        .footer-section p, .footer-section a {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+            transition: color 0.3s ease;
+        }
+        .footer-section a:hover {
+            color: #C5A059;
+        }
+        .footer-contact {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--beige-parchemin);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        .social-icon:hover {
+            color: #C5A059;
+            transform: translateY(-3px);
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        .footer-bottom p {
+            font-size: 0.85rem;
+            opacity: 0.5;
+            text-align: center;
+        }
+
+/* ============================= */
+/* OPTIMISATION RESPONSIVE GLOBALE */
+/* ============================= */
+
+/* 1. Typographie intelligente */
+
+html {
+    hyphens: auto;
+}
+
+p, li {
+    hyphens: auto;
+    overflow-wrap: break-word;
+    word-break: normal;
+}
+
+h1, h2, h3 {
+    text-wrap: balance;
+}
+
+/* Évite les mots seuls */
+h1, h2, h3, .subtitle {
+    max-width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 2. Responsive mobile global */
+
+@media (max-width: 768px) {
+
+    body {
+        font-size: 1.05rem;
+    }
+
+    .container {
+        padding: 60px 6%;
+    }
+
+    h1 {
+        font-size: clamp(1.9rem, 6vw, 2.3rem);
+        line-height: 1.2;
+    }
+
+    h2 {
+        font-size: clamp(1.4rem, 5vw, 1.8rem);
+        line-height: 1.25;
+        flex-wrap: wrap;
+    }
+
+    h3 {
+        font-size: 1.2rem;
+        line-height: 1.3;
+    }
+
+    /* Footer centré proprement */
+
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 40px;
+    }
+
+    .footer-section {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .footer-contact {
+        justify-content: center;
+    }
+
+    .social-icons {
+        justify-content: center;
+    }
+
+    footer {
+        padding: 60px 6% 30px 6%;
+    }
+
+details {
+        min-height: auto !important;
+    }
+
+    details[open] {
+        padding-bottom: 20px;
+    }
+
+    summary {
+        font-size: 1.1rem;
+    }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Questions fréquentes</h1>
+        <p class="subtitle">Tout ce que vous voulez savoir</p>
+
+        <div class="faq-intro">
+            <p style="font-size: 1.15rem;">
+                Vous trouverez ici les réponses aux questions les plus courantes.<br>
+                Si votre question ne figure pas dans cette liste, <a href="index.html#contact" style="color: var(--vert-stylo); text-decoration: underline; font-weight: 700;">contactez-moi directement</a> !
+            </p>
+        </div>
+
+        <!-- Catégorie : Tarifs & Devis -->
+        <div class="faq-category">
+            <h2 class="category-title">
+                <i data-lucide="coins" size="28"></i>
+                Tarifs & Devis
+            </h2>
+            
+            <div class="faq-item">
+    <div class="faq-question" onclick="toggleFaq(this)">
+        <span>Comment calculez-vous vos tarifs ?</span>
+        <i data-lucide="chevron-down" size="24"></i>
+    </div>
+    <div class="faq-answer">
+        <p><strong>Mon tarif pivot actuel est de 30 €/h (Offre de lancement)</strong>. Pour garantir une facturation juste, je convertis ce temps en unités de mesure concrètes selon votre projet :</p>
+        
+        <p style="margin-top: 15px;"><strong>📊 Textes classiques (Word / PDF calculable) :</strong></p>
+        <p style="margin-left: 20px;">Facturation au volume (SEC). Pour 30 €, je traite entre 8 000 et 11 000 signes selon que le texte nécessite une préparation ou une simple relecture.</p>
+        
+        <p style="margin-top: 15px;"><strong>📄 Documents déjà mis en page (PDF) :</strong></p>
+        <p style="margin-left: 20px;">Tarif à la page (de 1,50 € à 6,00 € / page). Le prix est fixé après analyse de la densité de vos pages pour correspondre au temps de travail réel. Le travail se fait par annotations (pas de mode Révision).</p>
+        
+        <p style="margin-top: 15px;"><strong>🎭 Poésie (L'Œil du Poète) :</strong></p>
+        <p style="margin-left: 20px;">Forfaits par paliers de pages (250 € / 400 € / 550 €). Ici, c'est la page (≃30-35 vers) qui sert de base, car le comptage de signes n'a pas de sens pour les vers.</p>
+        
+        <p style="margin-top: 15px;"><strong>🎲 Jeux (L'Atelier Ludique) :</strong></p>
+        <p style="margin-left: 20px;">Tarif de <strong>9 € / feuillet</strong> (1500 signes). Ce prix intègre la correction et la <strong>lecture-test</strong> indispensable pour valider la clarté de vos mécaniques de jeu.</p>
+        
+        <p style="margin-top: 20px; font-style: italic; border-top: 1px solid rgba(0,0,0,0.05); padding-top: 10px;">Note : en profitant de l'offre de lancement, ce tarif horaire vous est garanti « à vie » (de l'entreprise) pour toutes nos collaborations futures.</p>
+    </div>
+</div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Sous quel délai recevrai-je mon devis ?</span>
+                    <i data-lucide="chevron-down" size="24"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Je m'engage à vous répondre <strong>sous 48-72 h maximum</strong> après réception de votre demande et de votre manuscrit.</p>
+                    <p>Le devis comprendra le tarif détaillé et le délai de réalisation estimé.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Que se passe-t-il si le travail prend plus de temps que prévu ?</span>
+                    <i data-lucide="chevron-down" size="24"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Si une correction demande plus de temps que l'estimation initiale, <strong>je vous contacte AVANT tout dépassement</strong>.</p>
+                    <p>Nous discutons ensemble des options et convenons d'un arrangement. <strong>Aucune surprise sur la facture finale</strong> : vous ne payez jamais plus que ce qui a été convenu ensemble.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+    <div class="faq-question" onclick="toggleFaq(this)">
+        <span>Modalités de paiement, acompte et tarifs dégressifs ?</span>
+        <i data-lucide="chevron-down" size="24"></i>
+    </div>
+    <div class="faq-answer">
+        <p><strong>Paiement :</strong> la validation du devis lance le projet mais la prestation débute au retour de celui-ci, avec signature, et au paiement effectif de l'acompte de 50 % qui est demandé pour toute commande. Le solde (50 % restants) est dû à la livraison finale du document corrigé et de la facture. Les paiements s'effectuent par virement bancaire exclusivement.</p>
+        
+        <p style="margin-top: 15px;"><strong>Dégressivité :</strong> les tarifs des forfaits (poésie, jeux) sont déjà intrinsèquement dégressifs. Pour les projets classiques de grande ampleur ou les collaborations régulières, j'étudie des arrangements adaptés au volume.</p>
+    </div>
+</div>
+        </div>
+
+        <!-- Catégorie : Formats & Documents -->
+        <div class="faq-category">
+            <h2 class="category-title">
+                <i data-lucide="file-type" size="28"></i>
+                Formats & Documents
+            </h2>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Quels formats de fichiers acceptez-vous ?</span>
+                    <i data-lucide="chevron-down" size="24"></i>
+                </div>
+                <div class="faq-answer">
+                    <p><strong>Formats texte éditables :</strong> .docx (Word), .odt (LibreOffice), .rtf</p>
+                    <p><strong>PDF :</strong> le travail se fait par annotations (pas de mode Révision).</p>
+                    <p>Les formats texte comme .odt peuvent être convertis en .docx pour travailler en mode Révision.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Comment fonctionnent les corrections sur Word ?</span>
+                    <i data-lucide="chevron-down" size="24"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Je travaille systématiquement via le <strong>Suivi des modifications</strong> de Word.</p>
+		    <p>Le document vous est remis avec cette fonctionnalité active. Si vous ouvrez le fichier avec OpenOffice ou LibreOffice, pensez à bien l'activer également (ces logiciels se répondent assez bien).
+                    <p>Vos corrections apparaissent en couleur, et vous restez maître de votre œuvre : vous pouvez <strong>accepter ou refuser chaque modification</strong> d'un simple clic. C'est assez intuitif et cela vous permet également de comprendre et d'assimiler vos erreurs.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Acceptez-vous les documents écrits à la main ?</span>
+                    <i data-lucide="chevron-down" size="24"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Non, seuls les fichiers numériques (Word, PDF, etc.) peuvent faire l'objet d'un devis précis car les documents écrits à la main ne permettent pas de compter le nombre de signes. Une image scannée ne permet pas non plus de faire des corrections aussi précises que sur un PDF d'origine.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Catégorie : Processus & Délais -->
+        <div class="faq-category">
+            <h2 class="category-title">
+                <i data-lucide="workflow" size="28"></i>
+                Processus & Délais
+            </h2>
+            
+            <div class="faq-item">
+    <div class="faq-question" onclick="toggleFaq(this)">
+        <span>Comment se déroule une correction de la demande au rendu ?</span>
+        <i data-lucide="chevron-down" size="24"></i>
+    </div>
+    <div class="faq-answer">
+        <p><strong>1. Demande :</strong> vous remplissez le formulaire et m'envoyez votre manuscrit ou un échantillo représentatif de celui-ci.</p>
+        <p><strong>2. Devis :</strong> je vous réponds sous 48-72 h maximum avec un devis détaillé et le délai de réalisation approprié, selon vos demandes et mes capacités.</p>
+        <p><strong>3. Validation & Acompte :</strong> une fois le devis retourné signé et la réception du paiement de l'acompte, la prestation débute.</p>
+        <p><strong>4. Réalisation :</strong> pendant la réalisation, une communication essentielle est maintenue jusqu'au rendu final. Je vous demande de rester joignable par mail en cas de besoin pour des précisions sur votre texte.</p>
+        <p><strong>5. Rendu & Solde :</strong> je vous livre votre document corrigé et vous transmets la facture. Le solde est dû à cette livraison.</p>
+	<p><strong>6. Repasse incluse :</strong> si vous constatez des erreurs manifestes ou des incohérences dans le travail fourni, signalez-les dans les 7 jours ouvrés suivant la livraison. Cette repasse permet également de valider vos choix, de me faire part de vos remarques et de procéder aux derniers ajustements.</p>
+    </div>
+</div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Serai-je contacté pendant la correction ?</span>
+                    <i data-lucide="chevron-down" size="24"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Oui, je peux vous contacter plusieurs fois par email pendant la correction si nécessaire. Sur votre demande ou en cas de nécessité uniquement, nous pourrons convenir d'un rendez-vous téléphonique.</p>
+                    <p>Pour les fichiers très volumineux, je peux vous tenir informé·e des étapes d'avancement majeures. La <strong>communication est maintenue jusqu'au rendu final</strong> pour garantir un résultat optimal.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Quels sont vos délais de réalisation ?</span>
+                    <i data-lucide="chevron-down" size="24"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Les délais varient selon la longueur, la complexité du document et la prestation choisie. Autrement dit : en fonction de l'ampleur de la tâche !</p>
+                    <p>Bien que cela reste une estimation, je vous indique toujours le délai le plus précis possible dans le devis. Pour les projets urgents, n'hésitez pas à me contacter pour voir si c'est possible.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Catégorie : Confidentialité & Sécurité -->
+        <div class="faq-category">
+            <h2 class="category-title">
+                <i data-lucide="shield-check" size="28"></i>
+                Confidentialité & Sécurité
+            </h2>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Mes documents sont-ils confidentiels ?</span>
+                    <i data-lucide="chevron-down" size="24"></i>
+                </div>
+                <div class="faq-answer">
+                    <p><strong>Oui, absolument.</strong> Tous vos documents sont traités de manière strictement confidentielle.</p>
+                    <p>Les documents qui ne font pas l'objet d'une correction ne sont pas conservés, et ceux qui sont corrigés le sont dans le respect total de votre propriété intellectuelle et de votre vie privée pour une durée de 6 mois (obligation légale) une fois la prestation terminée et le paiement effectué. Ils sont ensuite supprimés définitivement, sauf demande contraire de votre part.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Où sont stockés mes documents ?</span>
+                    <i data-lucide="chevron-down" size="24"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Vos documents sont stockés de manière sécurisée sur mon ordinateur professionnel, protégé par mot de passe et auquel je suis le seul à avoir accès.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Catégorie : Prestations spécifiques -->
+        <div class="faq-category">
+            <h2 class="category-title">
+                <i data-lucide="sparkles" size="28"></i>
+                Prestations spécifiques
+            </h2>
+            
+            <div class="faq-item">
+    <div class="faq-question" onclick="toggleFaq(this)">
+        <span>Qu'est-ce que "L'Œil du Poète" et quels sont les tarifs ?</span>
+        <i data-lucide="chevron-down" size="24"></i>
+    </div>
+    <div class="faq-answer">
+        <p><strong>L'Œil du Poète</strong> est une prestation où l'expertise se veut accessible. Contrairement au tarif pivot de 30 €/h, j'ai choisi de maintenir la poésie sur une base de <strong>18 à 25 €/h</strong>. C'est ma passion première, et je connais les enjeux d'une volonté de publication.</p>
+        
+        <p style="margin-top: 15px;"><strong>Pourquoi ce choix ?</strong> Le travail sur le rythme et la musicalité est exigeant, mais je souhaite soutenir la création poétique sans que le coût soit un frein. C'est mon <strong>coup de pouce aux poètes</strong>.</p>
+        
+        <p style="margin-top: 15px;"><strong>Forfaits L'Œil du Poète (avant mise en page) :</strong><br>
+        Basés sur la page (≃30-35 vers) :</p>
+        <ul style="margin-left: 20px; margin-top: 10px;">
+            <li><strong>Format S</strong> (jusqu'à 40 pages) : 250 €</li>
+            <li><strong>Format M</strong> (41 à 70 pages) : 400 €</li>
+            <li><strong>Format L</strong> (71 à 100 pages) : 550 €</li>
+        </ul>
+        
+        <p style="margin-top: 15px;"><strong>Forfaits Relecture PDF (déjà mis en page) :</strong><br>
+        Sur les mêmes bases de volume, mais avec des tarifs réduits de 50 % car le texte est censé être déjà corrigé et mis en page :</p>
+        <ul style="margin-left: 20px; margin-top: 10px;">
+            <li><strong>Petit Recueil :</strong> 100 €</li>
+            <li><strong>Recueil Moyen :</strong> 180 €</li>
+            <li><strong>Grand Recueil :</strong> 250 €</li>
+        </ul>
+        
+        <p style="margin-top: 15px;"><a href="poesie.html" style="color: var(--vert-stylo); text-decoration: underline;">→ Voir le détail de l'offre Poésie</a></p>
+    </div>
+</div>
+
+<div class="faq-item">
+    <div class="faq-question" onclick="toggleFaq(this)">
+        <span>Comment sont calculés les "forfaits à la page" ?</span>
+        <i data-lucide="chevron-down" size="24"></i>
+    </div>
+    <div class="faq-answer">
+        <p><strong>1 page ≃ 30 à 35 vers</strong> (police 12pt, interlignage standard).</p>
+        <p>Cette mesure garantit l'équité et évite les abus de mise en page (ex : texte en taille 8 avec 80 vers/page). En poésie, <strong>le blanc et la disposition visuelle font partie du texte</strong> : c'est pourquoi la page est l'unité de mesure logique, pas le nombre de signes.</p>
+        <p style="margin-top: 15px;"><strong>💡 Bon à savoir :</strong> tous les forfaits sont conçus pour être environ 15% moins chers qu'une facturation au temps passé, afin de soutenir la création poétique.</p>
+    </div>
+</div>
+
+	<div class="faq-item">
+    	<div class="faq-question" onclick="toggleFaq(this)">
+        		<span>Pourquoi un forfait est-il avantageux ?</span>
+        	<i data-lucide="chevron-down" size="24"></i>
+    	</div>
+    	<div class="faq-answer">
+        		<p>Le forfait est la <strong>formule de l'équilibre</strong>, basée sur un engagement mutuel. C'est une solution qui simplifie la collaboration :</p>
+        	<ul style="margin-left: 20px; margin-top: 10px;">
+            		<li>Le tarif lisse l'effort sur l'ensemble du projet car même si certains passages demandent un peu plus d'attention*, le prix reste celui affiché.</li>
+            		<li>Le devis est validé sur la base du document complet (ou d'un échantillon représentatif) tel que fourni pour l'établissement de celui-ci.</li>
+        	</ul>
+        		<p style="margin-top: 15px;"><strong>* Nuance importante :</strong> ce tarif est garanti tant que le texte reste fidèle à l'analyse initiale. Si une complexité réelle non décelée apparaissait de manière récurrente, freinant ainsi drastiquement la progression de la correction, ou pour tout autre imprévu majeur, nous en discuterions ensemble afin d'ajuster la prestation par un avenant équitable. Je vous invite à consulter les <a href="#cgv" style="color: var(--or-subtil); text-decoration: underline;">CGV</a> pour plus de détails.<br>En clair, si le document est fidèle à votre échantillon et/ou aux informations complémentaires fournies, il n’y aura absolument aucune facturation de "bricoles" à tout va ou de supplément pour chaque difficulté courante. C'est le propre du correcteur d'être confronté à de petits imprévus ; cette précision ne concerne que des <strong>éléments très distinctifs non annoncés</strong>.</p>
+        		<p style="margin-top: 15px; border-left: 3px solid var(--or-subtil); padding-left: 15px; font-size: 0.95rem;">Proposer des forfaits est pour moi un moyen de tout simplifier et d'offrir des prix compétitifs, en misant sur la franchise et le respect des règles établies.</p>
+    	</div>
+	</div>
+
+	<!-- Question Atelier Ludique forfaits -->
+	<div class="faq-item">
+    <div class="faq-question" onclick="toggleFaq(this)">
+        <span>Quels sont les tarifs de L'Atelier Ludique pour les règles de jeux ?</span>
+        <i data-lucide="chevron-down"></i>
+    </div>
+    <div class="faq-answer">
+        <p><strong>L'Atelier Ludique</strong> propose une expertise spécifique basée sur <strong>9 €/feuillet</strong> (1500 signes). Ce tarif inclut la correction et la <strong>lecture-test</strong> indispensable pour valider la clarté de vos mécaniques.</p>
+        
+        <p style="margin-top: 15px;"><strong>Forfaits par catégories :</strong></p>
+        <ul style="margin-left: 20px; margin-top: 10px;">
+            <li><strong>Quickstart</strong> (jusqu'à 10 feuillets) : 90 €</li>
+            <li><strong>CoreBox</strong> (11 à 25 feuillets) : <strong>180 €</strong></li>
+            <li><strong>Compendium</strong> (plus de 25 feuillets) : sur devis (base 9 €/feuillet)</li>
+        </ul>
+        
+        <p style="margin-top: 15px;"><a href="atelier-ludique.html" style="color: var(--vert-stylo); text-decoration: underline; font-weight: 600;">→ En savoir plus sur l'expertise ludique</a></p>
+    </div>
+</div>
+
+	<!-- Question différence feuillets/signes -->
+	<div class="faq-item">
+    	    <div class="faq-question" onclick="toggleFaq(this)">
+        	    Quelle est la différence entre "signes" et "feuillets" ?
+        	    <i data-lucide="chevron-down"></i>
+    	   </div>
+    	    <div class="faq-answer">
+        	    <p><strong>Signes espaces comprises (SEC)</strong> : utilisés pour les prestations classiques (préparation de copie, relecture) sur des formats éditables (traitement de texte).</p>
+        	    <p><strong>Feuillets</strong> : utilisés pour L'Atelier Ludique (règles de jeux). 1 feuillet = 1500 signes exactement.</p>
+        	    <p style="margin-top: 10px;"><strong>Pourquoi cette différence ?</strong> Pour simplifier la tarification des jeux : compter en feuillets est plus parlant pour les créateurs que de compter en milliers de signes.</p>
+        	    <p style="margin-top: 10px;"><em>Dans les deux cas, le calcul reste le même.</em></p>
+    	    </div>
+	</div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Quelle est la différence entre une préparation de copie et une relecture sur épreuve ?</span>
+                    <i data-lucide="chevron-down" size="24"></i>
+                </div>
+                <div class="faq-answer">
+                    <p><strong>Préparation de copie :</strong> correction approfondie d'un texte brut/non corrigé (orthographe, grammaire, syntaxe, typographie, cohérence…).</p>
+                    <p><strong>Relecture sur épreuve :</strong> vérification d'un texte déjà corrigé, pour détecter les dernières coquilles et fautes résiduelles.</p>
+                    <p>La relecture sur épreuve est plus rapide (≃11 000 SEC/h) car le texte est déjà en bon état.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Pourquoi distinguer "relecture sur épreuve" et "relecture sur épreuve finale (PDF)" ?</span>
+                    <i data-lucide="chevron-down" size="24"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>J'ai choisi de faire cette distinction inspirée par l'univers de la presse et de l'édition. On parle souvent d'<strong>EP1</strong> (vérification d'un texte déjà mis en page et corrigé) et d'<strong>EP2</strong> (vérification ultime avant Bon À Tirer).</p>
+                    <p>Outre la nature même de ces travaux, la différence réside également dans le caractère éditable ou non du document. En distinguant les deux prestations, j'essaie d'offrir le maximum d'amplitude à la nature des travaux, en sous-entendant qu'une Relecture sur épreuve nécessite plus de travail qu'une Relecture finale sur PDF. C'est un moyen pour moi de proposer de la relecture sur PDF, de viser un « juste milieu », dans le but que tout le monde s'y retrouve selon ses besoins et son budget.</p>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 60px;">
+            <p style="font-size: 1.2rem; margin-bottom: 20px;">
+                Vous n'avez pas trouvé la réponse à votre question ?<br>
+                <a href="index.html#contact" style="color: var(--vert-stylo); text-decoration: underline; font-weight: 700; font-size: 1.1rem;">Contactez-moi</a>
+            </p>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px;">
+            <a href="index.html" class="back-link">
+                <i data-lucide="arrow-left" style="vertical-align: middle; margin-right: 10px;"></i>
+                Retour à l'accueil
+            </a>
+        </div>
+    </div>
+
+    <footer style="text-align: center; display: flex; flex-direction: column; align-items: center; padding: 40px 20px;">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Des Mots Justes</h4>
+                <p>Relecture & Correction</p>
+                <p style="margin-top:15px;">Certifié par Le Robert</p>
+            </div>
+            <div class="footer-section">
+                <h4>Navigation</h4>
+                <a href="index.html">Accueil</a>
+                <a href="index.html#prestations">Prestations</a>
+                <a href="poesie.html">L'Œil du Poète</a>
+                <a href="atelier-ludique.html">L'Atelier Ludique</a>
+                <a href="tarifs.html">Transparence & Tarification</a>
+                <a href="faq.html" style="color: #C5A059; font-weight: 600;">FAQ</a>
+                <a href="cgv.html">CGV & RGPD</a>
+            </div>
+            <div class="footer-section" style="display: flex; flex-direction: column; align-items: center;">
+    <h4>Contact</h4>
+    <div class="footer-contact">
+        <a href="mailto:contact@desmotsjustes.fr">contact@desmotsjustes.fr</a>
+    </div>
+    <div class="social-icons" style="display: flex; justify-content: center; gap: 15px; margin-top: 10px;">
+        <a href="https://www.instagram.com/des_mots_justes_/" target="_blank" class="social-icon" aria-label="Instagram">
+            <i data-lucide="instagram" size="20"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/tom-saulzet-30485a362/" target="_blank" class="social-icon" aria-label="LinkedIn">
+            <i data-lucide="linkedin" size="20"></i>
+        </a>
+    </div>
+</div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Des Mots Justes - Relecture et Correction.<br>SIRET : 100 013 242 00019<br>Site créé par Tom SAULZET, EI. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+
+    <script>
+        lucide.createIcons();
+        
+        function toggleFaq(element) {
+            const item = element.parentElement;
+            const wasOpen = item.classList.contains('open');
+            
+            // Fermer tous les autres items
+            document.querySelectorAll('.faq-item.open').forEach(openItem => {
+                if (openItem !== item) {
+                    openItem.classList.remove('open');
+                }
+                 });
+            
+            item.classList.toggle('open');
+        }
+    </script>
+
+<button id="backToTop" title="Remonter en haut" style="position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px; background-color: var(--vert-stylo); color: var(--beige-parchemin); border: none; border-radius: 50%; cursor: pointer; display: none; justify-content: center; align-items: center; font-size: 24px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 1000; transition: opacity 0.3s;">↑</button>
+
+<script>
+    const backToTop = document.getElementById("backToTop");
+    window.addEventListener("scroll", () => {
+        if (window.pageYOffset > 300) {
+            backToTop.style.display = "block";
+        } else {
+            backToTop.style.display = "none";
+        }
+    });
+    backToTop.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+</script>
+</body>
+</html>
