@@ -22,4 +22,4 @@ Site web professionnel de correction et relecture.
 ## Contact
 
 📧 contact@desmotsjustes.fr  
-📍 Causse-et-Diège, Occitanie, France
+📍 Occitanie, France
