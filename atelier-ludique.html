@@ -51,6 +51,127 @@
             --blanc-parchemin: #F2F1E6;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ========================================
+   SYSTÈME RESPONSIVE UNIVERSEL
+   (Version sécurisée - sans modification polices)
+   ======================================== */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+h1, h2, h3, h4, h5, h6, p, a, span, li {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* BULLES POÉSIE - CORRECTION DÉFINITIVE */
+.info-popup {
+    width: min(350px, calc(100vw - 80px)) !important;
+    max-width: 350px !important;
+}
+
+.info-popup[id="info-1"],
+.info-popup[id="info-3"],
+.info-popup[id="info-5"],
+.info-popup[id="info-7"],
+.info-popup[id="info-9"] {
+    left: 20px !important;
+    right: auto !important;
+}
+
+.info-popup[id="info-2"],
+.info-popup[id="info-4"],
+.info-popup[id="info-6"],
+.info-popup[id="info-8"],
+.info-popup[id="info-10"] {
+    right: 20px !important;
+    left: auto !important;
+}
+
+@media (min-width: 1200px) {
+    .info-popup[id="info-1"],
+    .info-popup[id="info-3"],
+    .info-popup[id="info-5"],
+    .info-popup[id="info-7"],
+    .info-popup[id="info-9"] {
+        left: 60px !important;
+    }
+    
+    .info-popup[id="info-2"],
+    .info-popup[id="info-4"],
+    .info-popup[id="info-6"],
+    .info-popup[id="info-8"],
+    .info-popup[id="info-10"] {
+        right: 60px !important;
+    }
+}
+
+@media (min-width: 1600px) {
+    .info-popup[id="info-1"],
+    .info-popup[id="info-3"],
+    .info-popup[id="info-5"],
+    .info-popup[id="info-7"],
+    .info-popup[id="info-9"] {
+        left: 100px !important;
+    }
+    
+    .info-popup[id="info-2"],
+    .info-popup[id="info-4"],
+    .info-popup[id="info-6"],
+    .info-popup[id="info-8"],
+    .info-popup[id="info-10"] {
+        right: 100px !important;
+    }
+}
+
+/* CONTENEURS - ÉVITE DÉBORDEMENT */
+.container {
+    width: 90%;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ========================================
+   FIN SYSTÈME RESPONSIVE UNIVERSEL
+   ======================================== */
+
+/* BOUTON RETOUR */
+.btn-retour {
+    position: fixed;
+    top: 30px;
+    left: 30px;
+    width: 50px;
+    height: 50px;
+    background-color: var(--or-subtil);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    z-index: 1000;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.btn-retour:hover {
+    background-color: #d4af6a;
+    transform: translateX(-5px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+}
         
         body { 
             font-family: 'Josefin Sans', sans-serif; 
@@ -509,6 +630,13 @@
 
     .container { padding: 40px 15px !important; }
 
+    .btn-retour {
+    top: 15px;
+    left: 15px;
+    width: 40px;
+    height: 40px;
+    }
+
     /* LES ENJEUX (Les 4 points parfaitement serrés) */
     .enjeux-grid, .colonnes-enjeux { 
         display: block !important; 
@@ -640,6 +768,9 @@ h1, h2, h3 {
     </style>
 </head>
 <body>
+<a href="javascript:history.back()" class="btn-retour" title="Retour à la page précédente">
+    <i data-lucide="arrow-left"></i>
+</a>
     <div class="container style="position: relative;">
         <div class="hero">
             <h1>
@@ -683,7 +814,7 @@ h1, h2, h3 {
     <p style="color: #000000; background: #f4f4f4; padding: 25px 30px; border-radius: 12px; border: 1px solid #ccc; display: inline-block; max-width: 900px; line-height: 1.7; text-align: left;">
         <span style="color: #C5A059; font-weight: bold; font-size: 1.2rem; display: block; text-align: center; margin-bottom: 15px;">💡 Transparence tarifaire</span>
         
-        Mes forfaits sont calculés sur une base de lancement de <strong>30 €/heure</strong>, soit environ <strong>9 € le feuillet</strong> (1500 signes).<br><br>
+        Mes forfaits sont calculés sur une base de <strong>30 € / heure</strong> (tarif de lancement), soit environ <strong>9 € le feuillet</strong> (1500 signes).<br><br>
         
         <span style="font-size: 0.95rem; line-height: 1.8;">
             ✅ <strong>Prix bloqué :</strong> le forfait vous garantit que même si la complexité de vos règles demande plus de temps, le tarif ne bougera pas. Un forfait est l'assurance d'un engagement mutuel sur un projet bien défini.<br><br>

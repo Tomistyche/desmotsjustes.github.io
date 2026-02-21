@@ -51,6 +51,127 @@
             --or-subtil: #C5A059;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ========================================
+   SYSTÈME RESPONSIVE UNIVERSEL
+   (Version sécurisée - sans modification polices)
+   ======================================== */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+h1, h2, h3, h4, h5, h6, p, a, span, li {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* BULLES POÉSIE - CORRECTION DÉFINITIVE */
+.info-popup {
+    width: min(350px, calc(100vw - 80px)) !important;
+    max-width: 350px !important;
+}
+
+.info-popup[id="info-1"],
+.info-popup[id="info-3"],
+.info-popup[id="info-5"],
+.info-popup[id="info-7"],
+.info-popup[id="info-9"] {
+    left: 20px !important;
+    right: auto !important;
+}
+
+.info-popup[id="info-2"],
+.info-popup[id="info-4"],
+.info-popup[id="info-6"],
+.info-popup[id="info-8"],
+.info-popup[id="info-10"] {
+    right: 20px !important;
+    left: auto !important;
+}
+
+@media (min-width: 1200px) {
+    .info-popup[id="info-1"],
+    .info-popup[id="info-3"],
+    .info-popup[id="info-5"],
+    .info-popup[id="info-7"],
+    .info-popup[id="info-9"] {
+        left: 60px !important;
+    }
+    
+    .info-popup[id="info-2"],
+    .info-popup[id="info-4"],
+    .info-popup[id="info-6"],
+    .info-popup[id="info-8"],
+    .info-popup[id="info-10"] {
+        right: 60px !important;
+    }
+}
+
+@media (min-width: 1600px) {
+    .info-popup[id="info-1"],
+    .info-popup[id="info-3"],
+    .info-popup[id="info-5"],
+    .info-popup[id="info-7"],
+    .info-popup[id="info-9"] {
+        left: 100px !important;
+    }
+    
+    .info-popup[id="info-2"],
+    .info-popup[id="info-4"],
+    .info-popup[id="info-6"],
+    .info-popup[id="info-8"],
+    .info-popup[id="info-10"] {
+        right: 100px !important;
+    }
+}
+
+/* CONTENEURS - ÉVITE DÉBORDEMENT */
+.container {
+    width: 90%;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ========================================
+   FIN SYSTÈME RESPONSIVE UNIVERSEL
+   ======================================== */
+
+/* BOUTON RETOUR */
+.btn-retour {
+    position: fixed;
+    top: 30px;
+    left: 30px;
+    width: 50px;
+    height: 50px;
+    background-color: var(--or-subtil);
+    color: var(--vert-fonce);
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    z-index: 1000;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.btn-retour:hover {
+    background-color: #d4af6a;
+    transform: translateX(-5px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+}
         
         body { 
             font-family: 'Josefin Sans', sans-serif; 
@@ -567,6 +688,13 @@ h1, h2, h3, .subtitle {
         padding: 30px 3% !important; /* On passe de 6% à 3% pour donner plus de largeur aux mots */
     }
 
+    .btn-retour {
+    top: 15px;
+    left: 15px;
+    width: 40px;
+    height: 40px;
+    }
+
     /* 2. LE FILTRE ANTI-JUSTIFY (La méthode qui marchait) */
     [style*="text-align: justify"], [style*="text-align:justify"] {
         text-align: left !important;
@@ -626,6 +754,9 @@ h1, h2, h3, .subtitle {
     </style>
 </head>
 <body>
+<a href="javascript:history.back()" class="btn-retour" title="Retour à la page précédente">
+    <i data-lucide="arrow-left"></i>
+</a>
 
 <!-- CITATIONS EN FILIGRANE -->
     <div class="citation-filigrane citation-1">« La poésie est cette musique que tout le monde porte en soi. »<br>— Wiliam Shakespeare</div>

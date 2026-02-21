@@ -21,6 +21,102 @@
             --ivoire: #F9F8F0; 
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ========================================
+   SYSTÈME RESPONSIVE UNIVERSEL
+   (Version sécurisée - sans modification polices)
+   ======================================== */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+h1, h2, h3, h4, h5, h6, p, a, span, li {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* BULLES POÉSIE - CORRECTION DÉFINITIVE */
+.info-popup {
+    width: min(350px, calc(100vw - 80px)) !important;
+    max-width: 350px !important;
+}
+
+.info-popup[id="info-1"],
+.info-popup[id="info-3"],
+.info-popup[id="info-5"],
+.info-popup[id="info-7"],
+.info-popup[id="info-9"] {
+    left: 20px !important;
+    right: auto !important;
+}
+
+.info-popup[id="info-2"],
+.info-popup[id="info-4"],
+.info-popup[id="info-6"],
+.info-popup[id="info-8"],
+.info-popup[id="info-10"] {
+    right: 20px !important;
+    left: auto !important;
+}
+
+@media (min-width: 1200px) {
+    .info-popup[id="info-1"],
+    .info-popup[id="info-3"],
+    .info-popup[id="info-5"],
+    .info-popup[id="info-7"],
+    .info-popup[id="info-9"] {
+        left: 60px !important;
+    }
+    
+    .info-popup[id="info-2"],
+    .info-popup[id="info-4"],
+    .info-popup[id="info-6"],
+    .info-popup[id="info-8"],
+    .info-popup[id="info-10"] {
+        right: 60px !important;
+    }
+}
+
+@media (min-width: 1600px) {
+    .info-popup[id="info-1"],
+    .info-popup[id="info-3"],
+    .info-popup[id="info-5"],
+    .info-popup[id="info-7"],
+    .info-popup[id="info-9"] {
+        left: 100px !important;
+    }
+    
+    .info-popup[id="info-2"],
+    .info-popup[id="info-4"],
+    .info-popup[id="info-6"],
+    .info-popup[id="info-8"],
+    .info-popup[id="info-10"] {
+        right: 100px !important;
+    }
+}
+
+/* CONTENEURS - ÉVITE DÉBORDEMENT */
+.container {
+    width: 90%;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ========================================
+   FIN SYSTÈME RESPONSIVE UNIVERSEL
+   ======================================== */
+
         body { 
             font-family: 'Josefin Sans', sans-serif; 
             background-color: var(--ivoire); 

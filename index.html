@@ -193,7 +193,102 @@
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; }
+
+/* ========================================
+   SYSTÈME RESPONSIVE UNIVERSEL
+   (Version sécurisée - sans modification polices)
+   ======================================== */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+h1, h2, h3, h4, h5, h6, p, a, span, li {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* BULLES POÉSIE - CORRECTION DÉFINITIVE */
+.info-popup {
+    width: min(350px, calc(100vw - 80px)) !important;
+    max-width: 350px !important;
+}
+
+.info-popup[id="info-1"],
+.info-popup[id="info-3"],
+.info-popup[id="info-5"],
+.info-popup[id="info-7"],
+.info-popup[id="info-9"] {
+    left: 20px !important;
+    right: auto !important;
+}
+
+.info-popup[id="info-2"],
+.info-popup[id="info-4"],
+.info-popup[id="info-6"],
+.info-popup[id="info-8"],
+.info-popup[id="info-10"] {
+    right: 20px !important;
+    left: auto !important;
+}
+
+@media (min-width: 1200px) {
+    .info-popup[id="info-1"],
+    .info-popup[id="info-3"],
+    .info-popup[id="info-5"],
+    .info-popup[id="info-7"],
+    .info-popup[id="info-9"] {
+        left: 60px !important;
+    }
+    
+    .info-popup[id="info-2"],
+    .info-popup[id="info-4"],
+    .info-popup[id="info-6"],
+    .info-popup[id="info-8"],
+    .info-popup[id="info-10"] {
+        right: 60px !important;
+    }
+}
+
+@media (min-width: 1600px) {
+    .info-popup[id="info-1"],
+    .info-popup[id="info-3"],
+    .info-popup[id="info-5"],
+    .info-popup[id="info-7"],
+    .info-popup[id="info-9"] {
+        left: 100px !important;
+    }
+    
+    .info-popup[id="info-2"],
+    .info-popup[id="info-4"],
+    .info-popup[id="info-6"],
+    .info-popup[id="info-8"],
+    .info-popup[id="info-10"] {
+        right: 100px !important;
+    }
+}
+
+/* CONTENEURS - ÉVITE DÉBORDEMENT */
+.container {
+    width: 90%;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ========================================
+   FIN SYSTÈME RESPONSIVE UNIVERSEL
+   ======================================== */
+
         body { font-family: 'Josefin Sans', sans-serif; background-color: var(--beige-parchemin); color: #2C2C2C; line-height: 1.8; font-size: 1.2rem; }
 
         /* --- HEADER --- */
@@ -1518,7 +1613,7 @@ div[style*="position: fixed"][style*="z-index: 10000"] {
 </section>
 
 <section id="pourquoi" style="background: var(--beige-parchemin);">
-    <h2 class="sec-title">Pourquoi choisir Des Mots Justes ?</h2>
+    <h2 class="sec-title">Pourquoi choisir Des Mots Justes ?</h2>
     <div class="why-grid">
         <div class="why-card">
             <i data-lucide="shield-check" class="why-icon" size="50"></i>
@@ -1608,7 +1703,7 @@ div[style*="position: fixed"][style*="z-index: 10000"] {
 <!-- Comment ça marche -->
 <section class="timeline-section">
     <div class="timeline-container">
-        <h2 class="sec-title" style="text-align: center;">Comment ça marche ?</h2>
+        <h2 class="sec-title" style="text-align: center;">Comment ça marche ?</h2>
         
         <div class="timeline-grid">
             <div class="timeline-card" onclick="this.classList.toggle('active')">
