@@ -312,27 +312,46 @@ h1, h2, h3, h4, h5, h6, p, a, span, li {
     }
     
     /* === 2. HEADER COMPACT === */
-    header {
-        padding: 5px 3% !important;
-        min-height: 60px !important;
-    }
-    
-    /* Logo plus petit */
-    .logo-in-menu {
-        width: 60px !important;
-        height: 60px !important;
-    }
-    
-    .logo-in-menu img {
-        width: 60px !important;
-        height: 60px !important;
-    }
-    
-    /* Menu texte plus petit */
-    nav a {
-        font-size: 0.8rem !important;
-        padding: 8px 10px !important;
-    }
+header {
+    padding: 5px 2% !important;
+    min-height: 50px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+}
+
+/* Logo plus petit ET centré */
+.logo-in-menu {
+    width: 50px !important;
+    height: 50px !important;
+    flex-shrink: 0 !important;
+}
+
+.logo-in-menu img {
+    width: 50px !important;
+    height: 50px !important;
+    object-fit: contain !important;
+}
+
+/* Menu navigation compact */
+nav {
+    display: flex !important;
+    align-items: center !important;
+    gap: 5px !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+}
+
+nav a {
+    font-size: 0.7rem !important;
+    padding: 6px 8px !important;
+    white-space: nowrap !important;
+}
+
+/* Cache le dropdown en paysage */
+.dropdown-container .drop {
+    display: none !important;
+}
     
     /* === 3. HERO COMPACT === */
     .hero,
