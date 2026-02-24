@@ -927,6 +927,15 @@ h1, h2, h3, .subtitle {
 /* 2. Responsive mobile global */
 
 @media (max-width: 768px) {
+
+/* COUPURES DE MOTS EN MOBILE */
+    p, li {
+    hyphens: auto;
+    hyphenate-limit-chars: 10 4 4;  /* ← AJOUTE ÇA */
+    overflow-wrap: break-word;
+    word-break: normal;
+}
+
     /* 1. ÉLARGISSEMENT DE LA ZONE (Pour que les mots respirent) */
     body { font-size: 1.05rem; }
     .container { 
@@ -939,6 +948,44 @@ h1, h2, h3, .subtitle {
     width: 40px;
     height: 40px;
     }
+
+/* ÉLARGISSEMENT ENCADRÉS SPÉCIFIQUES EN MOBILE */
+    
+    /* Qui fait appel à l'Œil du Poète ? */
+    .tab-poesie .info-box:nth-of-type(1) {
+        width: 95% !important;
+        max-width: 95% !important;
+        padding: 20px 15px !important;
+    }
+    
+    /* Les trois piliers */
+    .tab-poesie .info-box:nth-of-type(2) {
+        width: 95% !important;
+        max-width: 95% !important;
+        padding: 20px 15px !important;
+    }
+    
+    /* Ce qui est vérifié ou corrigé */
+    .tab-poesie .info-box:nth-of-type(3) {
+        width: 95% !important;
+        max-width: 95% !important;
+        padding: 20px 15px !important;
+    }
+    
+    /* J'ai conscience de l'intimité... */
+    .tab-poesie .info-box:nth-of-type(4) {
+        width: 95% !important;
+        max-width: 95% !important;
+        padding: 20px 15px !important;
+    }
+    
+    /* Relecture PDF vs Word */
+    .tab-poesie .note-box {
+        width: 95% !important;
+        max-width: 95% !important;
+        padding: 20px 15px !important;
+    }
+}
 
     /* 2. LE FILTRE ANTI-JUSTIFY (La méthode qui marchait) */
     [style*="text-align: justify"], [style*="text-align:justify"] {
@@ -1230,11 +1277,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     
     <!-- LES 3 PILIERS -->
     <div style="background: rgba(197, 160, 89, 0.1); padding: 25px; border-radius: 12px; margin: 30px 0; border-left: 5px solid var(--or-subtil);">
+	<h3 style="color: var(--or-subtil); font-size: 1.4rem; margin-bottom: 20px; text-align: center;">Les trois piliers</h3>
         <p style="margin: 0 0 15px 0; text-align: justify;"><strong style="color: var(--or-subtil);">📖 L'unité poétique :</strong> en poésie, <strong>la page est l'unité de mesure logique</strong>, car le blanc et la disposition visuelle font partie intégrante du texte. Compter seulement les mots n'aurait aucun sens.</p>
         
         <p style="margin: 0 0 15px 0; text-align: justify;"><strong style="color: var(--or-subtil);">💰 L'accessibilité :</strong> ces forfaits sont conçus pour être <strong>environ 15% moins chers</strong> qu'une facturation au temps passé, afin de soutenir la création poétique.</p>
         
-        <p style="margin: 0; text-align: justify;"><strong style="color: var(--or-subtil);">✨ La qualité artisanale :</strong> ce n'est pas une simple correction orthographique, c'est une <strong>relecture de cohérence rythmique et typographique de la part d'un poète passionné.</strong>.</p>
+        <p style="margin: 0; text-align: justify;"><strong style="color: var(--or-subtil);">✨ La qualité artisanale :</strong> ce n'est pas une simple correction orthographique, c'est une <strong>relecture de cohérence rythmique et typographique de la part d'un poète passionné</strong>.</p>
     </div>
     
     	<p style="margin-bottom: 30px; text-align: justify;"><strong>Base de calcul :</strong> une page ≃ 30 à 35 vers (police 12pt, interlignage standard). Cette mesure garantit l'équité et évite les abus de mise en page.</p>

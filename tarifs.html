@@ -642,8 +642,12 @@ h1, h2, h3, h4, h5, h6, p, a, span, li {
 /* ============================= */
 
 /* 1. Typographie intelligente */
-html { hyphens: auto; }
-p, li { hyphens: auto; overflow-wrap: break-word; word-break: normal; }
+p, li {
+    hyphens: auto;
+    hyphenate-limit-chars: 10 4 4;
+    overflow-wrap: break-word;
+    word-break: normal;
+}
 h1, h2, h3 { text-wrap: balance; }
 h1, h2, h3, .subtitle { max-width: 95%; margin-left: auto; margin-right: auto; }
 
