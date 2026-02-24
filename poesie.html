@@ -164,10 +164,13 @@ h1, h2, h3, h4, h5, h6, p, a, span, li {
     
     /* === 1. CACHE LE FILIGRANE === */
     .hero::before,
-    .tab-poesie::before,
-    section::before {
-        display: none !important;
-    }
+.tab-poesie::before,
+section::before,
+body::before,
+.filigrane,
+.citation-filigrane {
+    display: none !important;
+}
     
     /* === 2. HEADER COMPACT === */
     header {
@@ -1030,6 +1033,10 @@ h1, h2, h3, .subtitle {
 
     .option-sec { min-width: unset !important; width: 100% !important; }
 
+    .titre-offre span {
+        display: block !important;
+    }
+
     /* 6. NETTOYAGE (On cache les exemples et les filigranes) */
     .exemples-mobile, .citation-filigrane, .info-bulle, .info-popup, body::before, .filigrane {
         display: none !important;
@@ -1398,7 +1405,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
  	<!-- RAPPEL OFFRE LANCEMENT -->
         <div style="background: linear-gradient(135deg, var(--or-subtil), #d4b66e); color: var(--vert-fonce); padding: 35px; border-radius: 15px; margin: 60px 0; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
-            <h3 style="margin: 0 0 15px 0; font-size: 2rem; font-family: 'Josefin Slab';">
+            <h3 class="titre-offre" style="margin: 0 0 15px 0; font-size: 2rem; font-family: 'Josefin Slab';">
 <span>✨</span>
     <span>Offre de lancement</span>
     <span>✨</span>
