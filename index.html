@@ -2461,6 +2461,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <option value="relecture">Relecture sur épreuve (vérification format éditable)</option>
                         <option value="relecture-pdf">Relecture PDF finale (vérification sur maquette)</option>
                         <option value="ciblee">Correction ciblée (besoins spécifiques)</option>
+			<option value="conseil-redaction">Conseils éditoriaux & Rédaction</option>
                         <option value="poesie">L'Œil du Poète (correction approfondie)</option>
                         <option value="pdf-poesie">Relecture PDF Poésie (vérification sur maquette)</option>
                         <option value="lecture-test">L'Atelier ludique (lecture-test jeux)</option>
@@ -2759,6 +2760,7 @@ document.addEventListener('keydown', function(e) {
             'relecture': 'Relecture sur épreuve',
             'relecture-pdf': 'Relecture PDF finale',
             'ciblee': 'Correction ciblée',
+	    'conseil-redaction': 'Conseils éditoriaux & Rédaction',
             'lecture-test': 'Lecture-test et correction',
             'poesie': "L'Œil du Poète",
             'pdf-poesie': 'Relecture PDF Poésie',
@@ -2981,10 +2983,11 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Règles de compatibilité
         const rules = {
-            'poesie': ['poesie', 'pdf-poesie', 'hesitation'], // Recueil → seulement poésie
-            'livret-regles': ['lecture-test', 'ciblee', 'hesitation'], // Règles → seulement Atelier
-            'autre': ['preparation', 'relecture', 'relecture-pdf', 'ciblee', 'poesie', 'pdf-poesie', 'lecture-test', 'hesitation'] // Autre → tout
-        };
+    // Ajout de 'conseil-redaction' partout où c'est logique
+    'poesie': ['poesie', 'pdf-poesie', 'conseil-redaction', 'hesitation'], 
+    'livret-regles': ['lecture-test', 'ciblee', 'conseil-redaction', 'hesitation'],
+    'autre': ['preparation', 'relecture', 'relecture-pdf', 'conseil-redaction', 'ciblee', 'poesie', 'pdf-poesie', 'lecture-test', 'hesitation']
+};
         
         // Si type sélectionné a des règles spécifiques
         if (rules[docType]) {
@@ -3001,15 +3004,15 @@ document.addEventListener('DOMContentLoaded', function() {
         // Pour les autres types (roman, article, etc.) → Cache poésie et Atelier
         else if (docType && docType !== '') {
             options.forEach(opt => {
-                if (opt.value === '' || opt.value === 'hesitation') {
-                    opt.style.display = 'block';
-                } else if (['poesie', 'pdf-poesie', 'lecture-test'].includes(opt.value)) {
-                    opt.style.display = 'none'; // Cache poésie + Atelier
-                } else {
-                    opt.style.display = 'block'; // Affiche prestations générales
-                }
-            });
+                if (opt.value === '' || opt.value === 'hesitation' || opt.value === 'conseil-redaction') {
+            opt.style.display = 'block';
+        } else if (['poesie', 'pdf-poesie', 'lecture-test'].includes(opt.value)) {
+            opt.style.display = 'none'; 
+        } else {
+            opt.style.display = 'block';
         }
+    });
+}
         // Aucun type sélectionné → Tout visible
         else {
             options.forEach(opt => opt.style.display = 'block');
